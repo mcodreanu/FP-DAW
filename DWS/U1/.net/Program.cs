@@ -1,4 +1,6 @@
-﻿namespace MyProject;
+﻿using System.Globalization;
+
+namespace MyProject;
 
 class Program
 {
@@ -27,14 +29,23 @@ class Program
         return res;
     }
 
+    public static void f(int x)
+    {
+        int contador = 0;
+        int numero = 2;
+
+        while (contador < x)
+        {
+            Console.WriteLine(Factorial(numero));
+            numero += 2;
+            contador++;
+        }
+    }
+
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
-
-        for (long i = 2; i <= 20; i = i + 2)
-        {
-            Console.WriteLine(Factorial(i));
-        } 
+        Console.WriteLine("Hello, World!"); 
+        f(10);
         
     }
 }
