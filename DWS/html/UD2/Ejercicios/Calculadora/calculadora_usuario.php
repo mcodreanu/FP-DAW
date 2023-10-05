@@ -19,4 +19,37 @@ function test_coeficienteBinomial()
     return $x;
 }
 
-echo test_coeficienteBinomial();
+function test_binarioDecimal()
+{
+    $calculadora = new Calculadora();
+    $x = $calculadora->convierteBinarioDecimal("1101100");
+
+    return $x;
+}
+
+function test_sumaNumerosPares()
+{
+    $calculadora = new Calculadora();
+    $x = $calculadora->sumaNumerosPares([2,3,6,8,9,10,23,24]);
+
+    return $x;
+}
+
+function test_esPalindromo()
+{
+    $calculadora = new Calculadora();
+    $x = $calculadora->esPalindromo("Isaac no ronca asi");
+
+    if ($x)
+    {
+        echo "True";
+    }
+    else
+    {
+        echo "False";
+    }
+
+    return $x;
+}
+
+echo test_esPalindromo();
