@@ -11,4 +11,12 @@ function test_factorial_1()
     return ($x == 1);
 }
 
-echo test_factorial_1();
+function test_coeficienteBinomial()
+{
+    $calculadora = new Calculadora();
+    $x = $calculadora->coeficienteBinomial(9, 3);
+
+    return $x;
+}
+
+echo test_coeficienteBinomial();

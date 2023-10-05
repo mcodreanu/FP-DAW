@@ -34,7 +34,7 @@ class Calculadora
 
     function coeficienteBinomial($n, $k)
     {
-
+        return $this->factorial($n)/$this->factorial($k)*$this->factorial($n-$k);
     }
 
     function convierteBinarioDecimal($cadenaBits)
