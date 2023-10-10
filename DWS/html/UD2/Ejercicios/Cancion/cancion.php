@@ -35,15 +35,18 @@ function cambiarVocales ($frase, $vocal)
 function escribirFrases ($frase)
 {
     $frases = "";
+    $vocales = ["a", "e", "i", "o", "u"];
 
-    for ($i = 0; $i < 5; $i++)
+    for ($i = 0; $i < count($vocales); $i++)
     {
-        $vocales = ["a", "e", "i", "o", "u"];
-
         $frases = $frases.cambiarVocales($frase, $vocales[$i]).",";
     }
 
-    return explode(",", $frases);
+    $frases = explode(",", $frases);
+
+    unset($frases[5]);
+
+    return $frases;
 }
 
 function test ($frase)
@@ -58,6 +61,15 @@ function test ($frase)
     $res = escribirFrases($frase);
 
     echo implode("<br>", $res);
+
+    if ($res == $frases)
+    {
+        echo "<br><br>Test: Correcto";
+    }
+    else
+    {
+        echo "<br><br>Test: Incorrecto";
+    }
 }
 
 echo test($frase);
