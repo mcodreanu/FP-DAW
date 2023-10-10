@@ -18,6 +18,9 @@ function validarParametro($param_name)
 
 function cambiarVocales ($frase, $vocal)
 {
+
+    $frase = strtolower($frase);
+
     for ($i = 0; $i < strlen($frase); $i++)
     {
         if ($frase[$i] == "a" || $frase[$i] == "e" || $frase[$i] == "i" || $frase[$i] == "o" || $frase[$i] == "u")
@@ -31,16 +34,33 @@ function cambiarVocales ($frase, $vocal)
 
 function escribirFrases ($frase)
 {
-    echo $frase;
+    $frases = "";
 
     for ($i = 0; $i < 5; $i++)
     {
         $vocales = ["a", "e", "i", "o", "u"];
 
-        $frases = cambiarVocales($frase, $vocales[$i]);
+        $frases = $frases.cambiarVocales($frase, $vocales[$i]).",";
+    }
 
-        echo "<br>".$frases;
+    return explode(",", $frases);
+}
+
+function test ($frase)
+{
+    echo $frase."<br>";
+
+    $frases = array("al sapa na sa lava al paa...",
+    "el sepe ne se leve el pee...",
+    "il sipi ni si livi il pii...",
+    "ol sopo no so lovo ol poo...",
+    "ul supu nu su luvu ul puu...");
+    $res = escribirFrases($frase);
+
+    for ($i = 0; $i < count($res); $i++)
+    {
+        echo $res[$i]."<br>";
     }
 }
 
-echo escribirFrases($frase);
+echo test($frase);
