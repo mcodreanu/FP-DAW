@@ -57,10 +57,7 @@ function test ($frase)
     "ul supu nu su luvu ul puu...");
     $res = escribirFrases($frase);
 
-    for ($i = 0; $i < count($res); $i++)
-    {
-        echo $res[$i]."<br>";
-    }
+    echo implode("<br>", $res);
 }
 
 echo test($frase);
