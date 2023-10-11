@@ -1,0 +1,15 @@
+/home/horabaixa/FP DAW/DWS/U2/Ejercicios/Ejer1_2_3/obj/Debug/net6.0/Ejer01.csproj.AssemblyReference.cache
+/home/horabaixa/FP DAW/DWS/U2/Ejercicios/Ejer1_2_3/obj/Debug/net6.0/Ejer01.GeneratedMSBuildEditorConfig.editorconfig
+/home/horabaixa/FP DAW/DWS/U2/Ejercicios/Ejer1_2_3/obj/Debug/net6.0/Ejer01.AssemblyInfoInputs.cache
+/home/horabaixa/FP DAW/DWS/U2/Ejercicios/Ejer1_2_3/obj/Debug/net6.0/Ejer01.AssemblyInfo.cs
+/home/horabaixa/FP DAW/DWS/U2/Ejercicios/Ejer1_2_3/obj/Debug/net6.0/Ejer01.csproj.CoreCompileInputs.cache
+/home/horabaixa/FP DAW/DWS/U2/Ejercicios/Ejer1_2_3/bin/Debug/net6.0/Ejer01
+/home/horabaixa/FP DAW/DWS/U2/Ejercicios/Ejer1_2_3/bin/Debug/net6.0/Ejer01.deps.json
+/home/horabaixa/FP DAW/DWS/U2/Ejercicios/Ejer1_2_3/bin/Debug/net6.0/Ejer01.runtimeconfig.json
+/home/horabaixa/FP DAW/DWS/U2/Ejercicios/Ejer1_2_3/bin/Debug/net6.0/Ejer01.dll
+/home/horabaixa/FP DAW/DWS/U2/Ejercicios/Ejer1_2_3/bin/Debug/net6.0/ref/Ejer01.dll
+/home/horabaixa/FP DAW/DWS/U2/Ejercicios/Ejer1_2_3/bin/Debug/net6.0/Ejer01.pdb
+/home/horabaixa/FP DAW/DWS/U2/Ejercicios/Ejer1_2_3/obj/Debug/net6.0/Ejer01.dll
+/home/horabaixa/FP DAW/DWS/U2/Ejercicios/Ejer1_2_3/obj/Debug/net6.0/ref/Ejer01.dll
+/home/horabaixa/FP DAW/DWS/U2/Ejercicios/Ejer1_2_3/obj/Debug/net6.0/Ejer01.pdb
+/home/horabaixa/FP DAW/DWS/U2/Ejercicios/Ejer1_2_3/obj/Debug/net6.0/Ejer01.genruntimeconfig.cache

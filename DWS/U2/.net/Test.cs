@@ -22,7 +22,7 @@ namespace Test
             }
             */
 
-            /* Arrays */
+            /* Arrays
             //Array
             int[] numbers = new int[2]{5,25};
             foreach (var item in numbers)
@@ -41,6 +41,18 @@ namespace Test
                     Console.Write(board[columna, fila] + "\t");
                 }
                 Console.WriteLine();
+            }
+            */
+
+            /* Try catch */
+            try
+            {
+                int x = 10;
+                int y = x / 0;
+            }
+            catch (System.Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
     }
