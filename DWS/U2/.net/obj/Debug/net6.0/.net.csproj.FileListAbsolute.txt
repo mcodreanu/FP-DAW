@@ -1,0 +1,15 @@
+/home/horabaixa/FP DAW/DWS/U2/.net/obj/Debug/net6.0/.net.csproj.AssemblyReference.cache
+/home/horabaixa/FP DAW/DWS/U2/.net/obj/Debug/net6.0/.net.GeneratedMSBuildEditorConfig.editorconfig
+/home/horabaixa/FP DAW/DWS/U2/.net/obj/Debug/net6.0/.net.AssemblyInfoInputs.cache
+/home/horabaixa/FP DAW/DWS/U2/.net/obj/Debug/net6.0/.net.AssemblyInfo.cs
+/home/horabaixa/FP DAW/DWS/U2/.net/obj/Debug/net6.0/.net.csproj.CoreCompileInputs.cache
+/home/horabaixa/FP DAW/DWS/U2/.net/bin/Debug/net6.0/.net
+/home/horabaixa/FP DAW/DWS/U2/.net/bin/Debug/net6.0/.net.deps.json
+/home/horabaixa/FP DAW/DWS/U2/.net/bin/Debug/net6.0/.net.runtimeconfig.json
+/home/horabaixa/FP DAW/DWS/U2/.net/bin/Debug/net6.0/.net.dll
+/home/horabaixa/FP DAW/DWS/U2/.net/bin/Debug/net6.0/ref/.net.dll
+/home/horabaixa/FP DAW/DWS/U2/.net/bin/Debug/net6.0/.net.pdb
+/home/horabaixa/FP DAW/DWS/U2/.net/obj/Debug/net6.0/.net.dll
+/home/horabaixa/FP DAW/DWS/U2/.net/obj/Debug/net6.0/ref/.net.dll
+/home/horabaixa/FP DAW/DWS/U2/.net/obj/Debug/net6.0/.net.pdb
+/home/horabaixa/FP DAW/DWS/U2/.net/obj/Debug/net6.0/.net.genruntimeconfig.cache
