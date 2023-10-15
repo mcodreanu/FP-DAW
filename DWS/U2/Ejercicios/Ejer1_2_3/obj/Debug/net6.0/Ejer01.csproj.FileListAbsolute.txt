@@ -13,3 +13,18 @@
 /home/horabaixa/FP DAW/DWS/U2/Ejercicios/Ejer1_2_3/obj/Debug/net6.0/ref/Ejer01.dll
 /home/horabaixa/FP DAW/DWS/U2/Ejercicios/Ejer1_2_3/obj/Debug/net6.0/Ejer01.pdb
 /home/horabaixa/FP DAW/DWS/U2/Ejercicios/Ejer1_2_3/obj/Debug/net6.0/Ejer01.genruntimeconfig.cache
+C:\Users\mihai\Desktop\Ejercicios\Ejer1_2_3\bin\Debug\net6.0\Ejer01.exe
+C:\Users\mihai\Desktop\Ejercicios\Ejer1_2_3\bin\Debug\net6.0\Ejer01.deps.json
+C:\Users\mihai\Desktop\Ejercicios\Ejer1_2_3\bin\Debug\net6.0\Ejer01.runtimeconfig.json
+C:\Users\mihai\Desktop\Ejercicios\Ejer1_2_3\bin\Debug\net6.0\Ejer01.dll
+C:\Users\mihai\Desktop\Ejercicios\Ejer1_2_3\bin\Debug\net6.0\Ejer01.pdb
+C:\Users\mihai\Desktop\Ejercicios\Ejer1_2_3\obj\Debug\net6.0\Ejer01.csproj.AssemblyReference.cache
+C:\Users\mihai\Desktop\Ejercicios\Ejer1_2_3\obj\Debug\net6.0\Ejer01.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mihai\Desktop\Ejercicios\Ejer1_2_3\obj\Debug\net6.0\Ejer01.AssemblyInfoInputs.cache
+C:\Users\mihai\Desktop\Ejercicios\Ejer1_2_3\obj\Debug\net6.0\Ejer01.AssemblyInfo.cs
+C:\Users\mihai\Desktop\Ejercicios\Ejer1_2_3\obj\Debug\net6.0\Ejer01.csproj.CoreCompileInputs.cache
+C:\Users\mihai\Desktop\Ejercicios\Ejer1_2_3\obj\Debug\net6.0\Ejer01.dll
+C:\Users\mihai\Desktop\Ejercicios\Ejer1_2_3\obj\Debug\net6.0\refint\Ejer01.dll
+C:\Users\mihai\Desktop\Ejercicios\Ejer1_2_3\obj\Debug\net6.0\Ejer01.pdb
+C:\Users\mihai\Desktop\Ejercicios\Ejer1_2_3\obj\Debug\net6.0\Ejer01.genruntimeconfig.cache
+C:\Users\mihai\Desktop\Ejercicios\Ejer1_2_3\obj\Debug\net6.0\ref\Ejer01.dll
