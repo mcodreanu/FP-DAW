@@ -56,15 +56,15 @@ namespace Ejercicios
 
         public static bool Ejer03 (int[,] numeros, List<int> enteros)
         {
-        foreach (int numero in numeros)
-        {
-            if (!enteros.Contains(numero))
+            foreach (int numero in numeros)
             {
-                return false;
+                if (!enteros.Contains(numero))
+                {
+                    return false;
+                }
             }
-        }
 
-        return true;
+            return true;
         }
 
         static void Main(string[] args)
