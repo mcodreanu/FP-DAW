@@ -52,7 +52,7 @@ namespace Ejercicios
             }
 
             return indiceMayorSuma;
-    }
+        }
 
         public static bool Ejer03 (int[,] numeros, List<int> enteros)
         {
@@ -65,7 +65,7 @@ namespace Ejercicios
         }
 
         return true;
-    }
+        }
 
         static void Main(string[] args)
         {
