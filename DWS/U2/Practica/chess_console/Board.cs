@@ -11,7 +11,14 @@ namespace ChessAPI
             board = new Piece[8, 8];
             //TODO Practica 02_7
             // Este constructor colocará las piezas en el tablero
-            
+            board[0,0] = new Rook(Piece.ColorEnum.BLACK);
+            board[0,1] = new Knight(Piece.ColorEnum.BLACK);
+            board[0,2] = new Bishop(Piece.ColorEnum.BLACK); 
+            board[0,3] = new King(Piece.ColorEnum.BLACK);
+            board[0,4] = new Queen(Piece.ColorEnum.BLACK);
+            board[0,5] = new Bishop(Piece.ColorEnum.BLACK);
+            board[0,6] = new Knight(Piece.ColorEnum.BLACK);
+            board[0,7] = new Rook(Piece.ColorEnum.BLACK);
         }
         public Piece GetPiece(int row, int column)
         {
@@ -42,7 +49,22 @@ namespace ChessAPI
         //Para ver el formato del pintado, leer enunciado de la práctica
         public void Draw()
         {
- 
+            for (int i = 0; i < board.GetLength(0); i++)
+            {
+                for (int j = 0; j < board.GetLength(1); j++)
+                {
+                    Console.Write(board[i,j].GetCode());
+
+                    if ((i + j) % 2 == 0)
+                    {
+                        Console.Write("|0000|");    
+                    }
+                    else 
+                    {
+                        Console.Write("|####|");
+                    }
+                }
+            }
         }
         // TODO Practica 02_5
         //Este método devuelve una cadena con el estado del tablero. Dicha cadena,
