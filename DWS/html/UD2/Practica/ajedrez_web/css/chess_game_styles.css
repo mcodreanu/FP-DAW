@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+div {
+    width: 90px;
+    height: 90px;
+}
+
+.contenedor {
+    width: 45rem;
+    height: 45rem;
+}
+
+.black-squares {
+    background-color: black;
+    display: inline-block;
+}
+
+.white-squares {
+    background-color: white;
+    display: inline-block;
+}
+
+img {
+    width: 50%;
+    padding: 5px 20px;
+}
