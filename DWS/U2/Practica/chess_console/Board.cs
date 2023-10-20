@@ -9,8 +9,7 @@ namespace ChessAPI
         public Board()
         {
             board = new Piece[8, 8];
-            //TODO Practica 02_7
-            // Este constructor colocará las piezas en el tablero
+    
             board[0,0] = new Rook(Piece.ColorEnum.BLACK);
             board[0,1] = new Knight(Piece.ColorEnum.BLACK);
             board[0,2] = new Bishop(Piece.ColorEnum.BLACK); 
@@ -19,6 +18,21 @@ namespace ChessAPI
             board[0,5] = new Bishop(Piece.ColorEnum.BLACK);
             board[0,6] = new Knight(Piece.ColorEnum.BLACK);
             board[0,7] = new Rook(Piece.ColorEnum.BLACK);
+
+            for (int i = 0; i < 8; i++)
+            {
+                board[1,i] = new Pawn(Piece.ColorEnum.BLACK);
+                board[6,i] = new Pawn(Piece.ColorEnum.WHITE); 
+            }
+
+            board[7,0] = new Rook(Piece.ColorEnum.WHITE);
+            board[7,1] = new Knight(Piece.ColorEnum.WHITE);
+            board[7,2] = new Bishop(Piece.ColorEnum.WHITE);
+            board[7,3] = new King(Piece.ColorEnum.WHITE);
+            board[7,4] = new Queen(Piece.ColorEnum.WHITE);
+            board[7,5] = new Bishop(Piece.ColorEnum.WHITE);
+            board[7,6] = new Knight(Piece.ColorEnum.WHITE);
+            board[7,7] = new Rook(Piece.ColorEnum.WHITE);
         }
         public Piece GetPiece(int row, int column)
         {
@@ -43,27 +57,20 @@ namespace ChessAPI
 
         }
 
-        // TODO Practica 02_4
-        //Este método escribira por consola el tablero,
-        //haciendo un salto de línea después de cada fila.
-        //Para ver el formato del pintado, leer enunciado de la práctica
         public void Draw()
         {
             for (int i = 0; i < board.GetLength(0); i++)
             {
                 for (int j = 0; j < board.GetLength(1); j++)
                 {
-                    Console.Write(board[i,j].GetCode());
-
-                    if ((i + j) % 2 == 0)
-                    {
-                        Console.Write("|0000|");    
-                    }
-                    else 
-                    {
+                    if (board[i,j] != null)
+                        Console.Write(board[i,j].GetCode());   
+                    else if ((i+j) % 2 == 0)
+                        Console.Write("|0000|"); 
+                    else
                         Console.Write("|####|");
-                    }
                 }
+                Console.WriteLine();
             }
         }
         // TODO Practica 02_5

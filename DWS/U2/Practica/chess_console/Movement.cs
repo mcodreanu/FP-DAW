@@ -17,7 +17,10 @@ namespace ChessAPI
         /// en esta clase.
         public bool IsValid()
         {
-            return true;
+            if (_fromBoardPosition >= 0 && _fromBoardPosition <= 7)
+                return true;
+
+            return false;
         }
     }
 }
