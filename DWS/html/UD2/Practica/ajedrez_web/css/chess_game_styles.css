@@ -11,6 +11,7 @@ div {
 .contenedor {
     width: 45rem;
     height: 45rem;
+    margin: 15px auto;
 }
 
 .board {
@@ -40,6 +41,18 @@ div {
 }
 
 img {
-    width: 25%;
-    padding-left: 30px;
+    width: 45%;
+    padding-left: 25px;
+    padding-top: 10px;
+}
+
+.dead-contenedor {
+    background-color: yellow;
+    margin: 0 auto;
+    width: 45rem;
+}
+
+ul {
+    text-decoration: none;
+    list-style: none;
 }

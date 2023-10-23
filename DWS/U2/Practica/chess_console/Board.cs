@@ -84,6 +84,21 @@ namespace ChessAPI
         public string GetBoardState()
         {
             string result = string.Empty;
+
+            for (var i = 0; i < board.GetLength(0); i++)
+            {               
+                for (var j = 0; j < board.GetLength(1); j++)
+                {
+                    if (board[i,j] != null)
+                         result += $"{board[i, j].GetCode()},";   
+                    else 
+                        result += "0,";
+               
+                }
+            }
+
+            result = result.Replace("|", "").Remove(result.Length - 1, 1);
+
             
             return result;
 
