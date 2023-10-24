@@ -77,10 +77,7 @@ namespace ChessAPI
                 Console.WriteLine();
             }
         }
-        // TODO Practica 02_5
-        //Este método devuelve una cadena con el estado del tablero. Dicha cadena,
-        //ha de tener el formato esperado por la parte Web para poder procesarse
-        //y pintarse.
+
         public string GetBoardState()
         {
             string result = string.Empty;
@@ -97,7 +94,8 @@ namespace ChessAPI
                 }
             }
 
-            result = result.Replace("|", "").Remove(result.Length - 1, 1);
+            result = result.Replace("|", "");
+            result = result.Remove(result.Length - 1, 1);
 
             
             return result;

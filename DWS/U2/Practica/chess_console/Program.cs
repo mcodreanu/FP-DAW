@@ -13,9 +13,11 @@
             Console.WriteLine();
             chess.DrawBoard();
 
+            Console.WriteLine();
             var code = chess.GetBoardAsStringToChessWeb();
             Console.WriteLine(code);
 
+            Console.WriteLine();
             BoardPosition FromPosition = new BoardPosition(1,4);
             var pos = FromPosition.ValidateBoardPosition();
             Console.WriteLine("Validate Board Position: " + pos);
