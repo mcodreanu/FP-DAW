@@ -8,13 +8,21 @@
     function DrawChessGame($board)
     {
         $pieces = explode(",", $board);
-        
+
         for ($i = 0; $i < count($pieces); $i++)
         {
-            echo"<div class=\"dead-contenedor\"><ul><li><div class=\"piece\"><img src=\"img/PAWH.png\" alt=\"\"></div></li></ul></div>";
+            if ($pieces[$i] == "PAWH")
+            $dead_pieces_white = $dead_pieces_white + $pieces[$i];
         }
+        
+        echo "<div class=\"dead-container\">";
+        for ($i = 0; $i < 16; $i++)
+        {
+            echo "<div class=\"piece\"><img src=\"img/PAWH.png\" alt=\"\"></div>";
+        }
+        echo "</div>";
 
-        echo"<div class=\"contenedor\">";
+        echo"<div class=\"container\">";
         echo "<div class=\"board\">";
         for ($i = 0; $i < 8; $i++) 
         {
@@ -27,6 +35,7 @@
             }
         }
         echo "</div>";
+
         echo "<div class=\"pieces\">";
         for ($i = 0; $i < count($pieces); $i++)
         {
@@ -34,7 +43,14 @@
         }
         echo "</div>";
         echo "</div>";
-        echo"<div class=\"dead-contenedor\"></div>";
+        
+        echo "<div class=\"dead-container\">";
+        for ($i = 0; $i < 64; $i++)
+        {
+            echo "<div class=\"piece\"><img src=\"img/PABL.png\" alt=\"\"></div>";
+            echo $dead_pieces_white;
+        }
+        echo "</div>";
     }
 
     echo DrawChessGame($board);

@@ -8,10 +8,11 @@ div {
     height: 90px;
 }
 
-.contenedor {
+.container {
     width: 45rem;
     height: 45rem;
     margin: 15px auto;
+    border: 3px solid black;
 }
 
 .board {
@@ -46,13 +47,8 @@ img {
     padding-top: 10px;
 }
 
-.dead-contenedor {
-    background-color: yellow;
+.dead-container {
     margin: 0 auto;
     width: 45rem;
-}
-
-ul {
-    text-decoration: none;
-    list-style: none;
+    height: 11rem;
 }
