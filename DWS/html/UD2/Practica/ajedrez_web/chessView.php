@@ -20,7 +20,18 @@
         echo "</div>";
 
         echo"<div class=\"container\">";
-        DrawBoard();
+        echo "<div class=\"board\">";
+        for ($i = 0; $i < 8; $i++) 
+        {
+            for ($j = 0; $j < 8; $j++)
+            {
+                if (($i + $j) % 2 == 0)
+                    echo "<div class=\"black-squares\"></div>";
+                else
+                    echo "<div class=\"white-squares\"></div>";
+            }
+        }
+        echo "</div>";
 
         echo "<div class=\"pieces\">";
         for ($i = 0; $i < count($pieces); $i++)
@@ -35,22 +46,6 @@
         {
             if ($dead_pieces_black[$i] != $pieces[$i] && $dead_pieces_black[$i] != "0")
                 echo "<div class=\"piece\"><img src=\"img/{$dead_pieces_black[$i]}.png\" alt=\"\"></div>";
-        }
-        echo "</div>";
-    }
-
-    function DrawBoard()
-    {
-        echo "<div class=\"board\">";
-        for ($i = 0; $i < 8; $i++) 
-        {
-            for ($j = 0; $j < 8; $j++)
-            {
-                if (($i + $j) % 2 == 0)
-                    echo "<div class=\"black-squares\"></div>";
-                else
-                    echo "<div class=\"white-squares\"></div>";
-            }
         }
         echo "</div>";
     }
