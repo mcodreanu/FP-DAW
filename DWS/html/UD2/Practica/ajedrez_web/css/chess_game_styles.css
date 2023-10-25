@@ -22,12 +22,12 @@ div {
 }
 
 .black-squares {
-    background-color: black;
+    background-image: url("img/bwood_texture.jpg");
     display: inline-block;
 }
 
 .white-squares {
-    background-color: white;
+    background-image: url("img/wwood_texture.jpg");
     display: inline-block;
 }
 
@@ -38,7 +38,7 @@ div {
 }
 
 .piece {
-    display: inline-block;
+    float: left;
 }
 
 img {
