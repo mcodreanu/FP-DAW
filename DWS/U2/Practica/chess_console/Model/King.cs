@@ -8,7 +8,7 @@ namespace ChessAPI.Model
 
         public override int GetScore()
         {
-            return 100000;
+            return int.MaxValue;
         }
     }
 }

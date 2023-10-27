@@ -99,7 +99,6 @@ namespace ChessAPI
 
             
             return result;
-
         }
 
 

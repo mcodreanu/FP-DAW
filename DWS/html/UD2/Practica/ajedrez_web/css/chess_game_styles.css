@@ -1,6 +1,13 @@
 * {
     margin: 0;
     padding: 0;
+    user-select: none;
+}
+
+body {
+    background-image: url("img/fondo.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 div {
@@ -9,46 +16,59 @@ div {
 }
 
 .container {
-    width: 45rem;
-    height: 45rem;
+    width: 40rem;
+    height: 40rem;
     margin: 15px auto;
-    border: 3px solid black;
+    border: 5px solid black;
 }
 
 .board {
-    width: 45rem;
-    height: 45rem;
+    width: 40rem;
+    height: 40rem;
     position: absolute;
 }
 
 .black-squares {
     background-image: url("img/bwood_texture.jpg");
     display: inline-block;
+    width: 80px;
+    height: 80px;
 }
 
 .white-squares {
     background-image: url("img/wwood_texture.jpg");
     display: inline-block;
+    width: 80px;
+    height: 80px;
 }
 
-.pieces {
-    width: 45rem;
-    height: 45rem;
+.pieces-container {
+    width: 40rem;
+    height: 40rem;
     position: absolute;
 }
 
 .piece {
     float: left;
+    width: 80px;
+    height: 80px;
+}
+
+.dead-piece {
+    float: left;
+    width: 80px;
+    height: 80px;
+    margin-right: -35px;
 }
 
 img {
     width: 45%;
-    padding-left: 25px;
+    padding-left: 21px;
     padding-top: 10px;
 }
 
 .dead-container {
-    margin: 0 auto;
-    width: 45rem;
-    height: 11rem;
+    margin: 15px auto;
+    width: 44rem;
+    height: 5rem;
 }
