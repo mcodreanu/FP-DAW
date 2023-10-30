@@ -2,22 +2,17 @@
     echo "<style>";
     include('css/chess_game_styles.css');
     echo "</style>";
-    echo "<script src=\"js/script.js\"></script>";
 
     $board = "0,0,0,0,k,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,P,P,P,P,P,P,P,P,R,N,B,Q,K,B,N,R";
 
     function DrawChessGame($board)
     {
         $pieces = explode(",", $board);
-        $dead_pieces_white = array("0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","P","P","P","P","P","P","P","P","R","N","B","Q","K","B","N","R");
-        $dead_pieces_black = array("r","n","b","q","k","b","n","r","p","p","p","p","p","p","p","p","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0");
-        
+
+        $numPieces = countPieces($pieces);
+
         echo "<div class=\"dead-container\">";
-        for ($i = 0; $i < count($dead_pieces_white); $i++)
-        {
-            if ($dead_pieces_white[$i] != $pieces[$i] && $dead_pieces_white[$i] != "0")
-                echo "<div class=\"dead-piece\"><img src=\"img/{$dead_pieces_white[$i]}.png\" alt=\"\"></div>";
-        }
+        drawDeadWhite($numPieces);
         echo "</div>";
         
         echo"<div class=\"container\">";
@@ -33,11 +28,7 @@
         echo "</div>";
         
         echo "<div class=\"dead-container\">";
-        for ($i = 0; $i < count($dead_pieces_black); $i++)
-        {
-            if ($dead_pieces_black[$i] != $pieces[$i] && $dead_pieces_black[$i] != "0")
-                echo "<div class=\"dead-piece\"><img src=\"img/{$dead_pieces_black[$i]}.png\" alt=\"\"></div>";
-        }
+        drawDeadBlack($numPieces);
         echo "</div>";
     }
 
@@ -55,6 +46,133 @@
             }
         }
         echo "</div>";
+    }
+
+    function drawDeadWhite($numPieces)
+    {
+        $dead_pieces_white = array(
+            "P" => 8,
+            "R" => 2,
+            "N" => 2,
+            "B" => 2,
+            "Q" => 1
+        );
+
+        for ($i = 0; $i < ($dead_pieces_white["P"] - $numPieces[0]); $i++)
+        {
+            echo "<div class=\"dead-piece\"><img src=\"img/P.png\" alt=\"\"></div>";
+        }
+
+        for ($i = 0; $i < ($dead_pieces_white["R"] - $numPieces[1]); $i++)
+        {
+            echo "<div class=\"dead-piece\"><img src=\"img/R.png\" alt=\"\"></div>";
+        }
+
+        for ($i = 0; $i < ($dead_pieces_white["N"] - $numPieces[2]); $i++)
+        {
+            echo "<div class=\"dead-piece\"><img src=\"img/N.png\" alt=\"\"></div>";
+        }
+
+        for ($i = 0; $i < ($dead_pieces_white["B"] - $numPieces[3]); $i++)
+        {
+            echo "<div class=\"dead-piece\"><img src=\"img/B.png\" alt=\"\"></div>";
+        }
+
+        for ($i = 0; $i < ($dead_pieces_white["Q"] - $numPieces[4]); $i++)
+        {
+            echo "<div class=\"dead-piece\"><img src=\"img/Q.png\" alt=\"\"></div>";
+        }
+    }
+
+    function drawDeadBlack($numPieces)
+    {
+        $dead_pieces_black = array(
+            "p" => 8,
+            "r" => 2,
+            "n" => 2,
+            "b" => 2,
+            "q" => 1
+        );
+
+        for ($i = 0; $i < ($dead_pieces_black["p"] - $numPieces[5]); $i++)
+        {
+            echo "<div class=\"dead-piece\"><img src=\"img/p.png\" alt=\"\"></div>";
+        }
+
+        for ($i = 0; $i < ($dead_pieces_black["r"] - $numPieces[6]); $i++)
+        {
+            echo "<div class=\"dead-piece\"><img src=\"img/r.png\" alt=\"\"></div>";
+        }
+
+        for ($i = 0; $i < ($dead_pieces_black["n"] - $numPieces[7]); $i++)
+        {
+            echo "<div class=\"dead-piece\"><img src=\"img/n.png\" alt=\"\"></div>";
+        }
+
+        for ($i = 0; $i < ($dead_pieces_black["b"] - $numPieces[8]); $i++)
+        {
+            echo "<div class=\"dead-piece\"><img src=\"img/b.png\" alt=\"\"></div>";
+        }
+
+        for ($i = 0; $i < ($dead_pieces_black["q"] - $numPieces[9]); $i++)
+        {
+            echo "<div class=\"dead-piece\"><img src=\"img/q.png\" alt=\"\"></div>";
+        }
+    }
+
+    function countPieces($pieces)
+    {
+        $countPieces = array(
+            0 => 0,
+            1 => 0,
+            2 => 0,
+            3 => 0,
+            4 => 0,
+            5 => 0,
+            6 => 0,
+            7 => 0,
+            8 => 0,
+            9 => 0
+            );
+    
+            for ($i = 0; $i < count($pieces); $i++)
+            {
+                switch ($pieces[$i])
+                {
+                    case "P":
+                        $countPieces[0]++;
+                        break;
+                    case "R":
+                        $countPieces[1]++;
+                        break;
+                    case "N":
+                        $countPieces[2]++;
+                        break;
+                    case "B":
+                        $countPieces[3]++;
+                        break;
+                    case "Q":
+                        $countPieces[4]++;
+                        break;
+                    case "p":
+                        $countPieces[5]++;
+                        break;
+                    case "r":
+                        $countPieces[6]++;
+                        break;
+                    case "n":
+                        $countPieces[7]++;
+                        break;
+                    case "b":
+                        $countPieces[8]++;
+                        break;
+                    case "q":
+                        $countPieces[9]++;
+                        break;
+                }
+            }
+
+        return $countPieces;
     }
 
     DrawChessGame($board);
