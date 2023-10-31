@@ -3,32 +3,24 @@
     include('css/chess_game_styles.css');
     echo "</style>";
 
-    $board = "0,0,0,0,k,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,P,P,P,P,P,P,P,P,R,N,B,Q,K,B,N,R";
+    $board = "r,0,0,q,k,b,n,r,p,p,p,p,p,p,p,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,P,P,0,P,P,P,P,P,R,0,B,Q,K,B,N,R";
 
     function DrawChessGame($board)
     {
         $pieces = explode(",", $board);
-
-        $numPieces = countPieces($pieces);
+        $numPieces = CountPieces($pieces);
 
         echo "<div class=\"dead-container\">";
-        drawDeadWhite($numPieces);
+        DrawDeadWhite($numPieces);
         echo "</div>";
         
         echo"<div class=\"container\">";
-
         DrawBoard();
-
-        echo "<div class=\"pieces-container\">";
-        for ($i = 0; $i < count($pieces); $i++)
-        {
-            echo "<div class=\"piece\"><img src=\"img/{$pieces[$i]}.png\" alt=\"\"></div>";
-        }
-        echo "</div>";
+        DrawPieces($pieces);
         echo "</div>";
         
         echo "<div class=\"dead-container\">";
-        drawDeadBlack($numPieces);
+        DrawDeadBlack($numPieces);
         echo "</div>";
     }
 
@@ -48,7 +40,72 @@
         echo "</div>";
     }
 
-    function drawDeadWhite($numPieces)
+    function DrawPieces($pieces)
+    {
+        echo "<div class=\"pieces-container\">";
+        for ($i = 0; $i < count($pieces); $i++)
+        {
+            echo "<div class=\"piece\"><img src=\"img/{$pieces[$i]}.png\" alt=\"\"></div>";
+        }
+        echo "</div>";
+    }
+
+    function CountPieces($pieces)
+    {
+        $numPieces = array(
+            0 => 0,
+            1 => 0,
+            2 => 0,
+            3 => 0,
+            4 => 0,
+            5 => 0,
+            6 => 0,
+            7 => 0,
+            8 => 0,
+            9 => 0
+            );
+    
+            for ($i = 0; $i < count($pieces); $i++)
+            {
+                switch ($pieces[$i])
+                {
+                    case "P":
+                        $numPieces[0]++;
+                        break;
+                    case "R":
+                        $numPieces[1]++;
+                        break;
+                    case "N":
+                        $numPieces[2]++;
+                        break;
+                    case "B":
+                        $numPieces[3]++;
+                        break;
+                    case "Q":
+                        $numPieces[4]++;
+                        break;
+                    case "p":
+                        $numPieces[5]++;
+                        break;
+                    case "r":
+                        $numPieces[6]++;
+                        break;
+                    case "n":
+                        $numPieces[7]++;
+                        break;
+                    case "b":
+                        $numPieces[8]++;
+                        break;
+                    case "q":
+                        $numPieces[9]++;
+                        break;
+                }
+            }
+
+        return $numPieces;
+    }
+
+    function DrawDeadWhite($numPieces)
     {
         $dead_pieces_white = array(
             "P" => 8,
@@ -84,7 +141,7 @@
         }
     }
 
-    function drawDeadBlack($numPieces)
+    function DrawDeadBlack($numPieces)
     {
         $dead_pieces_black = array(
             "p" => 8,
@@ -118,61 +175,6 @@
         {
             echo "<div class=\"dead-piece\"><img src=\"img/q.png\" alt=\"\"></div>";
         }
-    }
-
-    function countPieces($pieces)
-    {
-        $countPieces = array(
-            0 => 0,
-            1 => 0,
-            2 => 0,
-            3 => 0,
-            4 => 0,
-            5 => 0,
-            6 => 0,
-            7 => 0,
-            8 => 0,
-            9 => 0
-            );
-    
-            for ($i = 0; $i < count($pieces); $i++)
-            {
-                switch ($pieces[$i])
-                {
-                    case "P":
-                        $countPieces[0]++;
-                        break;
-                    case "R":
-                        $countPieces[1]++;
-                        break;
-                    case "N":
-                        $countPieces[2]++;
-                        break;
-                    case "B":
-                        $countPieces[3]++;
-                        break;
-                    case "Q":
-                        $countPieces[4]++;
-                        break;
-                    case "p":
-                        $countPieces[5]++;
-                        break;
-                    case "r":
-                        $countPieces[6]++;
-                        break;
-                    case "n":
-                        $countPieces[7]++;
-                        break;
-                    case "b":
-                        $countPieces[8]++;
-                        break;
-                    case "q":
-                        $countPieces[9]++;
-                        break;
-                }
-            }
-
-        return $countPieces;
     }
 
     DrawChessGame($board);
