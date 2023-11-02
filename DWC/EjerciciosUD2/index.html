@@ -8,15 +8,27 @@
     <script src="js/script.js"></script>
 </head>
 <body>
-    <h1>Ejercicio 1</h1>
-    <img onclick=abrirSobre() id="sobre" class="abierto" src="img/sobre-cerrado.png" alt="Sobre">
-    <p>Fer click a la imatge per obrir i tancer el sobre</p>
+    <div class="contenedor">
+        <h1>Ejercicio 1</h1>
+        <img onclick=abrirSobre() id="sobre" class="abierto" src="img/sobre-cerrado.png" alt="Sobre">
+        <p>Fer click a la imatge per obrir i tancer el sobre</p>
+    </div>
 
-    <h1>Ejercicio 2</h1>
-    <p>Introdueix un nombre dins l'intervar [-1,1]:</p>
-    <input type="text">
-    <button>Validar</button>
-    <p>Valor</p>
-    <h1>Ejercicio 3</h1>
+    <div class="contenedor">
+        <h1>Ejercicio 2</h1>
+        <p>Introdueix un nombre dins l'intervar [-1,1]:</p>
+        <input type="text" id="num">
+        <br><br>
+        <button onclick="inInterval()">Validar</button>
+        <p id="text"></p>
+    </div>
+
+    <div class="contenedor">
+        <h1>Ejercicio 3</h1>
+        <p>Introdueix els coeficients de l'equació:</p>
+        <input id="valor1" type="text">X+<input id="valor2" type="text">=0
+        <p>Resultat: <span id="res"></span></p>
+        <button onclick="calcularCoeficiente()">Calcular</button>
+    </div>
 </body>
 </html>
