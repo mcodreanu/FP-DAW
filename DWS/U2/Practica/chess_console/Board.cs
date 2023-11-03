@@ -82,24 +82,37 @@ namespace ChessAPI
         {
             string result = string.Empty;
 
+            Dictionary<string, string> fenDictionary = new Dictionary<string, string>()
+            {
+                {"|KNBL|", "n"},  {"|KIBL|", "k"}, {"|PABL|", "p"},
+                {"|BIBL|", "b"},  {"|QUBL|", "q"}, {"|ROBL|", "r"},
+                {"|KNWH|", "N"},  {"|KIWH|", "K"}, {"|PAWH|", "P"},
+                {"|BIWH|", "B"},  {"|QUWH|", "Q"}, {"|ROWH|", "R"}
+            };
+
+            int countEmpty = 0;
+
             for (var i = 0; i < board.GetLength(0); i++)
             {               
                 for (var j = 0; j < board.GetLength(1); j++)
                 {
                     if (board[i,j] != null)
-                        result += $"{board[i, j].GetCode()}/";  
-                    
-                    else 
-                        result += "0,";
-               
-                }
-            }
+                    {
+                        result += $"{fenDictionary[board[i, j].GetCode()]}";
+                    }                
+                    else
+                    {
+                        countEmpty++;
+                    }    
 
-            result = result.Replace("|", "");
-            
+                    if (countEmpty == 8)
+                    {
+                        countEmpty = 0;
+                        result += "8/";
+                    }
+                }
+            }   
             return result;
         }
-
-
     }
 }
