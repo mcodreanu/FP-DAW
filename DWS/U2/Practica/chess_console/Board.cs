@@ -87,7 +87,8 @@ namespace ChessAPI
                 for (var j = 0; j < board.GetLength(1); j++)
                 {
                     if (board[i,j] != null)
-                         result += $"{board[i, j].GetCode()},";   
+                        result += $"{board[i, j].GetCode()}/";  
+                    
                     else 
                         result += "0,";
                
@@ -95,8 +96,6 @@ namespace ChessAPI
             }
 
             result = result.Replace("|", "");
-            result = result.Remove(result.Length - 1, 1);
-
             
             return result;
         }

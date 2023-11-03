@@ -3,11 +3,11 @@
     include('css/chess_game_styles.css');
     echo "</style>";
 
-    $board = "r,0,0,q,k,b,n,r,p,p,p,p,p,p,p,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,P,P,0,P,P,P,P,P,R,0,B,Q,K,B,N,R";
+    $board = "r1bk3r/p2pBpNp/n4n2/1p1NP2P/6P1/3P4/P1P1K3/q5b1";
 
     function DrawChessGame($board)
     {
-        $pieces = explode(",", $board);
+        $pieces = str_split($board);
         $numPieces = CountPieces($pieces);
 
         echo "<div class=\"dead-container\">";
@@ -45,7 +45,24 @@
         echo "<div class=\"pieces-container\">";
         for ($i = 0; $i < count($pieces); $i++)
         {
-            echo "<div class=\"piece\"><img src=\"img/{$pieces[$i]}.png\" alt=\"\"></div>";
+            if ($pieces[$i] == 8 && $pieces[$i] != "/")
+            {
+                for ($j = 0; $j < 8; $j++)
+                {
+                    echo "<div class=\"piece\"></div>";
+                }
+            }
+            else if ($pieces[$i] == 1 || $pieces[$i] == 2 || $pieces[$i] == 3 || $pieces[$i] == 4 || $pieces[$i] == 5 || $pieces[$i] == 6 || $pieces[$i] == 7 && $pieces[$i] != "/")
+            {
+                for ($j = 0; $j < $pieces[$i]; $j++)
+                {
+                    echo "<div class=\"piece\"></div>";
+                }
+            }
+            else if ($pieces[$i] != "/")
+            {
+                echo "<div class=\"piece\"><img src=\"img/{$pieces[$i]}.png\" alt=\"\"></div>";
+            }
         }
         echo "</div>";
     }

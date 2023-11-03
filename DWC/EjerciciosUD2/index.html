@@ -49,8 +49,37 @@
         <label for="email">Introdueix un email:</label>
         <input type="email" id="email">
         <br><br>
-        <button>Enviar</button>
-        <p>L'usuari és: <br><br>El domini és:</p>
+        <button onclick="splitEmail()">Enviar</button>
+        <p>L'usuari és: <span id="usuari"></span></p>
+        <p>El domini és: <span id="domini"></span></p>
+    </div>
+
+    <div class="contenedor">
+        <h1>Ejercicio 7</h1>
+        <label for="email-2">Introdueix un email:</label>
+        <input type="email" id="email-2">
+        <br><br>
+        <button onclick="splitEmail_2()">Enviar</button>
+        <p>L'usuari és: <span id="usuari-2"></span></p>
+        <p>El domini és: <span id="domini-2"></span></p>
+    </div>
+
+    <div class="contenedor">
+        <h1>Ejercicio 8</h1>
+        <p id="txt">The reference contains descriptions and examples of all string properties and methods.</p>
+        <button onclick="cortarCadenaMitad()">Submit</button>
+        <p id="txt-res"></p>
+    </div>
+
+    <div class="contenedor">
+        <h1>Ejercicio 9</h1>
+        <button onclick="leerCadena()">Escribir Frase</button>
+        <p>Número de paraules: <span id="num-paraules"></span></p>
+        <p>Primera paraula i darrera paraula: <span id="primera-darrera-paraula"></span></p>
+        <p>Las paraules col·locades en ordre invers: <span id="ordre-invers"></span></p>
+        <p>Les paraules ordenades d'a a z: <span id="a-z"></span></p>
+        <p>Las paraules ordenades de z a a: <span id="z-a"></span></p>
+        <p>La frase es un palíndrom: <span id="palindromo"></span></p>
     </div>
 </body>
 </html>

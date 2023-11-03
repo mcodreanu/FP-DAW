@@ -71,3 +71,70 @@ window.onload = function cambiarColor() {
     paragraf.onmouseover = function() {paragraf.style.color = "blue";}  
     paragraf.onmouseout = function() {paragraf.style.color = "red";}  
 }
+
+//Ejercicio 06
+function splitEmail() {
+    
+  let email = document.getElementById("email").value;
+  let usuari = document.getElementById("usuari");
+  let domini = document.getElementById("domini");
+
+  let datos = email.split("@");
+  
+  usuari.innerHTML = datos[0];
+  domini.innerHTML = datos[1];
+}
+
+//Ejercicio 07
+function splitEmail_2() {
+    
+  let email = document.getElementById("email-2").value;
+  let usuari = document.getElementById("usuari-2");
+  let domini = document.getElementById("domini-2");
+
+  let posicion_separador = email.indexOf("@");
+
+  datos_usuari = email.slice(0, posicion_separador);
+
+  datos_domini = email.slice(posicion_separador + 1);
+  
+  usuari.innerHTML = datos_usuari;
+  domini.innerHTML = datos_domini;
+}
+
+//Ejercicio 08
+function cortarCadenaMitad() {
+    
+  let txt = document.getElementById("txt").innerText;
+
+  let valor = txt.length/2;
+
+  document.getElementById("txt-res").innerHTML = txt.slice(0, valor) + "<br><br>" + txt.slice(valor);
+}
+
+//Ejercicio 09
+function leerCadena() {
+    
+  let cadena = window.prompt("Escribe una frase:");
+
+  let paraules = cadena.split(" ")
+
+  document.getElementById("num-paraules").innerHTML = paraules.length;
+
+  document.getElementById("primera-darrera-paraula").innerHTML = paraules[0] + "," + paraules[paraules.length-1];
+
+  document.getElementById("ordre-invers").innerHTML = paraules.reverse();
+
+  document.getElementById("a-z").innerHTML = paraules.sort();
+
+  document.getElementById("z-a").innerHTML = paraules.sort().reverse();
+
+  document.getElementById("palindromo").innerHTML = palindromo(cadena);
+}
+
+function palindromo(str) {
+  let re = /[\W_]/g;
+  let lowRegStr = str.toLowerCase().replace(re, '');
+  let reverseStr = lowRegStr.split('').reverse().join(''); 
+  return reverseStr === lowRegStr;
+}
