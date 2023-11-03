@@ -9,13 +9,16 @@
             ChessGame chess = new ChessGame();
 
             chess.DrawBoard();
-            chess.TryToMove();
-            Console.WriteLine();
-            chess.DrawBoard();
 
             Console.WriteLine();
             var code = chess.GetBoardAsStringToChessWeb();
             Console.WriteLine(code);
+
+            chess.TryToMove();
+            Console.WriteLine();
+            chess.DrawBoard();
+
+            
 
             Console.WriteLine();
             BoardPosition FromPosition = new BoardPosition(1,4);

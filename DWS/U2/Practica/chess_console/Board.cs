@@ -91,6 +91,7 @@ namespace ChessAPI
             };
 
             int countEmpty = 0;
+            int countRows = 0;
 
             for (var i = 0; i < board.GetLength(0); i++)
             {               
@@ -99,11 +100,18 @@ namespace ChessAPI
                     if (board[i,j] != null)
                     {
                         result += $"{fenDictionary[board[i, j].GetCode()]}";
+                        countRows++;
                     }                
                     else
                     {
                         countEmpty++;
-                    }    
+                    } 
+
+                    if (countRows == 8)
+                    {
+                        countRows = 0;
+                        result += "/";
+                    }   
 
                     if (countEmpty == 8)
                     {
