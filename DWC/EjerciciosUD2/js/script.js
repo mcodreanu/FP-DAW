@@ -1,3 +1,16 @@
+var addFunctionOnWindowLoad = function(callback){
+  if(window.addEventListener){
+      window.addEventListener('load',callback,false);
+  }else{
+      window.attachEvent('onload',callback);
+  }
+}
+
+addFunctionOnWindowLoad(cambiarColor);
+addFunctionOnWindowLoad(fechaActual);
+addFunctionOnWindowLoad(setFecha);
+addFunctionOnWindowLoad(setFecha2);
+
 //Ejercicio 01
 function abrirSobre(){
     let img = document.getElementById('sobre');
@@ -64,7 +77,7 @@ function calcularAreaYLongitud() {
 }
 
 //Ejercicio 05
-window.onload = function cambiarColor() {
+function cambiarColor() {
     
     let paragraf = document.getElementById("paragraf");
 
@@ -162,7 +175,7 @@ function tirarDau() {
 }
 
 //Ejercicio 12
-window.onload = function fechaActual() {
+function fechaActual() {
     
   let date = new Date();
   let dateRes = document.getElementById("dateRes");
@@ -190,4 +203,60 @@ window.onload = function fechaActual() {
   }
 
   dateRes.innerHTML = day + "-" + month + "-" + year + " " + hours + ":" + minutes;
+}
+
+//Ejercicio 13
+function setFecha() {
+    
+  let newDate = new Date();
+  let dateObject = document.getElementById("dateObject");
+  let dateFormat = document.getElementById("dateFormat");
+
+  newDate.setDate(21);
+  newDate.setMonth(2);
+  newDate.setFullYear(2009);
+  newDate.setHours(12);
+  newDate.setMinutes(15);
+  newDate.setSeconds(0);
+
+  dateObject.innerHTML = newDate;
+
+  let dayFormat = newDate.getDate();
+  let monthFormat = newDate.getMonth() + 1;
+  let yearFormat = newDate.getFullYear();
+  let hoursFormat = newDate.getHours();
+  let minutesFormat = newDate.getMinutes();
+
+  dateFormat.innerHTML = dayFormat + "/0" + monthFormat + "/" + yearFormat + " " + hoursFormat + ":" + minutesFormat;
+}
+
+//Ejercicio 14
+function setFecha2() {
+    
+  let newDate = new Date();
+  let dateObject = document.getElementById("dateObject2");
+  let dateFormat1 = document.getElementById("dateFormat1");
+  let dateFormat2 = document.getElementById("dateFormat2");
+  let dateFormat3 = document.getElementById("dateFormat3");
+
+  newDate.setDate(21);
+  newDate.setMonth(2);
+  newDate.setFullYear(2009);
+  newDate.setHours(12);
+  newDate.setMinutes(15);
+  newDate.setSeconds(0);
+
+  dateObject.innerHTML = newDate;
+
+  newDate.setDate(newDate.getDate() + 3);
+
+  dateFormat1.innerHTML = newDate;
+
+  newDate.setMonth(newDate.getMonth() + 5);
+
+  dateFormat2.innerHTML = newDate;
+
+  newDate.setFullYear(newDate.getFullYear() - 10);
+
+  dateFormat3.innerHTML = newDate;
 }
