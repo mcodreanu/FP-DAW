@@ -10,6 +10,8 @@ addFunctionOnWindowLoad(cambiarColor);
 addFunctionOnWindowLoad(fechaActual);
 addFunctionOnWindowLoad(setFecha);
 addFunctionOnWindowLoad(setFecha2);
+addFunctionOnWindowLoad(diaSetmana);
+addFunctionOnWindowLoad(calcularTiempoEnDias);
 
 //Ejercicio 01
 function abrirSobre(){
@@ -259,4 +261,29 @@ function setFecha2() {
   newDate.setFullYear(newDate.getFullYear() - 10);
 
   dateFormat3.innerHTML = newDate;
+}
+
+//Ejercicio 15
+function diaSetmana() {
+    
+  let days = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
+  let date = new Date();
+  let diaSetmana = document.getElementById("diaSetmana");
+  let dayName = days[date.getDay()];
+
+  diaSetmana.innerHTML = dayName;
+}
+
+//Ejercicio 16
+function calcularTiempoEnDias() {
+    
+  let date1 = new Date("2015/01/01 01:00:01");
+  let date2 = new Date("2015/02/14 02:05:23");
+  let diferencia = date2.getTime() - date1.getTime();
+  let difDias = Math.trunc(diferencia / (1000 * 60 * 60 * 24));
+  let difHoras = Math.trunc(diferencia / (1000 * 60 * 60));
+
+  let resTiempo = document.getElementById("resTiempo");
+
+  resTiempo.innerHTML = "Entre la data " + date1.getTime() + " i la data " + date2 + " hi ha: " + difDias + "d:" + difHoras;
 }
