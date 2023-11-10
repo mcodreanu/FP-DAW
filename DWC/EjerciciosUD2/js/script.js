@@ -352,10 +352,10 @@ function calcularDataMajor() {
       }
     }
 
-    text.sort(function (a, b) {
+    let palabra = text.sort(function (a, b) {
       return b.length - a.length;
     })[0];
 
-    document.getElementById("textLlarg").innerHTML = "Palabra: " + text[0];
+    document.getElementById("textLlarg").innerHTML = "Palabra: " + palabra;
     document.getElementById("sumaNums").innerHTML = "Suma: " + suma;
 }
