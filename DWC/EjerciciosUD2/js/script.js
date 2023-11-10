@@ -1,4 +1,24 @@
-var addFunctionOnWindowLoad = function(callback){
+// Get the button:
+let mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+} 
+
+let addFunctionOnWindowLoad = function(callback){
   if(window.addEventListener){
       window.addEventListener('load',callback,false);
   }else{
@@ -12,6 +32,7 @@ addFunctionOnWindowLoad(setFecha);
 addFunctionOnWindowLoad(setFecha2);
 addFunctionOnWindowLoad(diaSetmana);
 addFunctionOnWindowLoad(calcularTiempoEnDias);
+addFunctionOnWindowLoad(inspectArray);
 
 //Ejercicio 01
 function abrirSobre(){
@@ -297,7 +318,7 @@ function calcularEdad() {
   let date = new Date("1984/01/07");
   let month_diff = Date.now() - date.getTime();
   let age_dt = new Date(month_diff);
-  let year = age_dt.getFullYear();
+  let year = age_dt.getUTCFullYear();
   let age = Math.abs(year - 1970);
 
   document.getElementById("edad").innerHTML = "Edad: " + age;
@@ -314,4 +335,27 @@ function calcularDataMajor() {
   } else {
     document.getElementById("dataMajor").innerHTML = date2.getDate() + "/" + (date2.getMonth() + 1) + "/" + date2.getFullYear();
   }
+}
+
+  //Ejercicio 19
+  function inspectArray() {
+   
+    let valors = [true, 5, false, "hola", "Adios", 2];
+    let text = [];
+    let suma = 0;
+
+    for (let i = 0; i < valors.length; i++) {
+      if (typeof valors[i] === "string"){
+        text.push(valors[i]);
+      } else if (typeof valors[i] === "number"){
+        suma += valors[i];
+      }
+    }
+
+    text.sort(function (a, b) {
+      return b.length - a.length;
+    })[0];
+
+    document.getElementById("textLlarg").innerHTML = "Palabra: " + text[0];
+    document.getElementById("sumaNums").innerHTML = "Suma: " + suma;
 }
