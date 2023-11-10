@@ -290,3 +290,28 @@ function calcularTiempoEnDias() {
 
   resTiempo.innerHTML = "Entre la data " + date1 + " i la data " + date2 + " hi ha: " + difDias + "d:" + difHoras + "h:" + difMinutos + "m:" + difSegundos + "s";
 }
+
+//Ejercicio 17
+function calcularEdad() {
+    
+  let date = new Date("1984/01/07");
+  let month_diff = Date.now() - date.getTime();
+  let age_dt = new Date(month_diff);
+  let year = age_dt.getFullYear();
+  let age = Math.abs(year - 1970);
+
+  document.getElementById("edad").innerHTML = "Edad: " + age;
+}
+
+//Ejercicio 18
+function calcularDataMajor() {
+    
+  let date1 = new Date(document.getElementById("date1").value);
+  let date2 = new Date(document.getElementById("date2").value);
+  
+  if (date1 > date2){
+    document.getElementById("dataMajor").innerHTML = date1.getDate() + "/" + (date1.getMonth() + 1) + "/" + date1.getFullYear();
+  } else {
+    document.getElementById("dataMajor").innerHTML = date2.getDate() + "/" + (date2.getMonth() + 1) + "/" + date2.getFullYear();
+  }
+}
