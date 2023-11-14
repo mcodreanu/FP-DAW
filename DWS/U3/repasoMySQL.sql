@@ -63,55 +63,65 @@ SELECT * FROM T_Actor_Pelicula;
 -- 1.Identificador y nombre de las categorías que tenemos.
 -- ¿Que categorías tenemos?
 -- Terror y Ciencia Ficción
-SELECT * FROM T_Categorias;
+SELECT 
+    ID, nombre
+FROM
+    T_Categorias;
 
 -- 2. Queremos saber las películas de terror más votadas, para ello se pide:
 -- Identificador, titulo, año, sinopsis, votos de la categoría de terror, en orden descendente por votos.
 SELECT 
     ID, titulo, año, sinopsis, votos
 FROM
-    T_Peliculas
+    T_Peliculas Tp
 WHERE
     id_categoria = (SELECT 
             ID
         FROM
-            T_Categorias
+            T_Categorias Tc
         WHERE
-            nombre LIKE 'Terror') ORDER BY votos DESC;
+            nombre LIKE 'Terror')
+ORDER BY votos DESC;
  
  -- 3. Añadir el nombre del director a la consulta numero 2.
  SELECT 
-    T_Peliculas.ID,
-    titulo,
-    año,
-    sinopsis,
-    votos,
-    T_Directores.nombre
+    Tp.ID, titulo, año, sinopsis, votos, Td.nombre AS director
 FROM
-    T_Peliculas
-        JOIN
-    T_Directores USING (ID)
+    T_Peliculas Tp
+        INNER JOIN
+    T_Directores Td ON Tp.id_director = Td.ID
 WHERE
     id_categoria = (SELECT 
             ID
         FROM
-            T_Categorias
+            T_Categorias Tc
         WHERE
             nombre LIKE 'Terror')
 ORDER BY votos DESC;
  
  -- 4. Visualizar el director y reparto de una determinada película, 
  -- ejemplo la que tiene más votos del género de terror.
- 
+ SELECT 
+    Tp.titulo, Td.nombre, Ta.nombre
+FROM
+    T_Peliculas Tp
+        INNER JOIN
+    T_Directores Td ON Tp.id_director = Td.ID
+        INNER JOIN
+    T_Actor_Pelicula Tap ON Tp.ID = Tap.ID_pelicula
+        INNER JOIN
+    T_Actores Ta ON Tap.ID_actor = Ta.ID
+WHERE
+    Tp.titulo LIKE 'Origen';
  
  -- 5. Id de la categoría y nombre de la categoría así como el promedio de
  -- duración de las películas de dicha categoría.
- SELECT 
-    ID,
-    nombre,
-    (SELECT 
-            AVG(duracion)
-        FROM
-            T_Peliculas)
+SELECT 
+    Tc.ID,
+    Tc.nombre AS Categoria,
+    TRUNCATE(AVG(Tp.duracion), 0) AS 'Promedio Duración'
 FROM
-    T_Categorias;
+    T_Categorias Tc
+        INNER JOIN
+    T_Peliculas Tp ON Tc.ID = Tp.id_categoria
+GROUP BY Tc.ID;
