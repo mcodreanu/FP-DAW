@@ -68,17 +68,50 @@ SELECT * FROM T_Categorias;
 -- 2. Queremos saber las películas de terror más votadas, para ello se pide:
 -- Identificador, titulo, año, sinopsis, votos de la categoría de terror, en orden descendente por votos.
 SELECT 
-    *
+    ID, titulo, año, sinopsis, votos
 FROM
     T_Peliculas
-        LEFT JOIN 
-    T_Categorias ON (id_director = T_Categorias.ID);
+WHERE
+    id_categoria = (SELECT 
+            ID
+        FROM
+            T_Categorias
+        WHERE
+            nombre LIKE 'Terror') ORDER BY votos DESC;
  
  -- 3. Añadir el nombre del director a la consulta numero 2.
+ SELECT 
+    T_Peliculas.ID,
+    titulo,
+    año,
+    sinopsis,
+    votos,
+    T_Directores.nombre
+FROM
+    T_Peliculas
+        JOIN
+    T_Directores USING (ID)
+WHERE
+    id_categoria = (SELECT 
+            ID
+        FROM
+            T_Categorias
+        WHERE
+            nombre LIKE 'Terror')
+ORDER BY votos DESC;
  
  -- 4. Visualizar el director y reparto de una determinada película, 
  -- ejemplo la que tiene más votos del género de terror.
  
+ 
  -- 5. Id de la categoría y nombre de la categoría así como el promedio de
  -- duración de las películas de dicha categoría.
- 
+ SELECT 
+    ID,
+    nombre,
+    (SELECT 
+            AVG(duracion)
+        FROM
+            T_Peliculas)
+FROM
+    T_Categorias;
