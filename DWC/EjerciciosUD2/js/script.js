@@ -368,15 +368,59 @@ function calcularLetraDNI() {
   let numero = prompt("Escribe tu numero de DNI (sin la letra)");
 
   if (numero < 0 || numero > 99999999) {
-
     alert("El numero indicado no es válido");
     numero = prompt("Escribe tu numero de DNI (sin la letra)");
-
   } else {
-
     let letra = letras[numero % 23];
-
     alert(numero + letra);
-
   }
+}
+
+//Ejercicio 21
+function calcularFactorial() {
+   
+  let num = document.getElementById("numSencer").value;
+  let factorial = 1;
+  let resFactorial = document.getElementById("resFactorial");
+
+  if (!isNaN(num)) {
+    for(i = num; i > 0; i--){
+      factorial *= i;
+    }
+    resFactorial.innerHTML = "El factorial de " + num + " és: " + factorial;
+  } else {
+    resFactorial.innerHTML = "Valor incorrecto."
+  }
+}
+
+//Ejercicio 21
+function calcularNumAleatorio() {
+
+  let numAleatorio = Math.floor((Math.random() * 100 - 1 + 1) + 1);
+  alert(numAleatorio);
+
+  return numAleatorio;
+}
+
+function juegoAdivinarNum(numAleatorio) {
+
+  let num = document.getElementById("numAdivinar").value;
+
+  alert(numAleatorio);
+
+  if (isNaN(num)) {
+    resJuego.innerHTML = "Tienes que escribir un número!";
+  } else if (num === numAleatorio) {
+    resJuego.innerHTML = "Has ganado!";
+  } else if (num < numAleatorio) {
+    resJuego.innerHTML = "El número es mayor.";
+  } else if (num > numAleatorio) {
+    resJuego.innerHTML = "El número es menor.";
+  }
+}
+
+function cancelarJuego() {
+  let resJuego = document.getElementById("resJuego");
+
+  resJuego.innerHTML = "El juago se ha cancelado!"
 }
