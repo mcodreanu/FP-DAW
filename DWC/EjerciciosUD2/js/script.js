@@ -444,17 +444,30 @@ function esPalindromo() {
 //Ejercicio 24
 function dibujarRectangulo() {
 
-  let filas = document.getElementById("filas").value;
-  let columnas = document.getElementById("columnas").value;
+  let srcFil = document.getElementById("filas").value;
+  let srcCol = document.getElementById("columnas").value;
   let rectangulo = document.getElementById("rectangulo");
+  let res  = "";
 
-  for (let i = 0; i < filas; i++) {
-    if (i == 0) {
-      for (let j = 0; j < columnas; j++) {
-        rectangulo.innerHTML += "#";
-      }
+  for (let filas = 0; filas <= srcFil; filas++) {
+    if (filas == 0) {
+        for (let col = 0; col <= srcCol; col++) {
+            res.innerHTML += "#";
+        }
+        res.innerHTML += "\n";
+        filas++;
+    } else if (filas == srcFil) {
+        for (let col = 0; col <= srcCol; col++) {
+            res.innerHTML += "#";
+        }
+    } else {
+        res.innerHTML += "#";
+        for (let col = 0; col <= srcCol-2; col++) {
+            res.innerHTML += " ";
+        }
+        res.innerHTML += "#\n";
     }
-
-    rectangulo.innerHTML += "#<br>";
   }
+
+  rectangulo.innerHTML = res;
 }

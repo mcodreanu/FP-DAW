@@ -51,3 +51,7 @@ td {
   #myBtn:hover {
     background-color: #555;
   }
+
+  p {
+    white-space: pre;
+  }
