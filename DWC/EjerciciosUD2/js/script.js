@@ -393,28 +393,30 @@ function calcularFactorial() {
   }
 }
 
-//Ejercicio 21
+//Ejercicio 22
 function calcularNumAleatorio() {
 
-  let numAleatorio = Math.floor((Math.random() * 100 - 1 + 1) + 1);
-  alert(numAleatorio);
+  let numAleatorio = Math.floor((Math.random() * 100) + 1);
 
   return numAleatorio;
 }
+
+let numAleatorio = calcularNumAleatorio();
 
 function juegoAdivinarNum(numAleatorio) {
 
   let num = document.getElementById("numAdivinar").value;
 
-  alert(numAleatorio);
-
   if (isNaN(num)) {
     resJuego.innerHTML = "Tienes que escribir un número!";
-  } else if (num === numAleatorio) {
+  }
+  if (num == numAleatorio) {
     resJuego.innerHTML = "Has ganado!";
-  } else if (num < numAleatorio) {
+  }
+  if (num < numAleatorio) {
     resJuego.innerHTML = "El número es mayor.";
-  } else if (num > numAleatorio) {
+  }
+  if (num > numAleatorio) {
     resJuego.innerHTML = "El número es menor.";
   }
 }
@@ -422,5 +424,37 @@ function juegoAdivinarNum(numAleatorio) {
 function cancelarJuego() {
   let resJuego = document.getElementById("resJuego");
 
-  resJuego.innerHTML = "El juago se ha cancelado!"
+  resJuego.innerHTML = "El juego se ha cancelado!"
+}
+
+//Ejercicio 23
+function esPalindromo() {
+
+  let src = document.getElementById("src").value;
+  let lowRegStr = src.toLowerCase().replace(/[\W_]/g, '');
+  let reverseStr = lowRegStr.split('').reverse().join(''); 
+  
+  if (reverseStr === lowRegStr) {
+    document.getElementById("resPalindromo").innerHTML = "Es palindromo.";
+  } else {
+    document.getElementById("resPalindromo").innerHTML = "No es palindromo.";
+  }
+}
+
+//Ejercicio 24
+function dibujarRectangulo() {
+
+  let filas = document.getElementById("filas").value;
+  let columnas = document.getElementById("columnas").value;
+  let rectangulo = document.getElementById("rectangulo");
+
+  for (let i = 0; i < filas; i++) {
+    if (i == 0) {
+      for (let j = 0; j < columnas; j++) {
+        rectangulo.innerHTML += "#";
+      }
+    }
+
+    rectangulo.innerHTML += "#<br>";
+  }
 }
