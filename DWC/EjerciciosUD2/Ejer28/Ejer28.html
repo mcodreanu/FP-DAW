@@ -8,8 +8,40 @@
     <script src="js/script.js"></script>
 </head>
 <body>
-    <h1 id="Ejercicio1">Ejercicio 1</h1>
-    <img onclick=abrirSobre() id="sobre" class="abierto" src="img/sobre-cerrado.png" alt="Sobre">
-    <p>Fer click a la imatge per obrir i tancer el sobre</p>
+    <h1>ENGLISH TEST</h1>
+    <label for="preguna1">Com se diu 'groc' en anglès?</label>
+    <select name="pregunta1" id="pregunta1">
+        <option value="yellow">yellow</option>
+        <option value="blue">blue</option>
+        <option value="blue">red</option>
+        <option value="blue">purple</option>
+    </select>
+    <br><br>
+    <label for="preguna2">Com se diu 'moix' en anglès?</label>
+    <select name="pregunta2" id="pregunta2">
+        <option value="dog">dog</option>
+        <option value="pen">pen</option>
+        <option value="house">house</option>
+        <option value="cat">cat</option>
+    </select>
+    <br><br>
+    <label for="preguna3">Com se diu 'finestra' en anglès?</label>
+    <select name="pregunta3" id="pregunta3">
+        <option value="tree">tree</option>
+        <option value="window">window</option>
+        <option value="two">two</option>
+        <option value="select">select</option>
+    </select>
+    <br><br>
+    <label for="preguna4">Com se diu 'home' en anglès?</label>
+    <select name="pregunta4" id="pregunta4">
+        <option value="kid">kid</option>
+        <option value="girl">girl</option>
+        <option value="man">man</option>
+        <option value="flower">flower</option>
+    </select>
+    <br><br>
+    <button onclick="validarExamen()">Validar</button>
+    <h2 id="res"></h2>
 </body>
 </html>
