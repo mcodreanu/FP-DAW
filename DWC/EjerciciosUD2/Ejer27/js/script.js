@@ -33,6 +33,8 @@ addFunctionOnWindowLoad(setFecha2);
 addFunctionOnWindowLoad(diaSetmana);
 addFunctionOnWindowLoad(calcularTiempoEnDias);
 addFunctionOnWindowLoad(inspectArray);
+addFunctionOnWindowLoad(randomImg);
+addFunctionOnWindowLoad(randomBgColor);
 
 //Ejercicio 01
 function abrirSobre(){
@@ -444,30 +446,49 @@ function esPalindromo() {
 //Ejercicio 24
 function dibujarRectangulo() {
 
-  let srcFil = document.getElementById("filas").value;
-  let srcCol = document.getElementById("columnas").value;
+  let srcFil = document.getElementById("srcFil").value;
+  let srcCol = document.getElementById("srcCol").value;
   let rectangulo = document.getElementById("rectangulo");
-  let res  = "";
+
+  rectangulo.innerHTML = "";
 
   for (let filas = 0; filas <= srcFil; filas++) {
     if (filas == 0) {
-        for (let col = 0; col <= srcCol; col++) {
-            res.innerHTML += "#";
-        }
-        res.innerHTML += "\n";
-        filas++;
+      for (let col = 0; col <= srcCol; col++) {
+        rectangulo.innerHTML += "#";
+      }
+      rectangulo.innerHTML += "\n";
+      filas++;
     } else if (filas == srcFil) {
-        for (let col = 0; col <= srcCol; col++) {
-            res.innerHTML += "#";
-        }
+      for (let col = 0; col <= srcCol; col++) {
+        rectangulo.innerHTML += "#";
+      }
     } else {
-        res.innerHTML += "#";
-        for (let col = 0; col <= srcCol-2; col++) {
-            res.innerHTML += " ";
-        }
-        res.innerHTML += "#\n";
+      rectangulo.innerHTML += "#";
+      for (let col = 0; col <= srcCol-2; col++) {
+        rectangulo.innerHTML += " ";
+      }
+      rectangulo.innerHTML += "#\n";
     }
   }
+}
 
-  rectangulo.innerHTML = res;
+//Ejercicio 25
+function randomImg() {
+
+  let arrayImg = ["img1.jpg", "img2.jpg", "img3.jpg"];
+  let randomImg = Math.floor(Math.random() * arrayImg.length);
+  let img = document.getElementById("img");
+
+  img.src = "img/" + arrayImg[randomImg];
+}
+
+//Ejercicio 26
+function randomBgColor() {
+
+  let randomRed = Math.floor(Math.random() * 256);
+  let randomGreen = Math.floor(Math.random() * 256);
+  let randomBlue = Math.floor(Math.random() * 256);
+
+  document.body.style.backgroundColor = "rgb(" + randomRed + "," + randomGreen + "," + randomBlue + ")";
 }

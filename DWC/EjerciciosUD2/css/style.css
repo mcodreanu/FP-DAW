@@ -2,6 +2,10 @@
     width: 15%;
 }
 
+img {
+    width: 50%;
+}
+
 .contenedor {
     margin: 0 auto;
     width: 1100px;
@@ -50,8 +54,4 @@ td {
   
   #myBtn:hover {
     background-color: #555;
-  }
-
-  p {
-    white-space: pre;
   }
