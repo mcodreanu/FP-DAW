@@ -14,11 +14,9 @@
         
         foreach ($datosPeliculas as $pelicula)
         {
-            echo "<div>";
-            print($pelicula->getID());
-            print($pelicula->getTitulo());
-            echo "</div>";
+            echo "<div><a href=\"datosPelicula.php\">{$pelicula->getTitulo()}</a></div>";
         }
+
     ?>
 </body>
 

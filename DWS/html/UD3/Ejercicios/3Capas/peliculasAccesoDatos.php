@@ -16,8 +16,9 @@ class PeliculasAccesoDatos
 		}
  		mysqli_select_db($conexion, 'new_schema');
 		$sanitized_categoria_id = mysqli_real_escape_string($conexion, $id_categoria);
-		$consulta = mysqli_prepare($conexion, "SELECT TC.ID, titulo, nombre FROM T_Peliculas TP INNER JOIN T_Categorias TC ON TP.id_categoria = TC.ID WHERE TC.nombre LIKE ?");
-		$consulta->bind_param("s", $sanitized_categoria_id);
+		$consulta = mysqli_prepare($conexion, "SELECT ID, titulo FROM T_Peliculas WHERE id_categoria = ?");
+		
+		$consulta->bind_param("i", $sanitized_categoria_id);
         $consulta->execute();
         $result = $consulta->get_result();
 
