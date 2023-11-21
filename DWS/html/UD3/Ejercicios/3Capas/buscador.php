@@ -7,8 +7,7 @@
 </head>
 <body>
     <form action="peliculasVista.php" method="post">
-        <label for="id_categoria">Elige la categoría:</label>
-        <br><br>
+        <h2>Elige la categoría:</h2>
         <select name="id_categoria" id="id_categoria">
             <?php
                 require("categoriasReglasNegocio.php");    
