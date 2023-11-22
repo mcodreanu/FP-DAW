@@ -4,12 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejer32</title>
-    <link rel="stylesheet" href="../css/style.css">
     <script src="js/script.js"></script>
+    <style>
+        #contenedorGris {
+            background-color: rgb(127, 127, 127);
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+        }
+
+        button {
+            width: 50px;
+            height: 50px;
+            font-weight: bold;
+            font-size: 25px;
+        }
+    </style>
 </head>
 <body>
-    <h1 id="Ejercicio1">Ejercicio 1</h1>
-    <img onclick=abrirSobre() id="sobre" class="abierto" src="img/sobre-cerrado.png" alt="Sobre">
-    <p>Fer click a la imatge per obrir i tancer el sobre</p>
+    <h1>GRISOS</h1>
+    <button id="restar">-</button>
+    <div id="contenedorGris"></div>
+    <button id="sumar">+</button>
 </body>
 </html>
