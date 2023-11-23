@@ -20,40 +20,41 @@
 		</nav>
 	</header>
 
-    <section id="new-game-content">
-        <form action="boardView.php" method="post">
-            <h1>Crear partida</h1>
-            <p>Jugador 1</p>
-            <select name="player1" id="player1">
-                <?php
-                    require("playersReglasNegocio.php");    
-
-                    $playersBL = new PlayersReglasNegocio();
-                    $datosPlayers = $playersBL->obtener();
+    <main>
+        <section id="new-game-content">
+            <form action="boardView.php" method="post">
+                <h1>Crear partida</h1>
+                <p>Jugador 1</p>
+                <select name="player1" id="player1">
+                    <?php
+                        require("playersReglasNegocio.php");    
+                        $playersBL = new PlayersReglasNegocio();
+                        $datosPlayers = $playersBL->obtener();
     
-                    foreach ($datosPlayers as $player)
-                    {
-                        echo "<option value=\"{$player->getID()}\">{$player->getName()}</option>";
-                    }
-                ?>
-            </select>
-            <p>Jugador 2</p>
-            <select name="player1" id="player1">
+                        foreach ($datosPlayers as $player)
+                        {
+                            echo "<option value=\"{$player->getID()}\">{$player->getName()}</option>";
+                        }
+                    ?>
+                </select>
+                <p>Jugador 2</p>
+                <select name="player2" id="player2">
                 <?php
                     foreach ($datosPlayers as $player)
                     {
                         echo "<option value=\"{$player->getID()}\">{$player->getName()}</option>";
                     }
                 ?>
-            </select>
-            <br><br>
-            <label for="">Título</label>
-            <br>
-            <input type="text">
-            <br><br>
-            <input type="submit" value="Aceptar">
-        </form>
-    </section>
+                </select>
+                <br><br>
+                <label for="">Título</label>
+                <br>
+                <input type="text" id="title" name="title">
+                <br><br>
+                <input type="submit" value="Aceptar">
+            </form>
+        </section>
+    </main>
 
     <footer id="main-footer">
 		<p>&copy; 2023 <a href="#">Chess Game</a></p>

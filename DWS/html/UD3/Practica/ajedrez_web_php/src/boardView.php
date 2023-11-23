@@ -9,10 +9,33 @@
 <?php
     $board = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
 
+    function insert() 
+    {
+        require("matchesReglasNegocio.php");    
+        $matchesBL = new MatchesReglasNegocio();
+        $title = $_POST["title"];
+        $id_player1 = $_POST["player1"];
+        $id_player2 = $_POST["player2"];
+        $matchesBL->insertar($title,$id_player1,$id_player2);
+    }
+
+    insert();
+
     function DrawChessGame($board)
     {
+        require("playersReglasNegocio.php");    
+        $playersBL = new PlayersReglasNegocio();
+        $datosPlayers = $playersBL->obtener();
+
+        foreach ($datosPlayers as $player)
+        {
+            $players = $player->getName();
+        }
+
         $pieces = str_split($board);
         $numPieces = CountPieces($pieces);
+
+        echo "<h1>".$players."</h1>";
 
         echo "<div class=\"dead-container\">";
         DrawDeadWhite($numPieces);

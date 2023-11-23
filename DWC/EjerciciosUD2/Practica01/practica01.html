@@ -6,10 +6,14 @@
     <title>Practica 1</title>
     <script src="js/script.js"></script>
     <style>
+        body {
+            text-align: center;
+        }
+
         div{
             text-align: center;
             width: 200px;
-            float: left;
+            display: inline-block;
         }
 
         span {
@@ -19,7 +23,7 @@
 </head>
 <body>
     <h1>Pedra,paper,tisora !</h1>
-    <div>
+    <div class="left">
         <b>Jugador 1</b>
         <span id ="jugador1"">&#129308;</span>
     </div>
@@ -27,7 +31,9 @@
         <b>Jugador 2</b>
         <span id ="jugador2"">&#129307;</span>
     </div>
-    <button onclick="jugar()">Start</button>
+    <br>
+    <button onclick="jugar()">Play</button>
+    <br><br>
     <b id="ganador"></b>
 </body>
 </html>

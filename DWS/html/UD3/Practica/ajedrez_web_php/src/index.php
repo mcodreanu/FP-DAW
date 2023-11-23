@@ -20,9 +20,9 @@
 		</nav>
 	</header>
 
-    <section id="main-content">
+    <main id="main-content">
 		<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi dolor quas magni corporis nobis quibusdam perspiciatis blanditiis odit reprehenderit voluptates, expedita laudantium vitae soluta cum minima alias non quod officiis. Eveniet necessitatibus alias, quisquam inventore in minus nostrum est voluptate?</p>
-    </section>
+	</main>
 
     <footer id="main-footer">
 		<p>&copy; 2023 <a href="#">Chess Game</a></p>
