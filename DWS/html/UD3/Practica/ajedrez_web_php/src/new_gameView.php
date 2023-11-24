@@ -7,21 +7,21 @@
 </head>
 <body>
     <header id="main-header">
-		<a id="logo-header" href="#">
+		<a id="logo-header" href="index.php">
 			<span class="site-name">CHESS</span>
 			<span class="site-desc">GAME</span>
 		</a>
 
 		<nav>
 			<ul>
-				<li><a href="new_gameView.php">Nueva partida</a></li>
-				<li><a href="gameListView.php">Lista de partidas</a></li>
+                <li><button class="glow-on-hover"><a href="new_gameView.php">Nueva partida</a></button></li>
+				<li><button class="glow-on-hover"><a href="gameListView.php">Lista de partidas</a></button></li>
 			</ul>
 		</nav>
 	</header>
 
-    <main>
-        <section id="new-game-content">
+    <main id="new-game-content">
+        <section class="create-game">
             <form action="boardView.php" method="post">
                 <h1>Crear partida</h1>
                 <p>Jugador 1</p>
@@ -51,7 +51,7 @@
                 <br>
                 <input type="text" id="title" name="title">
                 <br><br>
-                <input type="submit" value="Aceptar">
+                <button class="glow-on-hover"><input class="createInput" type="submit" value="Aceptar"></button>
             </form>
         </section>
     </main>

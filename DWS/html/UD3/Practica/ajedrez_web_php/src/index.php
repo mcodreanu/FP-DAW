@@ -7,21 +7,21 @@
 </head>
 <body>
     <header id="main-header">
-		<a id="logo-header" href="#">
+		<a id="logo-header" href="index.php">
 			<span class="site-name">CHESS</span>
 			<span class="site-desc">GAME</span>
 		</a>
 
 		<nav>
 			<ul>
-				<li><a href="new_gameView.php">Nueva partida</a></li>
-				<li><a href="gameListView.php">Lista de partidas</a></li>
+				<li><button class="glow-on-hover"><a href="new_gameView.php">Nueva partida</a></button></li>
+				<li><button class="glow-on-hover"><a href="gameListView.php">Lista de partidas</a></button></li>
 			</ul>
 		</nav>
 	</header>
 
     <main id="main-content">
-		<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi dolor quas magni corporis nobis quibusdam perspiciatis blanditiis odit reprehenderit voluptates, expedita laudantium vitae soluta cum minima alias non quod officiis. Eveniet necessitatibus alias, quisquam inventore in minus nostrum est voluptate?</p>
+	
 	</main>
 
     <footer id="main-footer">
