@@ -14,14 +14,14 @@
 
 		<nav>
 			<ul>
-				<li><button class="glow-on-hover"><a href="new_gameView.php">Nueva partida</a></button></li>
-				<li><button class="glow-on-hover"><a href="gameListView.php">Lista de partidas</a></button></li>
+				<li><a href="new_gameView.php"><button class="glow-on-hover">New Game</button></a></li>
+				<li><a href="gameListView.php"><button class="glow-on-hover">Matches List</button></a></li>
 			</ul>
 		</nav>
 	</header>
 
     <main id="main-content">
-	
+		
 	</main>
 
     <footer id="main-footer">

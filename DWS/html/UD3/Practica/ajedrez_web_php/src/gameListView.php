@@ -15,29 +15,29 @@
 
 		<nav>
 			<ul>
-				<li><button class="glow-on-hover"><a href="new_gameView.php">Nueva partida</a></button></li>
-				<li><button class="glow-on-hover"><a href="gameListView.php">Lista de partidas</a></button></li>
+				<li><a href="new_gameView.php"><button class="glow-on-hover">New Game</button></a></li>
+				<li><a href="gameListView.php"><button class="glow-on-hover">Matches List</button></a></li>
 			</ul>
 		</nav>
 	</header>
 
     <main id="list-view-content">
         <section>
-            <h1>Lista Partidas</h1>
+            <h1>Matches List</h1>
             <div>
-            <table id="myTable2" class="resize-table-font">
-                <thead>
+            <table id="matches-table">
+                <thead id>
                     <tr>
-                        <th class="sortable">ID</th>
-                        <th>Descripción</th>
-                        <th>Fecha inicio</th>
-                        <th>Hora inicio</th>
-                        <th>Estado</th>
-                        <th>Ganador</th>
-                        <th>Fecha fin</th>
-                        <th>Hora fin</th>
-                        <th>Piezas Blancas</th>
-                        <th>Piezas Negras</th>
+                        <th>ID</th>
+                        <th><a href="javascript:SortTable(0,'T');">Title</a></th>
+                        <th><a href="javascript:SortTable(3,'D','dmy');">Start Date</a></th>
+                        <th>Start Time</th>
+                        <th>State</th>
+                        <th>Winner</th>
+                        <th><a href="javascript:SortTable(3,'D','dmy');">End Date</a></th>
+                        <th>End Time</th>
+                        <th>White Pieces</th>
+                        <th>Black Pieces</th>
                     </tr>
                 </thead>
                 <tbody>

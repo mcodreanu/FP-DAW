@@ -14,8 +14,8 @@
 
 		<nav>
 			<ul>
-                <li><button class="glow-on-hover"><a href="new_gameView.php">Nueva partida</a></button></li>
-				<li><button class="glow-on-hover"><a href="gameListView.php">Lista de partidas</a></button></li>
+                <li><a href="new_gameView.php"><button class="glow-on-hover">New Game</button></a></li>
+				<li><a href="gameListView.php"><button class="glow-on-hover">Matches List</button></a></li>
 			</ul>
 		</nav>
 	</header>
@@ -23,8 +23,8 @@
     <main id="new-game-content">
         <section class="create-game">
             <form action="boardView.php" method="post">
-                <h1>Crear partida</h1>
-                <p>Jugador 1</p>
+                <h1>Create Match</h1>
+                <p>Player 1</p>
                 <select name="player1" id="player1">
                     <?php
                         require("playersReglasNegocio.php");    
@@ -37,7 +37,7 @@
                         }
                     ?>
                 </select>
-                <p>Jugador 2</p>
+                <p>Player 2</p>
                 <select name="player2" id="player2">
                 <?php
                     foreach ($datosPlayers as $player)
@@ -46,12 +46,12 @@
                     }
                 ?>
                 </select>
-                <br><br>
-                <label for="">Título</label>
+                <br>
+                <label for="title">Title</label>
                 <br>
                 <input type="text" id="title" name="title">
                 <br><br>
-                <button class="glow-on-hover"><input class="createInput" type="submit" value="Aceptar"></button>
+                <button class="glow-on-hover"><input class="createInput" type="submit" value="Create"></button>
             </form>
         </section>
     </main>

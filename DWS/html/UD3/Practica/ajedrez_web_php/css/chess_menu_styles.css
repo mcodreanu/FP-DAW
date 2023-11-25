@@ -1,3 +1,9 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
 body {
 	background-image: url("../img/menubg.jpg");
 	background-repeat: no-repeat;
@@ -8,6 +14,7 @@ body {
 	font-family: Helvetica, Arial, sans-serif;
 	font-size: 1em;
 	line-height: 1.5em;
+	overflow: hidden;
 }
 
 h1 {
@@ -36,12 +43,12 @@ nav ul {
 	
 nav ul li {
 	display: inline-block;
-	line-height: 80px;
+	margin-top: 10px;
+	margin-right: 10px;
 }
 			
 nav ul li a {
 	display: block;
-	padding: 0 10px;
 	text-decoration: none;
 }
 
@@ -96,63 +103,10 @@ nav ul li a {
 	color: white;
 }
 
-/* New Game */
-#new-game-content {
-    width: 100vw;
-    height: 70vh;
-}
-
-#new-game-content .create-game {
-	text-align: center;
-	margin: 10vh auto;
-	padding: 50px 0 50px 0;
-	color: white;
-	font-weight: bold;
-	width: 50%;
-	background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%);
-}
-
-.create-game select {
-	display: inline-block;
-	cursor: pointer;
-  	padding: 7px 10px;
-	width: 220px;
-  	height: 42px;
-  	outline: 0; 
-  	border: 0;
-	border-radius: 0;
-	background: #000000;
-	color: #fff;
-	font-size: 1em;
-	border:2px solid rgba(0,0,0,0.2);
-    border-radius: 12px;
-    position: relative;
-    transition: all 0.25s ease;
-}
-
-.create-game select:hover{
-	background: #11111138;
-	color: white;
-}
-
-.create-game #title {
-	border-radius: 10px;
-	border: 0;
-	width: 220px;
-	height: 20px;
-}
-
-.create-game .createInput {
-	background: transparent;
-	border: 0;
-	color: white;
-	cursor: pointer;
-}
-
 /* Glow on hover */
 .glow-on-hover {
-    width: 220px;
-    height: 50px;
+    width: 200px;
+    height: 45px;
     border: none;
     outline: none;
     color: #fff;
@@ -205,10 +159,60 @@ nav ul li a {
     border-radius: 10px;
 }
 
-@keyframes glowing {
-    0% { background-position: 0 0; }
-    50% { background-position: 400% 0; }
-    100% { background-position: 0 0; }
+/* New Game */
+#new-game-content {
+    width: 100vw;
+    height: 70vh;
+	animation: fadeIn 2s;
+}
+
+#new-game-content .create-game {
+	text-align: center;
+	user-select: none;
+	line-height: 40px;
+	margin: 10vh auto;
+	padding: 50px 0 50px 0;
+	color: white;
+	font-weight: bold;
+	width: 50%;
+	background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%);
+}
+
+.create-game select {
+	display: inline-block;
+	cursor: pointer;
+  	padding: 7px 10px;
+	width: 220px;
+  	height: 42px;
+  	outline: 0; 
+  	border: 0;
+	border-radius: 0;
+	background: #000000;
+	color: #fff;
+	font-size: 1em;
+	border:2px solid rgba(0,0,0,0.2);
+    border-radius: 12px;
+    position: relative;
+    transition: all 0.25s ease;
+}
+
+.create-game select:hover{
+	background: #11111138;
+	color: white;
+}
+
+.create-game #title {
+	border-radius: 10px;
+	border: 0;
+	width: 220px;
+	height: 20px;
+}
+
+.create-game .createInput {
+	background: transparent;
+	border: 0;
+	color: white;
+	cursor: pointer;
 }
 
 /* List View */
@@ -217,6 +221,7 @@ nav ul li a {
 	text-align: center;
 	width: 100vw;
     height: 70vh;
+	animation: fadeIn 2s;
 }
 
 #list-view-content section {
@@ -238,6 +243,10 @@ nav ul li a {
 	padding: 5px;
 }
 
+#list-view-content th {
+	cursor: pointer;
+}
+
 #list-view-content div {
 	overflow: auto;
 	height: 300px;
@@ -245,4 +254,17 @@ nav ul li a {
 
 #list-view-content a {
 	color: white;
+}
+
+/* Keyframes */
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+@keyframes fadeIn {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
 }

@@ -9,7 +9,7 @@
 <?php
     $board = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
 
-    function insert() 
+    function insertMatches() 
     {
         require("matchesReglasNegocio.php");    
         $matchesBL = new MatchesReglasNegocio();
@@ -19,23 +19,24 @@
         $matchesBL->insertar($title,$id_player1,$id_player2);
     }
 
-    insert();
+    function obtainMatches() 
+    {
+        require("statesReglasNegocio.php");    
+        $statesBL = new StatesReglasNegocio();
+        $id_match = $_GET["id_match"];
+        $statesBL->obtener($id_match);
+
+        foreach ($statesBL as $state)
+        {
+            echo "<div>{$state->getID()}</div>";
+        }
+    }
 
     function DrawChessGame($board)
     {
-        require("playersReglasNegocio.php");    
-        $playersBL = new PlayersReglasNegocio();
-        $datosPlayers = $playersBL->obtener();
-
-        foreach ($datosPlayers as $player)
-        {
-            $players = $player->getName();
-        }
-
+        obtainMatches();
         $pieces = str_split($board);
         $numPieces = CountPieces($pieces);
-
-        echo "<h1>".$players."</h1>";
 
         echo "<div class=\"dead-container\">";
         DrawDeadWhite($numPieces);
@@ -49,6 +50,8 @@
         echo "<div class=\"dead-container\">";
         DrawDeadBlack($numPieces);
         echo "</div>";
+
+        insertMatches();
     }
 
     function DrawBoard()
