@@ -24,6 +24,12 @@
     <main id="list-view-content">
         <section>
             <h1>Matches List</h1>
+            <select id="filter">
+                <option disabled selected value="none">Select a state</option>
+                <option>En curso</option>
+                <option>Jaque mate</option>
+                <option>Tablas</option>
+            </select>
             <div>
             <table id="matches-table">
                 <thead id>
@@ -34,7 +40,7 @@
                         <th>Start Time</th>
                         <th>State</th>
                         <th>Winner</th>
-                        <th><a href="javascript:SortTable(3,'D','dmy');">End Date</a></th>
+                        <th><a href="javascript:SortTable(4,'D','dmy');">End Date</a></th>
                         <th>End Time</th>
                         <th>White Pieces</th>
                         <th>Black Pieces</th>
@@ -46,19 +52,19 @@
                     $matchesBL = new MatchesReglasNegocio();
                     $datosMatches = $matchesBL->obtener();
     
-                    foreach ($datosMatches as $matches)
+                    foreach ($datosMatches as $match)
                     {
                         echo "<tr>
-                        <td>{$matches->getID()}</td>
-                        <td><a href=\"boardView.php?id_match={$matches->getID()}&page=1\">{$matches->getTitle()}</a></td>
-                        <td>{$matches->getStartDate()}</td>
-                        <td>{$matches->getStartTime()}</td>
-                        <td>{$matches->getState()}</td>
-                        <td>{$matches->getWinner()}</td>
-                        <td>{$matches->getEndDate()}</td>
-                        <td>{$matches->getEndTime()}</td>
-                        <td>{$matches->getWhite()}</td>
-                        <td>{$matches->getBlack()}</td>
+                        <td>{$match->getID()}</td>
+                        <td><a href=\"boardView.php?id_match={$match->getID()}\">{$match->getTitle()}</a></td>
+                        <td>{$match->getStartDate()}</td>
+                        <td>{$match->getStartTime()}</td>
+                        <td>{$match->getState()}</td>
+                        <td>{$match->getWinner()}</td>
+                        <td>{$match->getEndDate()}</td>
+                        <td>{$match->getEndTime()}</td>
+                        <td>{$match->getWhite()}</td>
+                        <td>{$match->getBlack()}</td>
                         </tr>";
                     }
                 ?>

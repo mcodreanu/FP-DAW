@@ -47,7 +47,7 @@
     function changeStates($board)
     {
         $states = obtainMatches();
-        $current = $_GET['page'];
+        $current = 1;
         $next = $current + 1;
         $prev = $current - 1;
         $first = 1;
@@ -55,13 +55,13 @@
 
         if(isset($_POST['first-state']))
         {
-            $board = $states[$_POST['first-state']];
+            $board = $states[$first];
             echo $first;
             return $board;
         } 
             else if(isset($_POST['before-state']))
         {
-            $board = $states[$_POST['before-state']];
+            $board = $states[$prev];
             echo $current;
             return $board;
         }
@@ -100,19 +100,17 @@
         echo "</div>";
 
         echo "<div class=\"history-container\">";
-        
+            DrawHistoryButtons();
         echo "</div>";
     }
 
     function DrawHistoryButtons()
     {
-        
-
         echo "<form id=\"history-form\" method=\"POST\">
-                <input type=\"submit\" name=\"first-state\" class=\"history-btn\" value=\"1\">
-                <input type=\"submit\" name=\"before-state\" class=\"history-btn\" value=\"2\">
-                <input type=\"submit\" name=\"next-state\" class=\"history-btn\" value=\"3\">
-                <input type=\"submit\" name=\"last-state\" class=\"history-btn\" value=\"4\">
+                <input type=\"submit\" name=\"first-state\" class=\"history-btn\" value=\"<<\">
+                <input type=\"submit\" name=\"before-state\" class=\"history-btn\" value=\"<\">
+                <input type=\"submit\" name=\"next-state\" class=\"history-btn\" value=\">\">
+                <input type=\"submit\" name=\"last-state\" class=\"history-btn\" value=\">>\">
               </form>";
     }
 
