@@ -5,6 +5,7 @@
     <title>Chess</title>
     <link rel="stylesheet" href="../css/chess_game_styles.css">
 </head>
+
 <body>
 <?php
     $board = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
@@ -19,22 +20,73 @@
         $matchesBL->insertar($title,$id_player1,$id_player2);
     }
 
+    //insertMatches();
+
+    function array_push_assoc($array, $key, $value)
+    {
+        $array[$key] = $value;
+        return $array;
+    }
+
     function obtainMatches() 
     {
         require("statesReglasNegocio.php");    
         $statesBL = new StatesReglasNegocio();
         $id_match = $_GET["id_match"];
-        $statesBL->obtener($id_match);
+        $datosStates = $statesBL->obtener($id_match);
+        $states = array();
 
-        foreach ($statesBL as $state)
+        foreach ($datosStates as $state)
         {
-            echo "<div>{$state->getID()}</div>";
+            $states = array_push_assoc($states, $state->getID(), $state->getBoard());
+        }
+
+        return $states;
+    }
+    
+    function changeStates($board)
+    {
+        $states = obtainMatches();
+        $current = $_GET['page'];
+        $next = $current + 1;
+        $prev = $current - 1;
+        $first = 1;
+        $last = count($states);
+
+        if(isset($_POST['first-state']))
+        {
+            $board = $states[$first];
+            echo $current;
+            return $board;
+        } 
+            else if(isset($_POST['before-state']))
+        {
+            $board = $states[$prev];
+            echo $current;
+            echo $prev;
+            return $board;
+        }
+            else if(isset($_POST['next-state']))
+        {
+            $board = $states[$next];
+            $current = $next;
+            echo $current;
+            echo $next;
+            return $board;
+        }
+        else if(isset($_POST['last-state']))
+        {
+            $board = $states[$last];
+            $current = $last;
+            echo $current;
+            return $board;
         }
     }
 
+    $board = changeStates($board);
+    
     function DrawChessGame($board)
     {
-        obtainMatches();
         $pieces = str_split($board);
         $numPieces = CountPieces($pieces);
 
@@ -51,7 +103,14 @@
         DrawDeadBlack($numPieces);
         echo "</div>";
 
-        insertMatches();
+        echo "<div class=\"history-container\">";
+        echo "<form id=\"history-form\" method=\"POST\">
+                <input type=\"submit\" name=\"first-state\" class=\"history-btn\" value=\"<<\">
+                <input type=\"submit\" name=\"before-state\" class=\"history-btn\" value=\"<\">
+                <input type=\"submit\" name=\"next-state\" class=\"history-btn\" value=\">\">
+                <input type=\"submit\" name=\"last-state\" class=\"history-btn\" value=\">>\">
+              </form>";
+        echo "</div>";
     }
 
     function DrawBoard()

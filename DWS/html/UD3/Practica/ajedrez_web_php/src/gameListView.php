@@ -50,7 +50,7 @@
                     {
                         echo "<tr>
                         <td>{$matches->getID()}</td>
-                        <td><a href=\"\">{$matches->getTitle()}</a></td>
+                        <td><a href=\"boardView.php?id_match={$matches->getID()}&page=1\">{$matches->getTitle()}</a></td>
                         <td>{$matches->getStartDate()}</td>
                         <td>{$matches->getStartTime()}</td>
                         <td>{$matches->getState()}</td>
