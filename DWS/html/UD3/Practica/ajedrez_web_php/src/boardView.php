@@ -55,29 +55,25 @@
 
         if(isset($_POST['first-state']))
         {
-            $board = $states[$first];
-            echo $current;
+            $board = $states[$_POST['first-state']];
+            echo $first;
             return $board;
         } 
             else if(isset($_POST['before-state']))
         {
-            $board = $states[$prev];
+            $board = $states[$_POST['before-state']];
             echo $current;
-            echo $prev;
             return $board;
         }
             else if(isset($_POST['next-state']))
         {
             $board = $states[$next];
-            $current = $next;
             echo $current;
-            echo $next;
             return $board;
         }
         else if(isset($_POST['last-state']))
         {
             $board = $states[$last];
-            $current = $last;
             echo $current;
             return $board;
         }
@@ -104,13 +100,20 @@
         echo "</div>";
 
         echo "<div class=\"history-container\">";
-        echo "<form id=\"history-form\" method=\"POST\">
-                <input type=\"submit\" name=\"first-state\" class=\"history-btn\" value=\"<<\">
-                <input type=\"submit\" name=\"before-state\" class=\"history-btn\" value=\"<\">
-                <input type=\"submit\" name=\"next-state\" class=\"history-btn\" value=\">\">
-                <input type=\"submit\" name=\"last-state\" class=\"history-btn\" value=\">>\">
-              </form>";
+        
         echo "</div>";
+    }
+
+    function DrawHistoryButtons()
+    {
+        
+
+        echo "<form id=\"history-form\" method=\"POST\">
+                <input type=\"submit\" name=\"first-state\" class=\"history-btn\" value=\"1\">
+                <input type=\"submit\" name=\"before-state\" class=\"history-btn\" value=\"2\">
+                <input type=\"submit\" name=\"next-state\" class=\"history-btn\" value=\"3\">
+                <input type=\"submit\" name=\"last-state\" class=\"history-btn\" value=\"4\">
+              </form>";
     }
 
     function DrawBoard()

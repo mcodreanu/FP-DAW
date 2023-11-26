@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Chess</title>
     <link rel="stylesheet" href="../css/chess_menu_styles.css">
+	<script src="../js/script.js"></script>
 </head>
 <body>
     <header id="main-header">
