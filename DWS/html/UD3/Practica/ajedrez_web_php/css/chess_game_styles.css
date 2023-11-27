@@ -5,12 +5,13 @@
 }
 
 body {
-    /*background-image: url("../img/menubg.jpg");*/
+    background-image: url("../img/menubg.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     backdrop-filter: blur(5px);
+    height: 100vh;
     animation: fadeIn 2s;
-    /*overflow: hidden;*/
+    overflow: hidden;
 }
 
 .container {
@@ -77,12 +78,17 @@ img {
     text-align: center;
 }
   
-.history-btn {
-    width: 50px;
-    height: 50px;
-    color: white;
+.history-container button {
+    width: 35px;
+    height: 35px;
     background-color: black;
     border-radius: 50%;
+    cursor: pointer;
+}
+
+.history-container a {
+    color: white;
+    text-decoration: none;
 }
 
 @keyframes fadeIn {

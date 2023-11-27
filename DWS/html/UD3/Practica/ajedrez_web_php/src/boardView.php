@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Chess</title>
     <link rel="stylesheet" href="../css/chess_game_styles.css">
+    <script src="https://kit.fontawesome.com/5fe1b9d82e.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -38,7 +39,7 @@
 
         foreach ($datosStates as $state)
         {
-            $states = array_push_assoc($states, $state->getID(), $state->getBoard());
+            array_push($states, $state->getBoard());
         }
 
         return $states;
@@ -48,35 +49,11 @@
     {
         $states = obtainMatches();
         $current = $_GET['state'];
-        $next = $current + 1;
-        $prev = $current - 1;
-        $first = 1;
-        $last = count($states);
+        var_dump($current);
 
-        if(isset($_POST['first-state']))
-        {
-            $board = $states[$first];
-            echo $first;
-            return $board;
-        } 
-            else if(isset($_POST['before-state']))
-        {
-            $board = $states[$prev];
-            echo $prev;
-            return $board;
-        }
-            else if(isset($_POST['next-state']))
-        {
-            $board = $states[$next];
-            echo $next;
-            return $board;
-        }
-        else if(isset($_POST['last-state']))
-        {
-            $board = $states[$last];
-            echo $last;
-            return $board;
-        }
+        $board = $states[$current];
+
+        return $board;
     }
 
     $board = changeStates($board);
@@ -115,21 +92,19 @@
         foreach ($datosStates as $state)
         {
             $id_game = $state->getIDGame();
-            $states = array_push_assoc($states, $state->getID(), $state->getBoard());
+            array_push($states, $state->getID());
         }
 
         $current = $_GET['state'];
         $next = $current + 1;
         $prev = $current - 1;
-        $first = 1;
-        $last = count($states);
+        $first = 0;
+        $last = count($states) - 1;
 
-        echo "<form id=\"history-form\" method=\"POST\">
-              <a href=\"?id_match={$id_game}&state={$states[$first]}\"><input type=\"submit\" name=\"first-state\" class=\"history-btn\" value=\"1\"></a>
-              <a href=\"?id_match={$id_game}&state={$states[$prev]}\"><input type=\"submit\" name=\"before-state\" class=\"history-btn\" value=\"1\"></a>
-              <a href=\"?id_match={$id_game}&state={$states[$next]}\"><input type=\"submit\" name=\"next-state\" class=\"history-btn\" value=\"1\"></a>
-              <a href=\"?id_match={$id_game}&state={$states[$last]}\"><input type=\"submit\" name=\"last-state\" class=\"history-btn\" value=\"1\"></a>
-              </form>";
+        echo "<button><a href=\"?id_match={$id_game}&state={$first}\"><i class=\"fa-solid fa-angles-left\"></i></a></button>
+              <button><a href=\"?id_match={$id_game}&state={$prev}\"><i class=\"fa-solid fa-angle-left\"></i></a></button>
+              <button><a href=\"?id_match={$id_game}&state={$next}\"><i class=\"fa-solid fa-angle-right\"></i></a></button>
+              <button><a href=\"?id_match={$id_game}&state={$last}\"><i class=\"fa-solid fa-angles-right\"></i></a></button>";
     }
 
     function DrawBoard()

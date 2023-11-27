@@ -58,7 +58,7 @@
                                 {
                                     echo "<tr>
                                     <td>{$match->getID()}</td>
-                                    <td><a href=\"boardView.php?id_match={$match->getID()}\">{$match->getTitle()}</a></td>
+                                    <td><a href=\"boardView.php?id_match={$match->getID()}&state=0\">{$match->getTitle()}</a></td>
                                     <td>{$match->getStartDate()}</td>
                                     <td>{$match->getStartTime()}</td>
                                     <td>{$match->getState()}</td>
