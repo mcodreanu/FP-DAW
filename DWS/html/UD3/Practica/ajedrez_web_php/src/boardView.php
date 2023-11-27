@@ -44,10 +44,10 @@
         return $states;
     }
     
-    function changeStates($board, $currentState)
+    function changeStates($board)
     {
         $states = obtainMatches();
-        $current = $currentState;
+        $current = $_GET['state'];
         $next = $current + 1;
         $prev = $current - 1;
         $first = 1;
@@ -79,7 +79,7 @@
         }
     }
 
-    $board = changeStates($board, 1);
+    $board = changeStates($board);
     
     function DrawChessGame($board)
     {
@@ -106,11 +106,29 @@
 
     function DrawHistoryButtons()
     {
+        $statesBL = new StatesReglasNegocio();
+        $id_match = $_GET["id_match"];
+        $datosStates = $statesBL->obtener($id_match);
+        $id_game = 0;
+        $states = array();
+
+        foreach ($datosStates as $state)
+        {
+            $id_game = $state->getIDGame();
+            $states = array_push_assoc($states, $state->getID(), $state->getBoard());
+        }
+
+        $current = $_GET['state'];
+        $next = $current + 1;
+        $prev = $current - 1;
+        $first = 1;
+        $last = count($states);
+
         echo "<form id=\"history-form\" method=\"POST\">
-                <input type=\"submit\" name=\"first-state\" class=\"history-btn\" value=\"1\">
-                <input type=\"submit\" name=\"before-state\" class=\"history-btn\" value=\"1\">
-                <input type=\"submit\" name=\"next-state\" class=\"history-btn\" value=\"1\">
-                <input type=\"submit\" name=\"last-state\" class=\"history-btn\" value=\"1\">
+              <a href=\"?id_match={$id_game}&state={$states[$first]}\"><input type=\"submit\" name=\"first-state\" class=\"history-btn\" value=\"1\"></a>
+              <a href=\"?id_match={$id_game}&state={$states[$prev]}\"><input type=\"submit\" name=\"before-state\" class=\"history-btn\" value=\"1\"></a>
+              <a href=\"?id_match={$id_game}&state={$states[$next]}\"><input type=\"submit\" name=\"next-state\" class=\"history-btn\" value=\"1\"></a>
+              <a href=\"?id_match={$id_game}&state={$states[$last]}\"><input type=\"submit\" name=\"last-state\" class=\"history-btn\" value=\"1\"></a>
               </form>";
     }
 
