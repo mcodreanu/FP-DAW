@@ -20,7 +20,7 @@
         $matchesBL->insertar($title,$id_player1,$id_player2);
     }
 
-    //insertMatches();
+    insertMatches();
 
     function array_push_assoc($array, $key, $value)
     {
@@ -28,7 +28,7 @@
         return $array;
     }
 
-    function obtainMatches() 
+    /*function obtainMatches() 
     {
         require("statesReglasNegocio.php");    
         $statesBL = new StatesReglasNegocio();
@@ -79,7 +79,7 @@
         }
     }
 
-    $board = changeStates($board);
+    $board = changeStates($board);*/
     
     function DrawChessGame($board)
     {
