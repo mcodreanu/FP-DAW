@@ -20,7 +20,7 @@
         $matchesBL->insertar($title,$id_player1,$id_player2);
     }
 
-    insertMatches();
+    //insertMatches();
 
     function array_push_assoc($array, $key, $value)
     {
@@ -28,7 +28,7 @@
         return $array;
     }
 
-    /*function obtainMatches() 
+    function obtainMatches() 
     {
         require("statesReglasNegocio.php");    
         $statesBL = new StatesReglasNegocio();
@@ -44,10 +44,10 @@
         return $states;
     }
     
-    function changeStates($board)
+    function changeStates($board, $currentState)
     {
         $states = obtainMatches();
-        $current = 1;
+        $current = $currentState;
         $next = $current + 1;
         $prev = $current - 1;
         $first = 1;
@@ -62,24 +62,24 @@
             else if(isset($_POST['before-state']))
         {
             $board = $states[$prev];
-            echo $current;
+            echo $prev;
             return $board;
         }
             else if(isset($_POST['next-state']))
         {
             $board = $states[$next];
-            echo $current;
+            echo $next;
             return $board;
         }
         else if(isset($_POST['last-state']))
         {
             $board = $states[$last];
-            echo $current;
+            echo $last;
             return $board;
         }
     }
 
-    $board = changeStates($board);*/
+    $board = changeStates($board, 1);
     
     function DrawChessGame($board)
     {
@@ -107,10 +107,10 @@
     function DrawHistoryButtons()
     {
         echo "<form id=\"history-form\" method=\"POST\">
-                <input type=\"submit\" name=\"first-state\" class=\"history-btn\" value=\"<<\">
-                <input type=\"submit\" name=\"before-state\" class=\"history-btn\" value=\"<\">
-                <input type=\"submit\" name=\"next-state\" class=\"history-btn\" value=\">\">
-                <input type=\"submit\" name=\"last-state\" class=\"history-btn\" value=\">>\">
+                <input type=\"submit\" name=\"first-state\" class=\"history-btn\" value=\"1\">
+                <input type=\"submit\" name=\"before-state\" class=\"history-btn\" value=\"1\">
+                <input type=\"submit\" name=\"next-state\" class=\"history-btn\" value=\"1\">
+                <input type=\"submit\" name=\"last-state\" class=\"history-btn\" value=\"1\">
               </form>";
     }
 

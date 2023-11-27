@@ -5,6 +5,7 @@
 }
 
 body {
+	animation: fadeIn 2s;
 	background-image: url("../img/menubg.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -288,15 +289,13 @@ nav ul li a {
 	-webkit-flex-direction: column;
 }
 
-#list-view-content .scrolltable > .body {
-	width: -webkit-fit-content;
-	overflow-x: auto;
-	flex: 1;
-	-webkit-flex: 1;
+#list-view-content #body-table {
+	width: 100%;
 }
 
-#list-view-content th, td {
-	min-width: 92.9px;
+#list-view-content th {
+	position:sticky;
+	top: 0;
 }
 
 #list-view-content #constrainer {
@@ -305,7 +304,7 @@ nav ul li a {
 }
 
 #list-view-content #constrainer {
-	border: 1px solid lightgrey;
+	border: 1px solid white;
 }
 
 #list-view-content table {

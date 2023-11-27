@@ -33,7 +33,7 @@
 
             <div id="constrainer">
                 <div class="scrolltable">
-                    <table class="header">
+                    <table class="matches-table">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -48,35 +48,30 @@
                                 <th>Black Pieces</th>
                             </tr>
                         </thead>
-                    </table>
-
-                    <div class="body">
-                        <table>
-                            <tbody>
-                                <?php
-                                    require("matchesReglasNegocio.php");    
-                                    $matchesBL = new MatchesReglasNegocio();
-                                    $datosMatches = $matchesBL->obtener();
+                        <tbody>
+                            <?php
+                                require("matchesReglasNegocio.php");    
+                                $matchesBL = new MatchesReglasNegocio();
+                                $datosMatches = $matchesBL->obtener();
                     
-                                    foreach ($datosMatches as $match)
-                                    {
-                                        echo "<tr>
-                                        <td>{$match->getID()}</td>
-                                        <td><a href=\"boardView.php?id_match={$match->getID()}\">{$match->getTitle()}</a></td>
-                                        <td>{$match->getStartDate()}</td>
-                                        <td>{$match->getStartTime()}</td>
-                                        <td>{$match->getState()}</td>
-                                        <td>{$match->getWinner()}</td>
-                                        <td>{$match->getEndDate()}</td>
-                                        <td>{$match->getEndTime()}</td>
-                                        <td>{$match->getWhite()}</td>
-                                        <td>{$match->getBlack()}</td>
-                                        </tr>";
-                                    }
-                                ?>
-                            </tbody>
-                        </table>
-                    </div>
+                                foreach ($datosMatches as $match)
+                                {
+                                    echo "<tr>
+                                    <td>{$match->getID()}</td>
+                                    <td><a href=\"boardView.php?id_match={$match->getID()}\">{$match->getTitle()}</a></td>
+                                    <td>{$match->getStartDate()}</td>
+                                    <td>{$match->getStartTime()}</td>
+                                    <td>{$match->getState()}</td>
+                                    <td>{$match->getWinner()}</td>
+                                    <td>{$match->getEndDate()}</td>
+                                    <td>{$match->getEndTime()}</td>
+                                    <td>{$match->getWhite()}</td>
+                                    <td>{$match->getBlack()}</td>
+                                    </tr>";
+                                }
+                            ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </section>
