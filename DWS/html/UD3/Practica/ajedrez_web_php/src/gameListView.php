@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Chess</title>
     <link rel="stylesheet" href="../css/chess_menu_styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../js/script.js"></script>
 </head>
 <body>
@@ -33,16 +34,16 @@
 
             <div id="constrainer">
                 <div class="scrolltable">
-                    <table class="matches-table">
+                    <table id="matches" class="matches-table">
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th><a href="javascript:SortTable(0,'T');">Title</a></th>
-                                <th><a href="javascript:SortTable(3,'D','dmy');">Start Date</a></th>
+                                <th>Title</th>
+                                <th class="dateTh">Start Date</th>
                                 <th>Start Time</th>
                                 <th>State</th>
                                 <th>Winner</th>
-                                <th><a href="javascript:SortTable(4,'D','dmy');">End Date</a></th>
+                                <th>End Date</th>
                                 <th>End Time</th>
                                 <th>White Pieces</th>
                                 <th>Black Pieces</th>

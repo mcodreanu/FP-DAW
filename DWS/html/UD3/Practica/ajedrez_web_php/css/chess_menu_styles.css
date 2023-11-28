@@ -5,7 +5,7 @@
 }
 
 body {
-	animation: fadeIn 2s;
+	animation: fadeIn 0.2s;
 	background-image: url("../img/menubg.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -296,6 +296,8 @@ nav ul li a {
 #list-view-content th {
 	position:sticky;
 	top: 0;
+	cursor: pointer;
+	user-select: none;
 }
 
 #list-view-content #constrainer {

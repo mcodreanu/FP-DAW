@@ -10,7 +10,6 @@ body {
     background-size: cover;
     backdrop-filter: blur(5px);
     height: 100vh;
-    animation: fadeIn 2s;
     overflow: hidden;
 }
 
@@ -79,19 +78,13 @@ img {
 }
   
 .history-container button {
-    width: 35px;
-    height: 35px;
+    width: 50px;
     background-color: black;
-    border-radius: 50%;
+    color: white;
     cursor: pointer;
+    border-radius: 10px;
 }
 
 .history-container a {
-    color: white;
     text-decoration: none;
-}
-
-@keyframes fadeIn {
-	0% { opacity: 0; }
-	100% { opacity: 1; }
 }

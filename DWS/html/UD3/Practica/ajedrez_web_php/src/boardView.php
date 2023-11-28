@@ -23,36 +23,36 @@
 
     //insertMatches();
 
-    function array_push_assoc($array, $key, $value)
-    {
-        $array[$key] = $value;
-        return $array;
-    }
-
     function obtainMatches() 
     {
         require("statesReglasNegocio.php");    
         $statesBL = new StatesReglasNegocio();
         $id_match = $_GET["id_match"];
         $datosStates = $statesBL->obtener($id_match);
-        $states = array();
+        $board = array();
 
         foreach ($datosStates as $state)
         {
-            array_push($states, $state->getBoard());
+            array_push($board, $state->getBoard());
         }
 
-        return $states;
+        return $board;
     }
     
     function changeStates($board)
     {
-        $states = obtainMatches();
         $current = $_GET['state'];
-        var_dump($current);
 
-        $board = $states[$current];
-
+        if (isset($_GET['state']))
+        {
+            $states = obtainMatches();
+            $board = $states[$current];
+        } 
+        else 
+        {
+            return $board;
+        }
+        
         return $board;
     }
 
@@ -83,28 +83,42 @@
 
     function DrawHistoryButtons()
     {
-        $statesBL = new StatesReglasNegocio();
-        $id_match = $_GET["id_match"];
-        $datosStates = $statesBL->obtener($id_match);
-        $id_game = 0;
-        $states = array();
-
-        foreach ($datosStates as $state)
-        {
-            $id_game = $state->getIDGame();
-            array_push($states, $state->getID());
-        }
-
         $current = $_GET['state'];
-        $next = $current + 1;
-        $prev = $current - 1;
-        $first = 0;
-        $last = count($states) - 1;
+        
+        if (isset($_GET['state']))
+        {
+            $statesBL = new StatesReglasNegocio();
+            $id_match = $_GET["id_match"];
+            $datosStates = $statesBL->obtener($id_match);
+            $id_game = 0;
+            $states = array();
 
-        echo "<button><a href=\"?id_match={$id_game}&state={$first}\"><i class=\"fa-solid fa-angles-left\"></i></a></button>
-              <button><a href=\"?id_match={$id_game}&state={$prev}\"><i class=\"fa-solid fa-angle-left\"></i></a></button>
-              <button><a href=\"?id_match={$id_game}&state={$next}\"><i class=\"fa-solid fa-angle-right\"></i></a></button>
-              <button><a href=\"?id_match={$id_game}&state={$last}\"><i class=\"fa-solid fa-angles-right\"></i></a></button>";
+            foreach ($datosStates as $state)
+            {
+                $id_game = $state->getIDGame();
+                array_push($states, $state->getID());
+            }
+
+            $next = $current + 1;
+            $prev = $current - 1;
+            $first = 0;
+            $last = count($states) - 1;
+
+            if ($prev == -1) 
+            {
+                $prev = 0;
+            }
+
+            if ($next == count($states))
+            {
+                $next = count($states) - 1;
+            }
+
+            echo "<a href=\"?id_match={$id_game}&state={$first}\"><button><i class=\"fa-solid fa-angles-left\"></i></button></a>
+                <a href=\"?id_match={$id_game}&state={$prev}\"><button><i class=\"fa-solid fa-angle-left\"></i></button></a>
+                <a href=\"?id_match={$id_game}&state={$next}\"><button><i class=\"fa-solid fa-angle-right\"></i></button></a>
+                <a href=\"?id_match={$id_game}&state={$last}\"><button><i class=\"fa-solid fa-angles-right\"></i></button></a>";
+        }   
     }
 
     function DrawBoard()
