@@ -238,17 +238,6 @@ nav ul li a {
 	color: white;
 }
 
-#list-view-content .reset-btn {
-	color: white;
-	background-color: black;
-	border: 1px solid white;
-	border-radius: 10px;
-	cursor: pointer;
-	width: 220px;
-    height: 25px;
-	margin-bottom: 15px;
-}
-
 #list-view-content tbody tr.show {
 	display: table-row;
 }
@@ -259,6 +248,7 @@ nav ul li a {
 
 #list-view-content select {
 	cursor: pointer;
+	text-align: center;
 	display: flex;
 	width: 220px;
 	margin: 15px auto;
