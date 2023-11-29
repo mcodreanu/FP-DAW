@@ -16,8 +16,8 @@ body {
 .container {
     width: 40rem;
     height: 40rem;
-    margin: 15px auto;
     border: 5px solid black;
+    margin: auto;
 }
 
 .board {

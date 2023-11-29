@@ -1,8 +1,8 @@
 <?php
 
-require("matchesAccesoDatos.php");
+require("../Infraestructura/matchesDAL.php");
 
-class MatchesReglasNegocio
+class MatchesBL
 {
     private $_ID;
     private $_Title;
@@ -84,24 +84,24 @@ class MatchesReglasNegocio
     }
 
 
-    function insertar($title,$id_player1,$id_player2)
+    function insert($title,$id_player1,$id_player2)
     {
-        $matchesDAL = new MatchesAccesoDatos();
-        $matchesDAL->insertar($title,$id_player1,$id_player2);
+        $matchesDAL = new MatchesDAL();
+        $matchesDAL->insert($title,$id_player1,$id_player2);
     }
 
-    function obtener()
+    function obtain()
     {
-        $matchesDAL = new MatchesAccesoDatos();
-        $rs = $matchesDAL->obtener();
-		$listaMatches =  array();
+        $matchesDAL = new MatchesDAL();
+        $rs = $matchesDAL->obtain();
+		$matchesList =  array();
         foreach ($rs as $matches)
         {
-            $oMatchesReglasNegocio = new MatchesReglasNegocio();
-            $oMatchesReglasNegocio->Init($matches['ID'],$matches['title'], $matches['white'],$matches['black'],$matches['startDate'],$matches['startTime'],$matches['endDate'],$matches['endTime'],$matches['winner'],$matches['state']);
-            array_push($listaMatches,$oMatchesReglasNegocio);
+            $oMatchesBL = new MatchesBL();
+            $oMatchesBL->Init($matches['ID'],$matches['title'], $matches['white'],$matches['black'],$matches['startDate'],$matches['startTime'],$matches['endDate'],$matches['endTime'],$matches['winner'],$matches['state']);
+            array_push($matchesList,$oMatchesBL);
         }
         
-        return $listaMatches;
+        return $matchesList;
     }
 }

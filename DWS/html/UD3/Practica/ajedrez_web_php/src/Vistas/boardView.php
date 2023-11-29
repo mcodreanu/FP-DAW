@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Chess</title>
-    <link rel="stylesheet" href="../css/chess_game_styles.css">
+    <link rel="stylesheet" href="../../css/chess_game_styles.css">
     <script src="https://kit.fontawesome.com/5fe1b9d82e.js" crossorigin="anonymous"></script>
 </head>
 
@@ -13,25 +13,34 @@
 
     function insertMatches() 
     {
-        require("matchesReglasNegocio.php");    
-        $matchesBL = new MatchesReglasNegocio();
-        $title = $_POST["title"];
-        $id_player1 = $_POST["player1"];
-        $id_player2 = $_POST["player2"];
-        $matchesBL->insertar($title,$id_player1,$id_player2);
+        $state = $_GET['state'];
+
+        if (!(isset($state)))
+        {
+            require("../Negocio/matchesBL.php");    
+            $matchesBL = new MatchesBL();
+            $title = $_POST["title"];
+            $id_player1 = $_POST["player1"];
+            $id_player2 = $_POST["player2"];
+            $matchesBL->insert($title,$id_player1,$id_player2);
+        }
+        else
+        {
+            return;
+        }
     }
 
     //insertMatches();
 
     function obtainMatches() 
     {
-        require("statesReglasNegocio.php");    
-        $statesBL = new StatesReglasNegocio();
+        require("../Negocio/statesBL.php");    
+        $statesBL = new StatesBL();
         $id_match = $_GET["id_match"];
-        $datosStates = $statesBL->obtener($id_match);
+        $statesData = $statesBL->obtain($id_match);
         $board = array();
 
-        foreach ($datosStates as $state)
+        foreach ($statesData as $state)
         {
             array_push($board, $state->getBoard());
         }
@@ -41,12 +50,12 @@
     
     function changeStates($board)
     {
-        $current = $_GET['state'];
+        $state = $_GET['state'];
 
         if (isset($_GET['state']))
         {
             $states = obtainMatches();
-            $board = $states[$current];
+            $board = $states[$state];
         } 
         else 
         {
@@ -87,13 +96,13 @@
         
         if (isset($_GET['state']))
         {
-            $statesBL = new StatesReglasNegocio();
+            $statesBL = new StatesBL();
             $id_match = $_GET["id_match"];
-            $datosStates = $statesBL->obtener($id_match);
+            $statesData = $statesBL->obtain($id_match);
             $id_game = 0;
             $states = array();
 
-            foreach ($datosStates as $state)
+            foreach ($statesData as $state)
             {
                 $id_game = $state->getIDGame();
                 array_push($states, $state->getID());
@@ -117,7 +126,8 @@
             echo "<a href=\"?id_match={$id_game}&state={$first}\"><button><i class=\"fa-solid fa-angles-left\"></i></button></a>
                 <a href=\"?id_match={$id_game}&state={$prev}\"><button><i class=\"fa-solid fa-angle-left\"></i></button></a>
                 <a href=\"?id_match={$id_game}&state={$next}\"><button><i class=\"fa-solid fa-angle-right\"></i></button></a>
-                <a href=\"?id_match={$id_game}&state={$last}\"><button><i class=\"fa-solid fa-angles-right\"></i></button></a>";
+                <a href=\"?id_match={$id_game}&state={$last}\"><button><i class=\"fa-solid fa-angles-right\"></i></button></a>
+                <a href=\"gameListView.php\"><button><i class=\"fa-solid fa-house\"></i></button></a>";
         }   
     }
 
@@ -158,7 +168,7 @@
             }
             else if ($pieces[$i] != "/")
             {
-                echo "<div class=\"piece\"><img src=\"../img/{$pieces[$i]}.png\" alt=\"\"></div>";
+                echo "<div class=\"piece\"><img src=\"../../img/{$pieces[$i]}.png\" alt=\"\"></div>";
             }
         }
         echo "</div>";
@@ -231,27 +241,27 @@
 
         for ($i = 0; $i < ($dead_pieces_white["P"] - $numPieces[0]); $i++)
         {
-            echo "<div class=\"dead-piece\"><img src=\"../img/P.png\" alt=\"\"></div>";
+            echo "<div class=\"dead-piece\"><img src=\"../../img/P.png\" alt=\"\"></div>";
         }
 
         for ($i = 0; $i < ($dead_pieces_white["R"] - $numPieces[1]); $i++)
         {
-            echo "<div class=\"dead-piece\"><img src=\"../img/R.png\" alt=\"\"></div>";
+            echo "<div class=\"dead-piece\"><img src=\"../../img/R.png\" alt=\"\"></div>";
         }
 
         for ($i = 0; $i < ($dead_pieces_white["N"] - $numPieces[2]); $i++)
         {
-            echo "<div class=\"dead-piece\"><img src=\"../img/N.png\" alt=\"\"></div>";
+            echo "<div class=\"dead-piece\"><img src=\"../../img/N.png\" alt=\"\"></div>";
         }
 
         for ($i = 0; $i < ($dead_pieces_white["B"] - $numPieces[3]); $i++)
         {
-            echo "<div class=\"dead-piece\"><img src=\"../img/B.png\" alt=\"\"></div>";
+            echo "<div class=\"dead-piece\"><img src=\"../../img/B.png\" alt=\"\"></div>";
         }
 
         for ($i = 0; $i < ($dead_pieces_white["Q"] - $numPieces[4]); $i++)
         {
-            echo "<div class=\"dead-piece\"><img src=\"../img/Q.png\" alt=\"\"></div>";
+            echo "<div class=\"dead-piece\"><img src=\"../../img/Q.png\" alt=\"\"></div>";
         }
     }
 
@@ -267,27 +277,27 @@
 
         for ($i = 0; $i < ($dead_pieces_black["p"] - $numPieces[5]); $i++)
         {
-            echo "<div class=\"dead-piece\"><img src=\"../img/p.png\" alt=\"\"></div>";
+            echo "<div class=\"dead-piece\"><img src=\"../../img/p.png\" alt=\"\"></div>";
         }
 
         for ($i = 0; $i < ($dead_pieces_black["r"] - $numPieces[6]); $i++)
         {
-            echo "<div class=\"dead-piece\"><img src=\"../img/r.png\" alt=\"\"></div>";
+            echo "<div class=\"dead-piece\"><img src=\"../../img/r.png\" alt=\"\"></div>";
         }
 
         for ($i = 0; $i < ($dead_pieces_black["n"] - $numPieces[7]); $i++)
         {
-            echo "<div class=\"dead-piece\"><img src=\"../img/n.png\" alt=\"\"></div>";
+            echo "<div class=\"dead-piece\"><img src=\"../../img/n.png\" alt=\"\"></div>";
         }
 
         for ($i = 0; $i < ($dead_pieces_black["b"] - $numPieces[8]); $i++)
         {
-            echo "<div class=\"dead-piece\"><img src=\"../img/b.png\" alt=\"\"></div>";
+            echo "<div class=\"dead-piece\"><img src=\"../../img/b.png\" alt=\"\"></div>";
         }
 
         for ($i = 0; $i < ($dead_pieces_black["q"] - $numPieces[9]); $i++)
         {
-            echo "<div class=\"dead-piece\"><img src=\"../img/q.png\" alt=\"\"></div>";
+            echo "<div class=\"dead-piece\"><img src=\"../../img/q.png\" alt=\"\"></div>";
         }
     }
 

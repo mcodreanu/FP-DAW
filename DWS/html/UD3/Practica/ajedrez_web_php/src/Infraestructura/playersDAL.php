@@ -1,23 +1,23 @@
 <?php
 
-class PlayersAccesoDatos
+class PlayersDAL
 {
 	
 	function __construct()
     {
     }
 
-	function obtener()
+	function obtain()
 	{
-		$conexion = mysqli_connect('localhost','root','12345');
+		$conection = mysqli_connect('localhost','root','12345');
 		if (mysqli_connect_errno())
 		{
 				echo "Error al conectar a MySQL: ". mysqli_connect_error();
 		}
- 		mysqli_select_db($conexion, 'chess_game');
-		$consulta = mysqli_prepare($conexion, "SELECT ID, name FROM T_Players");
-        $consulta->execute();
-        $result = $consulta->get_result();
+ 		mysqli_select_db($conection, 'chess_game');
+		$consult = mysqli_prepare($conection, "SELECT ID, name FROM T_Players");
+        $consult->execute();
+        $result = $consult->get_result();
 
 		$players =  array();
 

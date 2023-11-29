@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Chess</title>
-    <link rel="stylesheet" href="../css/chess_menu_styles.css">
+    <link rel="stylesheet" href="../../css/chess_menu_styles.css">
 </head>
 <body>
     <header id="main-header">
-		<a id="logo-header" href="index.php">
+		<a id="logo-header" href="../index.php">
 			<span class="site-name">CHESS</span>
 			<span class="site-desc">GAME</span>
 		</a>
@@ -27,11 +27,11 @@
                 <p>Player 1</p>
                 <select name="player1" id="player1">
                     <?php
-                        require("playersReglasNegocio.php");    
-                        $playersBL = new PlayersReglasNegocio();
-                        $datosPlayers = $playersBL->obtener();
+                        require("../Negocio/playersBL.php");    
+                        $playersBL = new PlayersBL();
+                        $playersData = $playersBL->obtain();
     
-                        foreach ($datosPlayers as $player)
+                        foreach ($playersData as $player)
                         {
                             echo "<option value=\"{$player->getID()}\">{$player->getName()}</option>";
                         }
@@ -39,12 +39,12 @@
                 </select>
                 <p>Player 2</p>
                 <select name="player2" id="player2">
-                <?php
-                    foreach ($datosPlayers as $player)
-                    {
-                        echo "<option value=\"{$player->getID()}\">{$player->getName()}</option>";
-                    }
-                ?>
+                    <?php
+                        foreach ($playersData as $player)
+                        {
+                            echo "<option value=\"{$player->getID()}\">{$player->getName()}</option>";
+                        }
+                    ?>
                 </select>
                 <br>
                 <label for="title">Title</label>
@@ -57,7 +57,7 @@
     </main>
 
     <footer id="main-footer">
-		<p>&copy; 2023 <a href="#">Chess Game</a></p>
+		<p>&copy; 2023 <a href="../index.php">Chess Game</a></p>
 	</footer>
 </body>
 </html>

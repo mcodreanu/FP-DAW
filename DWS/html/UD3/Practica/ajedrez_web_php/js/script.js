@@ -1,4 +1,4 @@
-// Filter table based on select
+// Filter table based on select 
 const filterOptions = () => {
 	const option = document.querySelector("#filter").value;
 	const selection = option.replace('&', '')
@@ -9,6 +9,8 @@ const filterOptions = () => {
 		let filter = td.innerText.replace('&', '');
 		if (filter === selection) {
 			row.className = 'show'
+		} else if (selection === "None") {
+			row.className = 'show';
 		} else {
 			row.className = 'hidden'
 		}
@@ -22,7 +24,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     }
 });
 
-// Sort by date
+// Sort Table
 $(document).ready(function () {
 	$('#matches thead').on('click', 'th', function () {
 		$(this).attr('data-order', ($(this).attr('data-order') === 'desc' ? 'asc' : 'desc'));

@@ -1,8 +1,8 @@
 <?php
 
-require("statesAccesoDatos.php");
+require("../Infraestructura/statesDAL.php");
 
-class StatesReglasNegocio
+class StatesBL
 {
     private $_ID;
     private $_IDGame;
@@ -34,14 +34,14 @@ class StatesReglasNegocio
         return $this->_Board;
     }
 
-    function obtener($id_match)
+    function obtain($id_match)
     {
-        $statesDAL = new StatesAccesoDatos();
-        $rs = $statesDAL->obtener($id_match);
+        $statesDAL = new StatesDAL();
+        $rs = $statesDAL->obtain($id_match);
 		$listaStates =  array();
         foreach ($rs as $states)
         {
-            $oStatesReglasNegocio = new StatesReglasNegocio();
+            $oStatesReglasNegocio = new StatesBL();
             $oStatesReglasNegocio->Init($states['ID'],$states['IDGame'], $states['board']);
             array_push($listaStates,$oStatesReglasNegocio);
         }

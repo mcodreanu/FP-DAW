@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Chess</title>
-    <link rel="stylesheet" href="../css/chess_menu_styles.css">
+    <link rel="stylesheet" href="../../css/chess_menu_styles.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../js/script.js"></script>
+    <script src="../../js/script.js"></script>
 </head>
 <body>
 <header id="main-header">
-		<a id="logo-header" href="index.php">
+		<a id="logo-header" href="../index.php">
 			<span class="site-name">CHESS</span>
 			<span class="site-desc">GAME</span>
 		</a>
@@ -27,6 +27,7 @@
             <h1>Matches List</h1>
             <select id="filter">
                 <option disabled selected value="none">Select a state</option>
+                <option>None</option>
                 <option>En curso</option>
                 <option>Jaque mate</option>
                 <option>Tablas</option>
@@ -51,11 +52,11 @@
                         </thead>
                         <tbody>
                             <?php
-                                require("matchesReglasNegocio.php");    
-                                $matchesBL = new MatchesReglasNegocio();
-                                $datosMatches = $matchesBL->obtener();
+                                require("../Negocio/matchesBL.php");    
+                                $matchesBL = new MatchesBL();
+                                $matchesData = $matchesBL->obtain();
                     
-                                foreach ($datosMatches as $match)
+                                foreach ($matchesData as $match)
                                 {
                                     echo "<tr>
                                     <td>{$match->getID()}</td>
@@ -79,7 +80,7 @@
 	</main>
 
     <footer id="main-footer">
-		<p>&copy; 2023 <a href="#">Chess Game</a></p>
+		<p>&copy; 2023 <a href="../index.php">Chess Game</a></p>
 	</footer>
 </body>
 </html>

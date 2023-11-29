@@ -15,8 +15,8 @@
 
 		<nav>
 			<ul>
-				<li><a href="new_gameView.php"><button class="glow-on-hover">New Game</button></a></li>
-				<li><a href="gameListView.php"><button class="glow-on-hover">Matches List</button></a></li>
+				<li><a href="Vistas/new_gameView.php"><button class="glow-on-hover">New Game</button></a></li>
+				<li><a href="Vistas/gameListView.php"><button class="glow-on-hover">Matches List</button></a></li>
 			</ul>
 		</nav>
 	</header>
@@ -26,7 +26,7 @@
 	</main>
 
     <footer id="main-footer">
-		<p>&copy; 2023 <a href="#">Chess Game</a></p>
+		<p>&copy; 2023 <a href="index.php">Chess Game</a></p>
 	</footer>
 </body>
 </html>
