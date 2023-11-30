@@ -30,9 +30,9 @@
         }
     }
 
-    //insertMatches();
+    insertMatches();
 
-    function obtainMatches() 
+    function obtainBoard() 
     {
         require("../Negocio/statesBL.php");    
         $statesBL = new StatesBL();
@@ -54,7 +54,7 @@
 
         if (isset($_GET['state']))
         {
-            $states = obtainMatches();
+            $states = obtainBoard();
             $board = $states[$state];
         } 
         else 
@@ -80,14 +80,49 @@
         DrawBoard();
         DrawPieces($pieces);
         echo "</div>";
+
+        echo"<div class=\"info-container\">";
+        DrawInfo();
+        echo "<div class=\"history-container\">";
+            DrawHistoryButtons();
+        echo "</div>";
+        echo "</div>";
         
         echo "<div class=\"dead-container\">";
         DrawDeadBlack($numPieces);
         echo "</div>";
+    }
 
-        echo "<div class=\"history-container\">";
-            DrawHistoryButtons();
-        echo "</div>";
+    function DrawInfo()
+    {
+        require("../Negocio/matchesBL.php");    
+        $matchesBL = new MatchesBL();
+        $matchesData = $matchesBL->obtain();
+        $id_game_get = $_GET['id_match'];
+        $player_white = 0;
+        $player_black = 0;
+
+        foreach ($matchesData as $match)
+        {
+            if ($id_game_get == $match->getID())
+            {
+                $player_white = $match->getWhite();
+                $player_black = $match->getBlack();
+            }
+        }
+
+        require("../Negocio/playersBL.php");    
+        $playersBL = new PlayersBL();
+        $playersData = $playersBL->obtain();
+        $players = array();
+    
+        foreach ($playersData as $player)
+        {
+           array_push($players, $player->getName());
+        }
+
+        echo "<h1>White: ".$players[$player_white - 1]."</h1>";
+        echo "<h1>Black: ".$players[$player_black - 1]."</h1>";
     }
 
     function DrawHistoryButtons()
