@@ -74,40 +74,48 @@ img {
     margin: 60% auto;
     text-align: center;
 }
-  
-.history-container button {
-    width: 50px;
-    background-color: black;
-    color: white;
-    cursor: pointer;
-    border-radius: 10px;
-}
-
-.history-container a {
-    text-decoration: none;
-}
 
 .info-container {
     position: absolute;
     background-color: black;
     color: white;
-    right: 10%;
-    top: 28vh;
+    right: 0;
+    top: 37vh;
     width: 350px;
-    height: 300px;
+    height: 150px;
     border-radius: 10px;
     padding: 10px;
     border: 1px solid white;
+    text-align: center;
+}
+
+.info-container button {
+    width: 50px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-top: 60px;
+}
+
+.info-container a {
+    text-decoration: none;
 }
 
 .info-container h1 {
     font-size: 24px;
 }
 
-@media screen and (max-width: 1910px) {
+@media screen and (max-width: 1390px) {
+    body {
+        background-color: black;
+    }
+
     .info-container {
-        top: 80vh;
-        bottom: auto;
-        right: 30vw;
+        position: static;
+        margin: 0 auto;
+        margin-top: 4rem;
+        margin-bottom: 1rem;
+        width: 40rem;
     }
 }
