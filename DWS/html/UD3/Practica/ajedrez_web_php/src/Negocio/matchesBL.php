@@ -104,4 +104,19 @@ class MatchesBL
         
         return $matchesList;
     }
+
+    function obtainFiltered($filter)
+    {
+        $matchesDAL = new MatchesDAL();
+        $rs = $matchesDAL->obtainFiltered($filter);
+		$matchesList =  array();
+        foreach ($rs as $matches)
+        {
+            $oMatchesBL = new MatchesBL();
+            $oMatchesBL->Init($matches['ID'],$matches['title'], $matches['white'],$matches['black'],$matches['startDate'],$matches['startTime'],$matches['endDate'],$matches['endTime'],$matches['winner'],$matches['state']);
+            array_push($matchesList,$oMatchesBL);
+        }
+        
+        return $matchesList;
+    }
 }

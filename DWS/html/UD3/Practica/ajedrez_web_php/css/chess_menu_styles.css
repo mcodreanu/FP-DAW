@@ -297,7 +297,6 @@ nav ul li a {
 #list-view-content th {
 	position:sticky;
 	top: 0;
-	cursor: pointer;
 	user-select: none;
 }
 

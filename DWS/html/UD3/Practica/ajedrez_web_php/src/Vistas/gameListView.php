@@ -25,13 +25,29 @@
     <main id="list-view-content">
         <section>
             <h1>Matches List</h1>
-            <select id="filter">
-                <option disabled selected value="none">Select a state</option>
-                <option>None</option>
-                <option>En curso</option>
-                <option>Jaque mate</option>
-                <option>Tablas</option>
-            </select>
+
+            <div id = "filters">
+                <form action="gameListView.php" method="post">
+                    <p>Filters</p>
+                    <label for = "startDate">
+                        <input type="radio" name="date" id="startDate" value="startDate"/>
+                            Start Date
+                    </label>
+                    <label for = "endDate">
+                        <input type="radio" name="date" id="endDate" value="endDate"/>
+                            End Date
+                    </label>
+                    <input type="submit" value="Filter">
+                </form>
+
+                <select id="filter">
+                    <option disabled selected value="none">Select a state</option>
+                    <option>None</option>
+                    <option>En curso</option>
+                    <option>Jaque mate</option>
+                    <option>Tablas</option>
+                </select>
+            </div>
 
             <div id="constrainer">
                 <div class="scrolltable">
@@ -54,8 +70,17 @@
                             <?php
                                 require("../Negocio/matchesBL.php");    
                                 $matchesBL = new MatchesBL();
-                                $matchesData = $matchesBL->obtain();
-                    
+                                $filter = $_POST["date"];
+                                var_dump($filter);
+                                if (isset($filter))
+                                {
+                                    $matchesData = $matchesBL->obtainFiltered($filter);
+                                }
+                                else
+                                {
+                                    $matchesData = $matchesBL->obtain();
+                                }
+
                                 foreach ($matchesData as $match)
                                 {
                                     echo "<tr>
