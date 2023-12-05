@@ -99,11 +99,13 @@
             $matchesData = $matchesBL->obtain();
             $player_white = 0;
             $player_black = 0;
+            $title = "";
 
             foreach ($matchesData as $match)
             {
                 if ($id_game_get == $match->getID())
                 {
+                    $title = $match->getTitle();
                     $player_white = $match->getWhite();
                     $player_black = $match->getBlack();
                 }
@@ -120,11 +122,31 @@
             }
 
             echo"<div class=\"info-container\">";
+            echo "<h1 class=\"title\">".$title."</h1>";
             echo "<h1>Black: ".$players[$player_black - 1]."</h1>";
             echo "<h1>White: ".$players[$player_white - 1]."</h1>";
             DrawHistoryButtons();
             echo "</div>";
-        }   
+        } 
+        else
+        {
+            require("../Negocio/playersBL.php");    
+            $playersBL = new PlayersBL();
+            $playersData = $playersBL->obtain();
+            $players = array();
+            $id_player1 = $_POST["player1"];
+            $id_player2 = $_POST["player2"];
+        
+            foreach ($playersData as $player)
+            {
+                array_push($players, $player->getName());
+            }
+
+            echo"<div class=\"info-container\">";
+            echo "<h1>Black: ".$players[$id_player1 - 1]."</h1>";
+            echo "<h1>White: ".$players[$id_player2 - 1]."</h1>";
+            echo "</div>";
+        }
     }
 
     function DrawHistoryButtons()

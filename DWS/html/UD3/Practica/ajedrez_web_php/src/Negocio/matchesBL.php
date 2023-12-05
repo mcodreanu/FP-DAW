@@ -105,10 +105,25 @@ class MatchesBL
         return $matchesList;
     }
 
-    function obtainFiltered($filter)
+    function obtainFilteredStartDate()
     {
         $matchesDAL = new MatchesDAL();
-        $rs = $matchesDAL->obtainFiltered($filter);
+        $rs = $matchesDAL->obtainFilteredStartDate();
+		$matchesList =  array();
+        foreach ($rs as $matches)
+        {
+            $oMatchesBL = new MatchesBL();
+            $oMatchesBL->Init($matches['ID'],$matches['title'], $matches['white'],$matches['black'],$matches['startDate'],$matches['startTime'],$matches['endDate'],$matches['endTime'],$matches['winner'],$matches['state']);
+            array_push($matchesList,$oMatchesBL);
+        }
+        
+        return $matchesList;
+    }
+
+    function obtainFilteredEndDate()
+    {
+        $matchesDAL = new MatchesDAL();
+        $rs = $matchesDAL->obtainFilteredEndDate();
 		$matchesList =  array();
         foreach ($rs as $matches)
         {

@@ -62,6 +62,17 @@ nav ul li a {
     color: white;
 }
 
+#index-title {
+	animation: fadeIn 3s;
+	color: white;
+	font-weight: bold;
+	font-size: 80px;
+	margin-top: 30vh;
+	font-family: Brush Script;
+	text-shadow: 10px 10px 5px black;
+	user-select: none;
+}
+
 /* Logo */
 #logo-header {
 	user-select: none;
@@ -120,7 +131,7 @@ nav ul li a {
 
 .glow-on-hover:before {
     content: '';
-    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    background: linear-gradient(45deg, #999, #888);
     position: absolute;
     top: -2px;
     left:-2px;
@@ -324,6 +335,20 @@ nav ul li a {
 
 #list-view-content td {
 	border-width: 1px;
+}
+
+#filter-form .filter-btn {
+	width: 50px;
+    height: 25px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+	outline: 1px solid white;
 }
 
 /* Keyframes */

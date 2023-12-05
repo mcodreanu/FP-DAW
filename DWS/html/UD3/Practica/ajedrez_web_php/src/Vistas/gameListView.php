@@ -27,8 +27,8 @@
             <h1>Matches List</h1>
 
             <div id = "filters">
-                <form action="gameListView.php" method="post">
-                    <p>Filters</p>
+                <p>Filters</p>
+                <form action="gameListView.php" id="filter-form" method="post">
                     <label for = "startDate">
                         <input type="radio" name="date" id="startDate" value="startDate"/>
                             Start Date
@@ -37,7 +37,8 @@
                         <input type="radio" name="date" id="endDate" value="endDate"/>
                             End Date
                     </label>
-                    <input type="submit" value="Filter">
+                    <input class="filter-btn" type="submit" value="Filter">
+                    <input class="filter-btn" type="submit" value="Reset">
                 </form>
 
                 <select id="filter">
@@ -71,10 +72,29 @@
                                 require("../Negocio/matchesBL.php");    
                                 $matchesBL = new MatchesBL();
                                 $filter = $_POST["date"];
-                                var_dump($filter);
-                                if (isset($filter))
+
+                                require("../Negocio/playersBL.php");    
+                                $playersBL = new PlayersBL();
+                                $playersData = $playersBL->obtain();
+                                $players = array();
+
+                                function array_push_assoc($array, $key, $value){
+                                    $array[$key] = $value;
+                                    return $array;
+                                 }
+    
+                                foreach ($playersData as $player)
                                 {
-                                    $matchesData = $matchesBL->obtainFiltered($filter);
+                                    $players = array_push_assoc($players, $player->getID(), $player->getName());
+                                }
+
+                                if (isset($filter) && $filter == "startDate")
+                                {
+                                    $matchesData = $matchesBL->obtainFilteredStartDate();
+                                }
+                                else if (isset($filter) && $filter == "endDate")
+                                {
+                                    $matchesData = $matchesBL->obtainFilteredEndDate();
                                 }
                                 else
                                 {
@@ -92,8 +112,8 @@
                                     <td>{$match->getWinner()}</td>
                                     <td>{$match->getEndDate()}</td>
                                     <td>{$match->getEndTime()}</td>
-                                    <td>{$match->getWhite()}</td>
-                                    <td>{$match->getBlack()}</td>
+                                    <td>{$players[$match->getWhite()]}</td>
+                                    <td>{$players[$match->getBlack()]}</td>
                                     </tr>";
                                 }
                             ?>
