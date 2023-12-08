@@ -13,9 +13,7 @@
 
     function insertMatches() 
     {
-        $state = $_GET['state'];
-
-        if (!(isset($state)))
+        if (!(isset($_GET['state'])))
         {
             require("../Negocio/matchesBL.php");    
             $matchesBL = new MatchesBL();
@@ -50,12 +48,10 @@
     
     function changeStates($board)
     {
-        $state = $_GET['state'];
-
         if (isset($_GET['state']))
         {
             $states = obtainBoard();
-            $board = $states[$state];
+            $board = $states[$_GET['state']];
         } 
         else 
         {
@@ -90,7 +86,6 @@
 
     function DrawInfo()
     {
-        $id_game_get = $_GET['id_match'];
         
         if (isset($_GET['id_match']))
         {
@@ -103,7 +98,7 @@
 
             foreach ($matchesData as $match)
             {
-                if ($id_game_get == $match->getID())
+                if ($_GET['id_match'] == $match->getID())
                 {
                     $title = $match->getTitle();
                     $player_white = $match->getWhite();
@@ -136,6 +131,7 @@
             $players = array();
             $id_player1 = $_POST["player1"];
             $id_player2 = $_POST["player2"];
+            $title = $_POST["title"];
         
             foreach ($playersData as $player)
             {
@@ -143,6 +139,7 @@
             }
 
             echo"<div class=\"info-container\">";
+            echo "<h1 class=\"title\">".$title."</h1>";
             echo "<h1>Black: ".$players[$id_player1 - 1]."</h1>";
             echo "<h1>White: ".$players[$id_player2 - 1]."</h1>";
             echo "</div>";

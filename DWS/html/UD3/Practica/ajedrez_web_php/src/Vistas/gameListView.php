@@ -29,13 +29,11 @@
             <div id = "filters">
                 <p>Filters</p>
                 <form action="gameListView.php" id="filter-form" method="post">
-                    <label for = "startDate">
-                        <input type="radio" name="date" id="startDate" value="startDate"/>
-                            Start Date
+                    <label class="radio" for="startDate">
+                        <input type="radio" name="date" id="startDate" value="startDate"/> Start Date
                     </label>
-                    <label for = "endDate">
-                        <input type="radio" name="date" id="endDate" value="endDate"/>
-                            End Date
+                    <label class="radio" for="endDate">
+                        <input type="radio" name="date" id="endDate" value="endDate"/> End Date
                     </label>
                     <input class="filter-btn" type="submit" value="Filter">
                     <input class="filter-btn" type="submit" value="Reset">
@@ -43,7 +41,6 @@
 
                 <select id="filter">
                     <option disabled selected value="none">Select a state</option>
-                    <option>None</option>
                     <option>En curso</option>
                     <option>Jaque mate</option>
                     <option>Tablas</option>
@@ -57,7 +54,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Title</th>
-                                <th class="dateTh">Start Date</th>
+                                <th>Start Date</th>
                                 <th>Start Time</th>
                                 <th>State</th>
                                 <th>Winner</th>
@@ -71,7 +68,6 @@
                             <?php
                                 require("../Negocio/matchesBL.php");    
                                 $matchesBL = new MatchesBL();
-                                $filter = $_POST["date"];
 
                                 require("../Negocio/playersBL.php");    
                                 $playersBL = new PlayersBL();
@@ -88,11 +84,11 @@
                                     $players = array_push_assoc($players, $player->getID(), $player->getName());
                                 }
 
-                                if (isset($filter) && $filter == "startDate")
+                                if (isset($_POST["date"]) && $_POST["date"] == "startDate")
                                 {
                                     $matchesData = $matchesBL->obtainFilteredStartDate();
                                 }
-                                else if (isset($filter) && $filter == "endDate")
+                                else if (isset($_POST["date"]) && $_POST["date"] == "endDate")
                                 {
                                     $matchesData = $matchesBL->obtainFilteredEndDate();
                                 }
