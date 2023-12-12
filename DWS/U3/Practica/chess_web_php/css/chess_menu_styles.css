@@ -92,69 +92,6 @@ nav ul li a {
 	color: #999;
 }
 
-/* Heading */
-  .heading {
-	animation: fadeIn 3s;
-	user-select: none;
-    color: #fff;
-	position: absolute;
-	z-index: 1;
-	top: 40%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	width: 100%;
-	margin: 0;
-	padding: 0 1rem;
-	font-family: Brush Script;
-	font-size: 5rem;
-	font-weight: 100;
-  }
-  
-  .heading::before,
-  .heading::after {
-	content: attr(data-attr-text);
-	position: absolute;
-	width: 100%;
-	padding: 0 1rem;
-	z-index: -1;
-	top:0;
-	left: 0;
-  }
-  
-  /* Back layer */
-  .heading::before {
-	animation: textGhostingBefore 4s ease-out infinite alternate;
-  }
-
-  @keyframes textGhostingBefore {
-	0%   {text-shadow: -0.5em -0.5em  0.5em   hsla(0, 0%, 100%, 0.25);}
-	50%  {text-shadow:  0     -0.25em 0.125em hsla(0, 0%, 100%, 0.5);}
-	100% {text-shadow:  0.5em -0.5em  0.5em   hsla(0, 0%, 100%, 0.25);}
-  }
-  
-  /* Middle layer */
-  .heading::after {
-	animation: textGhostingAfter 4s ease-in infinite alternate;
-  }
-
-  @keyframes textGhostingAfter {
-	0%   {text-shadow: -0.25em -0.25em  0.25em  hsla(0, 0%, 100%, 0.5);}
-	50%  {text-shadow:  0      -0.125em 0.125em hsla(0, 0%, 100%, 0.25);}
-	100% {text-shadow:  0.25em -0.25em  0.25em  hsla(0, 0%, 100%, 0.5);}
-  }
-  
-  
-  /* Front layer */
-  .heading {
-   animation: textGhosting 3s ease-in-out infinite alternate;
-  }
-
-  @keyframes textGhosting {
-	0%   {text-shadow:  0.125em -0.125em 0.125em #000000;}
-	50%  {text-shadow:  0        0       0.5em   #000000;}
-	100% {text-shadow: -0.125em -0.125em 0.125em #000000;}
-  }
-
 /* Footer */
 #main-footer {
     position: absolute;
