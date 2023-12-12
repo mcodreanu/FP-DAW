@@ -49,7 +49,7 @@
                 <br>
                 <label for="title">Title</label>
                 <br>
-                <input type="text" id="title" name="title">
+                <input type="text" id="title" name="title" required>
                 <br><br>
                 <button class="glow-on-hover"><input class="createInput" type="submit" value="Create"></button>
             </form>

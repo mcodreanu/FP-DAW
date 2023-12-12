@@ -29,7 +29,7 @@ p {
 	text-align: center;
 }
 
-/* Navegation */
+/* Navigation */
 nav {
 	float: right;
 }
@@ -63,12 +63,10 @@ nav ul li a {
 }
 
 #index-title {
-	
+	animation: fadeIn 1s;
 	color: white;
-	
 	font-size: 80px;
 	margin-top: 30vh;
-	font-family: Brush Script;
 	text-shadow: 10px 10px 5px black;
 	
 }
@@ -421,7 +419,6 @@ input[type=radio]:checked {
 }
 
 /* Keyframes */
-
 @keyframes glowing {
     0% { background-position: 0 0; }
     50% { background-position: 400% 0; }

@@ -52,10 +52,6 @@
         {
             $states = obtainBoard();
             $board = $states[$_GET['state']];
-        } 
-        else 
-        {
-            return $board;
         }
         
         return $board;
