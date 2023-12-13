@@ -15,12 +15,16 @@
     {
         if (!(isset($_GET['state'])))
         {
-            require("../Negocio/matchesBL.php");    
+            require("../Business/matchesBL.php");    
             $matchesBL = new MatchesBL();
             $title = $_POST["title"];
             $id_player1 = $_POST["player1"];
             $id_player2 = $_POST["player2"];
             $matchesBL->insert($title,$id_player1,$id_player2);
+
+            require("../Business/statesBL.php");    
+            $statesBL = new StatesBL();
+            $statesBL->insert();
         }
         else
         {
@@ -28,11 +32,9 @@
         }
     }
 
-    insertMatches();
-
     function obtainBoard() 
     {
-        require("../Negocio/statesBL.php");    
+        require("../Business/statesBL.php");    
         $statesBL = new StatesBL();
         $id_match = $_GET["id_match"];
         $statesData = $statesBL->obtain($id_match);
@@ -63,6 +65,7 @@
     {
         $pieces = str_split($board);
         $numPieces = CountPieces($pieces);
+        insertMatches();
 
         echo "<div class=\"dead-container\">";
         DrawDeadWhite($numPieces);
@@ -82,10 +85,9 @@
 
     function DrawInfo()
     {
-        
         if (isset($_GET['id_match']))
         {
-            require("../Negocio/matchesBL.php");    
+            require("../Business/matchesBL.php");    
             $matchesBL = new MatchesBL();
             $matchesData = $matchesBL->obtain();
             $player_white = 0;
@@ -102,7 +104,7 @@
                 }
             }
 
-            require("../Negocio/playersBL.php");    
+            require("../Business/playersBL.php");    
             $playersBL = new PlayersBL();
             $playersData = $playersBL->obtain();
             $players = array();
@@ -121,7 +123,7 @@
         } 
         else
         {
-            require("../Negocio/playersBL.php");    
+            require("../Business/playersBL.php");    
             $playersBL = new PlayersBL();
             $playersData = $playersBL->obtain();
             $players = array();

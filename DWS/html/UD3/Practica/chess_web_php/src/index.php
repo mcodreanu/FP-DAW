@@ -14,14 +14,14 @@
 
 		<nav>
 			<ul>
-				<li><a href="Vistas/new_gameView.php"><button class="glow-on-hover">New Game</button></a></li>
-				<li><a href="Vistas/gameListView.php"><button class="glow-on-hover">Matches List</button></a></li>
+				<li><a href="Views/new_gameView.php"><button class="glow-on-hover">New Game</button></a></li>
+				<li><a href="Views/gameListView.php"><button class="glow-on-hover">Matches List</button></a></li>
 			</ul>
 		</nav>
 	</header>
 
     <main id="main-content">
-		<h1 id="index-title">WELCOME TO CHESS</h1>
+		<h1 id="index-title">WELCOME TO CHESS!</h1>
 	</main>
 
     <footer id="main-footer">

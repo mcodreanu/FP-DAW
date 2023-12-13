@@ -1,6 +1,6 @@
 <?php
 
-require("../Infraestructura/statesDAL.php");
+require("../Infrastructure/statesDAL.php");
 
 class StatesBL
 {
@@ -47,5 +47,11 @@ class StatesBL
         }
         
         return $listaStates;
+    }
+
+    function insert()
+    {
+        $statesDAL = new StatesDAL();
+        $statesDAL->insert();
     }
 }

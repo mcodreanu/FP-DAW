@@ -27,7 +27,7 @@
                 <p>Player 1</p>
                 <select name="player1" id="player1">
                     <?php
-                        require("../Negocio/playersBL.php");    
+                        require("../Business/playersBL.php");    
                         $playersBL = new PlayersBL();
                         $playersData = $playersBL->obtain();
     
@@ -49,7 +49,7 @@
                 <br>
                 <label for="title">Title</label>
                 <br>
-                <input type="text" id="title" name="title" required>
+                <input type="text" id="title" name="title" maxlength="50" required>
                 <br><br>
                 <button class="glow-on-hover"><input class="createInput" type="submit" value="Create"></button>
             </form>

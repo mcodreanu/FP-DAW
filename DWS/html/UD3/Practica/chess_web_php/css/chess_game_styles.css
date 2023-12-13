@@ -8,6 +8,7 @@ body {
     background-image: url("../img/menubg.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     backdrop-filter: blur(5px);
     height: 100vh;
 }
@@ -114,10 +115,6 @@ img {
 }
 
 @media screen and (max-width: 1800px) {
-    body {
-        background-color: black;
-    }
-
     .info-container {
         position: static;
         margin: 0 auto;

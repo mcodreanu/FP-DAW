@@ -1,6 +1,6 @@
 <?php
 
-require("../Infraestructura/matchesDAL.php");
+require("../Infrastructure/matchesDAL.php");
 
 class MatchesBL
 {

@@ -1,6 +1,6 @@
 <?php
 
-require("../Infraestructura/playersDAL.php");
+require("../Infrastructure/playersDAL.php");
 
 class PlayersBL
 {

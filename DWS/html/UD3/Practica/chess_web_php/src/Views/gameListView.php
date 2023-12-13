@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Chess</title>
     <link rel="stylesheet" href="../../css/chess_menu_styles.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../../js/script.js"></script>
 </head>
 <body>
@@ -23,30 +22,8 @@
 	</header>
 
     <main id="list-view-content">
-        <section>
+        <section id="table-section">
             <h1>Matches List</h1>
-
-            <div id = "filters">
-                <p>Filters</p>
-                <form action="gameListView.php" id="filter-form" method="post">
-                    <label class="radio" for="startDate">
-                        <input type="radio" name="date" id="startDate" value="startDate"/> Start Date
-                    </label>
-                    <label class="radio" for="endDate">
-                        <input type="radio" name="date" id="endDate" value="endDate"/> End Date
-                    </label>
-                    <input class="filter-btn" type="submit" value="Filter">
-                    <input class="filter-btn" type="submit" value="Reset">
-                </form>
-
-                <select id="filter">
-                    <option disabled selected value="none">Select a state</option>
-                    <option>En curso</option>
-                    <option>Jaque mate</option>
-                    <option>Tablas</option>
-                </select>
-            </div>
-
             <div id="constrainer">
                 <div class="scrolltable">
                     <table id="matches" class="matches-table">
@@ -66,10 +43,10 @@
                         </thead>
                         <tbody>
                             <?php
-                                require("../Negocio/matchesBL.php");    
+                                require("../Business/matchesBL.php");    
                                 $matchesBL = new MatchesBL();
 
-                                require("../Negocio/playersBL.php");    
+                                require("../Business/playersBL.php");    
                                 $playersBL = new PlayersBL();
                                 $playersData = $playersBL->obtain();
                                 $players = array();
@@ -116,6 +93,30 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
+        </section>
+
+        <section id="filter-section">
+            <div id = "filters">
+                <form action="gameListView.php" id="filter-form" method="post">
+                    <label class="radio" for="startDate">
+                        <input type="radio" name="date" id="startDate" value="startDate"/> Start Date
+                    </label>
+                    <label class="radio" for="endDate">
+                        <input type="radio" name="date" id="endDate" value="endDate"/> End Date
+                    </label>
+                    <div>
+                        <input class="filter-btn" type="submit" value="Filter">
+                        <input class="filter-btn" type="submit" value="Reset">
+                    </div>
+                </form>
+
+                <select id="filter">
+                    <option disabled selected value="none">Select a state</option>
+                    <option>En curso</option>
+                    <option>Jaque mate</option>
+                    <option>Tablas</option>
+                </select>
             </div>
         </section>
 	</main>
