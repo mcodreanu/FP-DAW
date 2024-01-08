@@ -1,0 +1,8 @@
+table {
+    border: 1px solid gray;
+}
+
+tr {
+    background-color: yellow;
+    text-align: center;
+}

@@ -233,6 +233,14 @@ nav ul li a {
 	background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%);
 }
 
+#list-view-content tbody tr.show {
+	display: table-row;
+}
+
+#list-view-content tbody tr.hidden {
+	display: none;
+}
+
 input[type=radio] {
 	border:2px solid white;
 	box-shadow:0 0 0 1px black;

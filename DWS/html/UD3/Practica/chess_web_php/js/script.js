@@ -14,6 +14,7 @@ const filterOptions = () => {
 		} else {
 			row.className = 'hidden'
 		}
+		console.log(rows);
 	});
 };
 
