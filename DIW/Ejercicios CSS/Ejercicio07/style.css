@@ -1,0 +1,9 @@
+form {
+    margin: 0 auto;
+    width: 200px;
+}
+
+.texto {
+    border-color: gray;
+    margin-bottom: 10px;
+}
