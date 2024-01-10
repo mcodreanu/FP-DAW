@@ -10,7 +10,7 @@ else
     $premium = "no";
 }
 
-$u = new userDAL();
-$u->insert($_POST['name'],$_POST['email'],$_POST['password'],$premium);
+$userDAL = new userDAL();
+$userDAL->insert($_POST['name'],$_POST['email'],$_POST['password'],$premium);
 
 header("Location: loginView.php");

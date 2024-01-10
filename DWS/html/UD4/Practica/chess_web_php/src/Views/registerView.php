@@ -5,6 +5,7 @@
     <title>Chess</title>
     <link rel="stylesheet" href="../../css/chess_menu_styles.css">
 	<script src="https://kit.fontawesome.com/5fe1b9d82e.js" crossorigin="anonymous"></script>
+	<script src="../../js/script.js"></script>
 </head>
 <body>
     <header id="main-header">
@@ -55,7 +56,7 @@
 	</main>
 
     <footer id="main-footer">
-		<p>&copy; 2023 <a href="index.php">Chess Game</a></p>
+		<p>&copy; 2023 <a href="../index.php">Chess Game</a></p>
 	</footer>
 </body>
 </html>

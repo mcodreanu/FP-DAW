@@ -51,7 +51,7 @@ class MatchesDAL
 				echo "Error al conectar a MySQL: ". mysqli_connect_error();
 		}
  		mysqli_select_db($conection, 'chess_game');
-		$consult = mysqli_prepare($conection, "SELECT ID, title, white, black, DATE_FORMAT(startDate, '%d/%m/%Y') AS startDate, DATE_FORMAT(startDate, '%H:%i:%s') AS startTime, state, winner, DATE_FORMAT(endDate, '%d/%m/%Y') AS endDate, DATE_FORMAT(endDate, '%H:%i:%s') AS endTime FROM T_Matches ORDER BY startDate DESC");
+		$consult = mysqli_prepare($conection, "SELECT ID, title, white, black, DATE_FORMAT(startDate, '%d/%m/%Y') AS startDate, DATE_FORMAT(startDate, '%H:%i:%s') AS startTime, state, winner, DATE_FORMAT(endDate, '%d/%m/%Y') AS endDate, DATE_FORMAT(endDate, '%H:%i:%s') AS endTime FROM T_Matches ORDER BY startDate");
         $consult->execute();
         $result = $consult->get_result();
 		$matches =  array();
@@ -72,7 +72,7 @@ class MatchesDAL
 				echo "Error al conectar a MySQL: ". mysqli_connect_error();
 		}
  		mysqli_select_db($conection, 'chess_game');
-		$consult = mysqli_prepare($conection, "SELECT ID, title, white, black, DATE_FORMAT(startDate, '%d/%m/%Y') AS startDate, DATE_FORMAT(startDate, '%H:%i:%s') AS startTime, state, winner, DATE_FORMAT(endDate, '%d/%m/%Y') AS endDate, DATE_FORMAT(endDate, '%H:%i:%s') AS endTime FROM T_Matches ORDER BY endDate DESC");
+		$consult = mysqli_prepare($conection, "SELECT ID, title, white, black, DATE_FORMAT(startDate, '%d/%m/%Y') AS startDate, DATE_FORMAT(startDate, '%H:%i:%s') AS startTime, state, winner, DATE_FORMAT(endDate, '%d/%m/%Y') AS endDate, DATE_FORMAT(endDate, '%H:%i:%s') AS endTime FROM T_Matches ORDER BY endDate");
         $consult->execute();
         $result = $consult->get_result();
 		$matches =  array();

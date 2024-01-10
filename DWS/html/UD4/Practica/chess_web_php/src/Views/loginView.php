@@ -79,7 +79,7 @@
 	</main>
 
     <footer id="main-footer">
-		<p>&copy; 2023 <a href="index.php">Chess Game</a></p>
+		<p>&copy; 2023 <a href="../index.php">Chess Game</a></p>
 	</footer>
 </body>
 </html>
