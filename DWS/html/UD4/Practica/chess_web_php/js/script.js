@@ -25,18 +25,26 @@ window.addEventListener("DOMContentLoaded", (event) => {
     }
 });
 
+//User submenu
+window.addEventListener("DOMContentLoaded", (event) => {
+    const el = document.getElementById("user-menu");
+    el.addEventListener("click", (e) => {
+		const subMenu = document.getElementById("sub-menu");
+    	subMenu.classList.toggle("open");
+		console.log("hola");
+	})
+});
+
 // Test Move
 let state = false
 let currentPiece;
 let currentCell;
 
-let cells = document.getElementsByClassName("piece"); 
-
 window.addEventListener("DOMContentLoaded", (event) => {
     const el = document.getElementsByClassName("piece");
     if (el) {
-		for (var i = 0; i < cells.length; i++) { 
-			cells[i].onclick = function(){
+		for (var i = 0; i < el.length; i++) { 
+			el[i].onclick = function(){
 				getCell(this);
 			};
 		 }
