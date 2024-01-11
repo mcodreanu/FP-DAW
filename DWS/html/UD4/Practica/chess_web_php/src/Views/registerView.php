@@ -27,7 +27,7 @@
 					}
 					else 
 					{
-						echo "<li><a href=\"logoutView.php\"><button id=\"user-menu\" class=\"glow-on-hover user-button\"><i class=\"fa-solid fa-sign-out\"></i></button></a>";
+						echo "<li><a href=\"logout.php\"><button id=\"user-menu\" class=\"glow-on-hover user-button\"><i class=\"fa-solid fa-sign-out\"></i></button></a>";
 					}
     			?>
 			</ul>
@@ -36,20 +36,36 @@
 
     <main id="user-content">
         <section class="user">
-            <form method = "POST" action="register.php">
+            <form method="POST" action="register.php">
                 <h1>Register</h1>
-                <label for = "name">Name: </label>
-                <input id="name" name = "name" type = "text">
+                <label for="name">Name:</label>
+				<br>
+                <input id="name" name="name" type="text" required>
                 <br>
-                <label for = "email">Email: </label>
-                <input id="email" name = "email" type = "email">
+                <label for="email" required>Email:</label>
+				<br>
+                <input id="email" name="email" type="email">
                 <br>
-                <label for = "password">Password: </label>
-                <input id = "password" name = "password" type = "password" min="8">
+                <label for="password">Password:</label>
+				<br>
+                <input id="password" name="password" type="password" minlength="8" required>
                 <br>
-                <label for="premium">Premium:</label>
-                <input id="premium" name="premium" type="checkbox">
-                <br>
+				<div class="checkbox-wrapper-4">
+					<input class="inp-cbx" id="premium" name="premium" type="checkbox"/>
+					<label class="cbx" for="premium">
+						<span>
+							<svg width="12px" height="10px">
+								<use xlink:href="#check-4"></use>
+							</svg>
+						</span>
+						<span>Premium</span>
+					</label>
+					<svg class="inline-svg">
+						<symbol id="check-4" viewbox="0 0 12 10">
+						<polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+						</symbol>
+					</svg>
+				</div>
                 <button class="glow-on-hover"><input class="createInput" type="submit" value="Register"></button>
             </form>
         </section>

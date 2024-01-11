@@ -7,7 +7,7 @@ ID int primary key auto_increment,
 name varchar(30) not null,
 email varchar(50) UNIQUE,
 password varchar(255) not null,
-premium varchar(2)
+premium varchar(2) not null
 );
 
 CREATE TABLE T_Matches(

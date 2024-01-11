@@ -10,6 +10,8 @@ else
     $premium = "no";
 }
 
+var_dump($premium);
+
 $userDAL = new userDAL();
 $userDAL->insert($_POST['name'],$_POST['email'],$_POST['password'],$premium);
 

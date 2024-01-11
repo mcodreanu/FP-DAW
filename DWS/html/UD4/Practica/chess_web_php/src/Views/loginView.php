@@ -49,7 +49,7 @@
 					}
 					else 
 					{
-						echo "<li><a href=\"logoutView.php\"><button id=\"user-menu\" class=\"glow-on-hover user-button\"><i class=\"fa-solid fa-sign-out\"></i></button></a>";
+						echo "<li><a href=\"logout.php\"><button id=\"user-menu\" class=\"glow-on-hover user-button\"><i class=\"fa-solid fa-sign-out\"></i></button></a>";
 					}
     			?>
 			</ul>
@@ -60,10 +60,12 @@
         <section class="user">
             <form method = "POST" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                 <h1>Login</h1>
-                <label for = "name">Name: </label>
+                <label for = "name">Name:</label>
+                <br>
                 <input id="name" name = "name" type = "text">
                 <br>
-                <label for = "password">Password: </label>
+                <label for = "password">Password:</label>
+                <br>
                 <input id = "password" name = "password" type = "password" min="8">
                 <br><br>
                 <button class="glow-on-hover"><input class="createInput" type="submit" value="Login"></button>
