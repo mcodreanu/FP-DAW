@@ -5,11 +5,13 @@
     {
         $userBL = new userBL();
         $profile = $userBL->verify($_POST['name'],$_POST['password']);
-
+        $premium = $userBL->verifyPremium($_POST['name'],$_POST['password']);
+        
         if ($profile===$_POST['name'])
         {
             session_start();
             $_SESSION['name'] = $_POST['name'];
+            $_SESSION['premium'] = $premium;
             header("Location: ../index.php");
         }
         else
@@ -37,14 +39,11 @@
 
 		<nav>
 			<ul>
-				<li><a href="new_gameView.php"><button class="glow-on-hover">New Game</button></a></li>
-				<li><a href="gameListView.php"><button class="glow-on-hover">Matches List</button></a></li>
 				<?php
         			session_start();
 					if (!isset($_SESSION['name']))
 					{
-						echo "<li><button id=\"user-menu\" class=\"glow-on-hover user-button\"><i class=\"fa-solid fa-user\"></i></button></li>
-						<div id=\"sub-menu\"><a href=\"registerView.php\"><button class=\"glow-on-hover user-buttons\">Register</button></a><a href=\"loginView.php\"><button class=\"glow-on-hover user-buttons\">Login</button></a></div>";
+						echo "<div id=\"sub-menu\"><a href=\"registerView.php\"><button class=\"glow-on-hover user-buttons\">Register</button></a><a href=\"loginView.php\"><button class=\"glow-on-hover user-buttons\">Login</button></a></div><li><button id=\"user-menu\" class=\"glow-on-hover user-button\"><i class=\"fa-solid fa-user\"></i></button></li>";
 					}
 					else 
 					{

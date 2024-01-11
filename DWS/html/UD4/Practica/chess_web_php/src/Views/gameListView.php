@@ -14,6 +14,10 @@
         {
             header("Location: loginView.php");
         }
+        else if ($_SESSION['premium'] == "no")
+        {
+            header("Location: ../index.php");
+        }
     ?>
 
     <header id="main-header">
@@ -24,18 +28,20 @@
 
 		<nav>
             <ul>
-				<li><a href="new_gameView.php"><button class="glow-on-hover">New Game</button></a></li>
-				<li><a href="gameListView.php"><button class="glow-on-hover">Matches List</button></a></li>
-				<?php
+                <?php
         			session_start();
 					if (!isset($_SESSION['name']))
 					{
 						echo "<li><button id=\"user-menu\" class=\"glow-on-hover user-button\"><i class=\"fa-solid fa-user\"></i></button></li>
 						<div id=\"sub-menu\"><a href=\"registerView.php\"><button class=\"glow-on-hover user-buttons\">Register</button></a><a href=\"loginView.php\"><button class=\"glow-on-hover user-buttons\">Login</button></a></div>";
 					}
-					else 
+					else if ($_SESSION['premium'] == "yes")
 					{
-						echo "<li><a href=\"logout.php\"><button id=\"user-menu\" class=\"glow-on-hover user-button\"><i class=\"fa-solid fa-sign-out\"></i></button></a>";
+						echo "<li><p>Premium</p></li><li><a href=\"new_gameView.php\"><button class=\"glow-on-hover\">New Game</button></a></li><li><a href=\"gameListView.php\"><button class=\"glow-on-hover\">Matches List</button></a></li><li><a href=\"logout.php\"><button id=\"user-menu\" class=\"glow-on-hover user-button\"><i class=\"fa-solid fa-sign-out\"></i></button></a>";
+					}
+					else
+					{
+						echo "<li><a href=\"new_gameView.php\"><button class=\"glow-on-hover\">New Game</button></a></li><li><a href=\"logout.php\"><button id=\"user-menu\" class=\"glow-on-hover user-button\"><i class=\"fa-solid fa-sign-out\"></i></button></a>";
 					}
     			?>
 			</ul>

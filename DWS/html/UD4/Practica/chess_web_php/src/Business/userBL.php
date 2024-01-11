@@ -16,5 +16,14 @@ class userBL
         return $res;
         
     }
+
+    function verifyPremium($name,$password)
+    {
+        $usersDAL = new userDAL();
+        $res = $usersDAL->verifyPremium($name,$password);
+        
+        return $res;
+        
+    }
 }
 

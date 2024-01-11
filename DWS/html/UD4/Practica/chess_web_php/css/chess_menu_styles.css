@@ -377,12 +377,11 @@ input[type=radio]:checked {
 }
   
 #sub-menu.open {
-	display: block;
-	background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%);
-	width: 30rem;
+	display: inline;
+	width: 5rem;
 	height: 4rem;
-	margin-top: 15px;
-	animation: fadeIn 0.2s;
+	margin-right: 15px;
+	animation: fadeIn 0.3s;
 	text-align: center;
 }
 

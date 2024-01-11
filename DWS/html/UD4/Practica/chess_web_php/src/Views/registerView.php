@@ -6,7 +6,7 @@
 		try {
 			if (isset($_POST['premium']))
 			{
-				$premium = "si";
+				$premium = "yes";
 			}
 			else
 			{
@@ -43,14 +43,11 @@
 
 		<nav>
 			<ul>
-				<li><a href="new_gameView.php"><button class="glow-on-hover">New Game</button></a></li>
-				<li><a href="gameListView.php"><button class="glow-on-hover">Matches List</button></a></li>
 				<?php
         			session_start();
 					if (!isset($_SESSION['name']))
 					{
-						echo "<li><button id=\"user-menu\" class=\"glow-on-hover user-button\"><i class=\"fa-solid fa-user\"></i></button></li>
-						<div id=\"sub-menu\"><a href=\"registerView.php\"><button class=\"glow-on-hover user-buttons\">Register</button></a><a href=\"loginView.php\"><button class=\"glow-on-hover user-buttons\">Login</button></a></div>";
+						echo "<div id=\"sub-menu\"><a href=\"registerView.php\"><button class=\"glow-on-hover user-buttons\">Register</button></a><a href=\"loginView.php\"><button class=\"glow-on-hover user-buttons\">Login</button></a></div><li><button id=\"user-menu\" class=\"glow-on-hover user-button\"><i class=\"fa-solid fa-user\"></i></button></li>";
 					}
 					else 
 					{
