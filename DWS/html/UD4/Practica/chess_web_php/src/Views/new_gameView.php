@@ -70,7 +70,7 @@
                 <br>
                 <label for="title">Title</label>
                 <br>
-                <input type="text" id="title" name="title" maxlength="50" required>
+                <input type="text" class="text" id="title" name="title" maxlength="50" required>
                 <br><br>
                 <button class="glow-on-hover"><input class="createInput" type="submit" value="Create"></button>
             </form>

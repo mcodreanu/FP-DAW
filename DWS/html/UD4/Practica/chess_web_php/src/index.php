@@ -27,7 +27,7 @@
 					}
 					else 
 					{
-						echo "<li><a href=\"Views/logoutView.php\"><button id=\"user-menu\" class=\"glow-on-hover user-button\"><i class=\"fa-solid fa-sign-out\"></i></button></a>";
+						echo "<li><a href=\"Views/logout.php\"><button id=\"user-menu\" class=\"glow-on-hover user-button\"><i class=\"fa-solid fa-sign-out\"></i></button></a>";
 					}
     			?>
 			</ul>

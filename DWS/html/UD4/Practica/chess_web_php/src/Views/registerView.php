@@ -1,3 +1,30 @@
+<?php
+	require("../Infrastructure/userDAL.php");
+
+	if ($_SERVER["REQUEST_METHOD"]=="POST")
+    {
+		try {
+			if (isset($_POST['premium']))
+			{
+				$premium = "si";
+			}
+			else
+			{
+				$premium = "no";
+			}
+
+			$userDAL = new userDAL();
+			$userDAL->insert($_POST['name'],$_POST['email'],$_POST['password'],$premium);
+
+			header("Location: loginView.php");
+		}
+		catch (Exception $e)
+		{
+			$error = true;
+		}
+	}	
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,19 +63,19 @@
 
     <main id="user-content">
         <section class="user">
-            <form method="POST" action="register.php">
+            <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                 <h1>Register</h1>
                 <label for="name">Name:</label>
 				<br>
-                <input id="name" name="name" type="text" required>
+                <input id="name" class="text" name="name" type="text" required>
                 <br>
                 <label for="email" required>Email:</label>
 				<br>
-                <input id="email" name="email" type="email">
+                <input id="email" class="text" name="email" type="email">
                 <br>
                 <label for="password">Password:</label>
 				<br>
-                <input id="password" name="password" type="password" minlength="8" required>
+                <input id="password" class="text" name="password" type="password" minlength="8" required>
                 <br>
 				<div class="checkbox-wrapper-4">
 					<input class="inp-cbx" id="premium" name="premium" type="checkbox"/>
@@ -68,6 +95,12 @@
 				</div>
                 <button class="glow-on-hover"><input class="createInput" type="submit" value="Register"></button>
             </form>
+			<?php
+                if (isset($error))
+                {
+                    print("<div>Name already exists.</div>");
+                }
+            ?>
         </section>
 	</main>
 

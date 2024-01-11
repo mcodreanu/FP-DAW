@@ -1,5 +1,4 @@
 <?php
-
     require ("../Business/userBL.php");
 
     if ($_SERVER["REQUEST_METHOD"]=="POST")
@@ -58,15 +57,15 @@
 
     <main id="user-content">
         <section class="user">
-            <form method = "POST" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+            <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                 <h1>Login</h1>
                 <label for = "name">Name:</label>
                 <br>
-                <input id="name" name = "name" type = "text">
+                <input id="name" class="text" name = "name" type = "text">
                 <br>
                 <label for = "password">Password:</label>
                 <br>
-                <input id = "password" name = "password" type = "password" min="8">
+                <input id = "password" class="text" name = "password" type = "password" min="8">
                 <br><br>
                 <button class="glow-on-hover"><input class="createInput" type="submit" value="Login"></button>
             </form>
