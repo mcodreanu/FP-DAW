@@ -12,16 +12,16 @@
         session_start();
         if (!isset($_SESSION['name']))
         {
-            header("Location: loginView.php");
+            header("Location: ../index.php");
         }
         else if ($_SESSION['premium'] == "no")
         {
-            header("Location: ../index.php");
+            header("Location: welcomeView.php");
         }
     ?>
 
     <header id="main-header">
-		<a id="logo-header" href="../index.php">
+		<a id="logo-header" href="welcomeView.php">
 			<span class="site-name">CHESS</span>
 			<span class="site-desc">GAME</span>
 		</a>
@@ -33,7 +33,7 @@
 					if (!isset($_SESSION['name']))
 					{
 						echo "<li><button id=\"user-menu\" class=\"glow-on-hover user-button\"><i class=\"fa-solid fa-user\"></i></button></li>
-						<div id=\"sub-menu\"><a href=\"registerView.php\"><button class=\"glow-on-hover user-buttons\">Register</button></a><a href=\"loginView.php\"><button class=\"glow-on-hover user-buttons\">Login</button></a></div>";
+						<div id=\"sub-menu\"><a href=\"registerView.php\"><button class=\"glow-on-hover user-buttons\">Register</button></a><a href=\"../index.php\"><button class=\"glow-on-hover user-buttons\">Login</button></a></div>";
 					}
 					else if ($_SESSION['premium'] == "yes")
 					{
@@ -149,7 +149,7 @@
 	</main>
 
     <footer id="main-footer">
-		<p>&copy; 2023 <a href="../index.php">Chess Game</a></p>
+		<p>&copy; 2024 <a href="welcomeView.php">Chess Game</a></p>
 	</footer>
 </body>
 </html>

@@ -1,0 +1,15 @@
+/home/horabaixa/FP-DAW/DWS/UD5/Practica/chessWebAPI/bin/Debug/net6.0/chess_console
+/home/horabaixa/FP-DAW/DWS/UD5/Practica/chessWebAPI/bin/Debug/net6.0/chess_console.deps.json
+/home/horabaixa/FP-DAW/DWS/UD5/Practica/chessWebAPI/bin/Debug/net6.0/chess_console.runtimeconfig.json
+/home/horabaixa/FP-DAW/DWS/UD5/Practica/chessWebAPI/bin/Debug/net6.0/chess_console.dll
+/home/horabaixa/FP-DAW/DWS/UD5/Practica/chessWebAPI/bin/Debug/net6.0/ref/chess_console.dll
+/home/horabaixa/FP-DAW/DWS/UD5/Practica/chessWebAPI/bin/Debug/net6.0/chess_console.pdb
+/home/horabaixa/FP-DAW/DWS/UD5/Practica/chessWebAPI/obj/Debug/net6.0/chess_console.csproj.AssemblyReference.cache
+/home/horabaixa/FP-DAW/DWS/UD5/Practica/chessWebAPI/obj/Debug/net6.0/chess_console.GeneratedMSBuildEditorConfig.editorconfig
+/home/horabaixa/FP-DAW/DWS/UD5/Practica/chessWebAPI/obj/Debug/net6.0/chess_console.AssemblyInfoInputs.cache
+/home/horabaixa/FP-DAW/DWS/UD5/Practica/chessWebAPI/obj/Debug/net6.0/chess_console.AssemblyInfo.cs
+/home/horabaixa/FP-DAW/DWS/UD5/Practica/chessWebAPI/obj/Debug/net6.0/chess_console.csproj.CoreCompileInputs.cache
+/home/horabaixa/FP-DAW/DWS/UD5/Practica/chessWebAPI/obj/Debug/net6.0/chess_console.dll
+/home/horabaixa/FP-DAW/DWS/UD5/Practica/chessWebAPI/obj/Debug/net6.0/ref/chess_console.dll
+/home/horabaixa/FP-DAW/DWS/UD5/Practica/chessWebAPI/obj/Debug/net6.0/chess_console.pdb
+/home/horabaixa/FP-DAW/DWS/UD5/Practica/chessWebAPI/obj/Debug/net6.0/chess_console.genruntimeconfig.cache

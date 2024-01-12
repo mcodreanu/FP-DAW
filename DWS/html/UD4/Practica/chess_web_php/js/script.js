@@ -25,7 +25,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     }
 });
 
-//User submenu
+// User submenu
 window.addEventListener("DOMContentLoaded", (event) => {
     const el = document.getElementById("user-menu");
     el.addEventListener("click", (e) => {

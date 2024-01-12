@@ -11,10 +11,15 @@ body {
 	background-attachment: fixed;
 	margin: 0;
 	padding: 0;
-	font-family: Helvetica, Arial, sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
 	font-size: 1em;
 	line-height: 1.5em;
 	overflow: hidden;
+}
+
+button {
+	font-size: 14px;
+	font-weight: bolder;
 }
 
 h1 {
@@ -168,7 +173,7 @@ nav ul li a {
 	margin: 10vh auto;
 	padding: 50px 0 50px 0;
 	color: white;
-	font-weight: bold;
+	font-weight: bolder;
 	width: 50%;
 	background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%);
 }
@@ -201,6 +206,8 @@ nav ul li a {
 	border: 0;
 	color: white;
 	cursor: pointer;
+	font-size: 14px;
+	font-weight: bolder;
 }
 
 /* List View */
@@ -227,7 +234,7 @@ nav ul li a {
 	text-align: center;
 	margin: 0 auto;
 	color: white;
-	font-weight: bold;
+	font-weight: bolder;
 	padding: 15px 0 15px 0;
 	width: 50%;
 	background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%);
@@ -405,7 +412,7 @@ input[type=radio]:checked {
 	margin: 10vh auto;
 	padding: 50px 0 50px 0;
 	color: white;
-	font-weight: bold;
+	font-weight: bolder;
 	width: 50%;
 	background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%);
 }
