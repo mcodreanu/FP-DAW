@@ -9,52 +9,52 @@
 <body>
     <form action="pag1.html" method="get">
         <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" maxlength="30" required>
+        <input class="basico" type="text" id="nombre" name="nombre" maxlength="30" required>
         <br><br>
         <label for="primer-ap">Primer Apellido:</label>
-        <input type="text" id="primer-ap" name="primer-ap" maxlength="30" required>
+        <input class="basico" type="text" id="primer-ap" name="primer-ap" maxlength="30" required>
         <br><br>
         <label for="segundo-ap">Segundo Apellido:</label>
-        <input type="text" id="segundo-ap" name="segundo-ap" maxlength="30">
+        <input class="basico" type="text" id="segundo-ap" name="segundo-ap" maxlength="30">
         <br><br>
         <label for="dni">DNI:</label>
-        <input type="text" id="dni" name="dni" pattern="[0-9]{8}[A-Za-z]{1}" placeholder="00000000A">
+        <input class="basico" type="text" id="dni" name="dni" pattern="[0-9]{8}[A-Za-z]{1}" placeholder="00000000A">
         <br><br>
         <label for="date">Fecha De Nacimiento:</label>
-        <input type="date" id="date" name="date" max="2005-01-01">
+        <input class="basico" type="date" id="date" name="date" max="2005-01-01">
         <p>Turno:</p>
         <label for="mañana">Mañana</label>
-        <input type="radio" id="mañana" name="turno" value="mañana">
+        <input class="info" type="radio" id="mañana" name="turno" value="mañana">
         <br>
         <label for="tarde">Tarde</label>
-        <input type="radio" id="tarde" name="turno" value="tarde">
+        <input class="info" type="radio" id="tarde" name="turno" value="tarde">
         <p>Beca:</p>
         <label for="no">No</label>
-        <input type="radio" id="no" name="beca" value="no" checked>
+        <input class="info" type="radio" id="no" name="beca" value="no" checked>
         <br>
         <label for="si">Si</label>
-        <input type="radio" id="si" name="beca" value="si">
+        <input class="info" type="radio" id="si" name="beca" value="si">
         <p>Asignaturas:</p>
         <label for="lm">Lenguajes de marcas</label>
-        <input type="checkbox" id="lm" name="lm" checked>
+        <input class="info" type="checkbox" id="lm" name="lm" checked>
         <br>
         <label for="bbd">Bases de Datos</label>
-        <input type="checkbox" id="bbd" name="bbd" checked>
+        <input class="info" type="checkbox" id="bbd" name="bbd" checked>
         <br>
         <label for="prog">Programación</label>
-        <input type="checkbox" id="prog" name="prog" checked>
+        <input class="info" type="checkbox" id="prog" name="prog" checked>
         <br>
         <label for="sis">Sistemas informáticos</label>
-        <input type="checkbox" id="sis" name="sis">
+        <input class="info" type="checkbox" id="sis" name="sis">
         <br>
         <label for="eed">Entornos de desarrollo</label>
-        <input type="checkbox" id="eed" name="eed">
+        <input class="info" type="checkbox" id="eed" name="eed">
         <br>
         <label for="fol">Formación y Orientación Laboral </label>
-        <input type="checkbox" id="fol" name="fol">
+        <input class="info" type="checkbox" id="fol" name="fol">
         <br><br>
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email">
+        <input class="contacto" type="email" id="email" name="email">
         <br><br>
         <label for="pass">Contraseña:</label>
         <input type="password" id="pass" name="pass" minlength="8" maxlength="15">
@@ -63,14 +63,20 @@
         <input type="password" id="pass2" name="pass" minlength="8" maxlength="15">
         <p id="pass-check">Contraseña Correcta</p>
         <label for="doc">Documentación:</label>
-        <input type="file" id="doc" name="doc">
+        <input class="info" type="file" id="doc" name="doc">
         <br><br>
         <label for="observaciones">Observaciones:</label>
-        <input type="textarea" id="observaciones" name="observaciones" row="5" cols="60">
+        <input class="otros" type="textarea" id="observaciones" name="observaciones" row="5" cols="60">
         <br><br>
         <input type="reset" id="reset" name="reset" value="Reset">
         <input type="hidden" id="fase_previa" name="fase_previa">
         <input type="submit" id="submit" name="submit" value="Submit">
     </form>
+    <br>
+    <button onclick="basico()">Basico</button>
+    <button onclick="info()">Info</button>
+    <button onclick="contacto()">Contacto</button>
+
+    <p id="res"></p>
 </body>
 </html>

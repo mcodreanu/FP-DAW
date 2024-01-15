@@ -2,75 +2,66 @@ namespace ChessAPI
 {
     public class State
     {
-        public int obtainDistance(int materialValueW, int materialValueB)
+        public void PintarMarcador(int valorMaterialB,int valorMaterialN)
         {
-            int distance = materialValueW - materialValueB;
-
-            if (distance < 0)
-            {
-                distance = distance * -1;
-            }
-
-            return distance;
+            Console.WriteLine(valorMaterialB + " " +valorMaterialN);
         }
 
-        public void drawState(int distance, int materialValueW, int materialValueB)
+        public int obtainDistance(int valorMaterialB,
+                                  int valorMaterialN)
         {
-            if (distance > 0)
+            int distancia = valorMaterialB - valorMaterialN;
+            if (distancia<0) 
             {
-                string auxTempWinner = "";
-
-                if (materialValueW > materialValueB)
-                {
-                    auxTempWinner = "BLANCAS";
-                }
-                else
-                {
-                    auxTempWinner = "NEGRAS";
-                }
-
-                string wordPoints = "";
-
-                if (distance > 1)
-                {
-                    wordPoints = "puntos";
-                }
-                else
-                {
-                    wordPoints = "punto";
-                }
-
-                Console.WriteLine("Mensaje: van ganando las piezas " + auxTempWinner + " por una distancia de " + distance + " " + wordPoints + ",");
+                distancia = distancia * -1;
             }
+
+            return distancia;
+
         }
 
-        public void test(string board)
+        public void getMaterial(string board)
         {
-            int materialValueW = 0;
-            int materialValueB = 0;
-            string whitePieces = array("P","R","N","B","Q","K");
             
-            for (int row = 0; row < 8; row++)
-            {
-                for (int column = 0; column < 8; column++)
-                {
-                    string[,] values = board[row,column];
+            int valorMaterialPiezasBlancas = 0;
+            int valorMaterialPiezasNegras = 0;
+            string[] whitePieces = {"P", "R", "N", "B","Q","K"};
+            Dictionary<string, int> tablaValorPiezasBlancas = new Dictionary<string, int>(){
+            {"P", 1},
+            {"R", 3},
+            {"N", 3},
+            {"B", 5},
+            {"Q", 9} 
+            };
 
-                    if (values != "vacio" && values != "K" && values != "k")
-                    {
-                        if (whitePieces.Contains(values))
+            Dictionary<string, int> tablaValorPiezasNegras = new Dictionary<string, int>(){
+            {"p", 1},
+            {"r", 3},
+            {"n", 3},
+            {"b", 5},
+            {"q", 9} 
+            };
+
+            for (int row = 0; row < 8; row++ )
+            {
+                for (int column = 0; column < 8; column++ ) 
+                {
+                    string value = board; 
+                    if (value != "8" && value != "R" && value != "r") 
+                    {   
+                        if (whitePieces.Contains(value))
                         {
-                            materialValueW++;
+                            valorMaterialPiezasBlancas+=tablaValorPiezasBlancas[value];
                         }
                         else
                         {
-                            materialValueW++;
+                            valorMaterialPiezasNegras+=tablaValorPiezasNegras[value];
                         }
                     }
                 }
             }
-
-            drawState(materialValueW, materialValueB);
+           
+            int distance = obtainDistance(valorMaterialPiezasBlancas,valorMaterialPiezasNegras); 
         }
     }
 }
