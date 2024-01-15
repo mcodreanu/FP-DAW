@@ -141,7 +141,7 @@
             echo "<h1 class=\"title\">".$title."</h1>";
             echo "<h1>Black: ".$players[$id_player1 - 1]."</h1>";
             echo "<h1>White: ".$players[$id_player2 - 1]."</h1>";
-            echo "<a href=\"../index.php\"><button><i class=\"fa-solid fa-house\"></i></button></a>";
+            echo "<a href=\"welcomeView.php\"><button><i class=\"fa-solid fa-house\"></i></button></a>";
             echo "</div>";
         }
     }
