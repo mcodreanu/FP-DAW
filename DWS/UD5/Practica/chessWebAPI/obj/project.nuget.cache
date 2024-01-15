@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3xF/uxcI9vIObjQDGZ7Khz0NWkyHp1UQ6tFgAZoGQVpvzNuMEUOLQIstfsNM6Le2xav2wB9pglqc7GkEUTwi7w==",
+  "dgSpecHash": "mFOkmLUmaBGHEV+JIYXHMPcMa7cyRzj5ZinjlqgKrueP/3m9LzWFURTH6huTkCKyDsdSfyij1l2TqVZjrqEzYA==",
   "success": true,
-  "projectFilePath": "/home/horabaixa/FP-DAW/DWS/UD5/Practica/chessWebAPI/chess_console.csproj",
+  "projectFilePath": "/home/horabaixa/FP-DAW/DWS/UD5/Practica/chessWebAPI/chessWebAPI.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
