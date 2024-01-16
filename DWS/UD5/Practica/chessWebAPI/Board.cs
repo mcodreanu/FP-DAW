@@ -5,6 +5,7 @@ namespace ChessAPI
     internal class Board
     {
         public Piece[,] board;
+        private string boardString;
         
         public Board()
         {
@@ -38,8 +39,17 @@ namespace ChessAPI
         public Board(string boardString)
         {
             board = new Piece[8, 8];
+            boardString = boardString.Replace("1", "0");
+            boardString = boardString.Replace("2", "00");
+            boardString = boardString.Replace("3", "000");
+            boardString = boardString.Replace("4", "0000");
+            boardString = boardString.Replace("5", "00000");
+            boardString = boardString.Replace("6", "000000");
+            boardString = boardString.Replace("7", "0000000");
+            boardString = boardString.Replace("8", "00000000");
+            boardString = boardString.Replace("/", "");
+
             int pos = 0;
-            int cont = 0;
 
             for (int i = 0; i < board.GetLength(0); i++)
             {               
@@ -105,78 +115,9 @@ namespace ChessAPI
                         board[i,j] = new Pawn(Piece.ColorEnum.WHITE);
                         pos++;
                     }
-                    else if (boardString[pos] == '1')
-                    {
-                        board[i,j] = null;
-                        pos++;
-                    }
-                    else if (boardString[pos] == '2')
-                    {
-                        board[i,j] = null;
-                        cont++;
-                        if (cont == 2)
-                        {
-                            pos++;
-                        }
-                    }
-                    else if (boardString[pos] == '3')
-                    {
-                        board[i,j] = null;
-                        cont++;
-                        if (cont == 3)
-                        {
-                            pos++;
-                        }
-                    }
-                    else if (boardString[pos] == '4')
-                    {
-                        board[i,j] = null;
-                        cont++;
-                        if (cont == 4)
-                        {
-                            pos++;
-                        }
-                    }
-                    else if (boardString[pos] == '5')
-                    {
-                        board[i,j] = null;
-                        cont++;
-                        if (cont == 5)
-                        {
-                            pos++;
-                        }
-                    }
-                    else if (boardString[pos] == '6')
-                    {
-                        board[i,j] = null;
-                        cont++;
-                        if (cont == 6)
-                        {
-                            pos++;
-                        }
-                    }
-                    else if (boardString[pos] == '7')
-                    {
-                        board[i,j] = null;
-                        cont++;
-                        if (cont == 7)
-                        {
-                            pos++;
-                        }
-                    }
-                    else if (boardString[pos] == '8')
-                    {
-                        board[i,j] = null;
-                        cont++;
-                        if (cont == 8)
-                        {
-                            pos++;
-                        }
-                    }
-                    else if (boardString[pos] == '/')
+                    else if (boardString[pos] == '0')
                     {
                         pos++;
-                        continue;
                     }
                 }
             }   
@@ -186,8 +127,6 @@ namespace ChessAPI
         {
             return board[row, column];
         }
-
-
         
         public void Move(Movement movement)
         {
@@ -270,5 +209,11 @@ namespace ChessAPI
             }   
             return result;
         }
+
+        public void SetBoardString(string value)
+        {
+            this.boardString = value;
+        }
+
     }
 }

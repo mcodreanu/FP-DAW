@@ -6,7 +6,7 @@
         {
             Console.WriteLine("Begin Chess Console Test...");
 
-            string board = "r3r1k1/pp3nPp/1b1p1B2/1q1P1N2/P4Q2/P4Q2/1P3Pk1/R6R";
+            string board = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
 
             ChessGame chess = new ChessGame(board);
 
