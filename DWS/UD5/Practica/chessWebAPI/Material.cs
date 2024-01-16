@@ -1,19 +1,19 @@
 namespace ChessAPI
 {
-    public class State
+    public class Material
     {
         private int materialValueWhite = 0;
         private int materialValueBlack = 0;
         private string distanceMsg = "";
 
-        public State(int materialValueWhite, int materialValueBlack, string distanceMsg)
+        public Material(int materialValueWhite, int materialValueBlack, string distanceMsg)
         {
             this.materialValueWhite = materialValueWhite;
             this.materialValueBlack = materialValueBlack;
             this.distanceMsg = distanceMsg;
         }
 
-        public State getMaterial(string[,] board)
+        public Material getMaterial(string[,] board)
         {
             string[] whitePieces = {"P", "R", "N", "B","Q","K"};
             Dictionary<string, int> valueWhiteTable = new Dictionary<string, int>(){
@@ -86,7 +86,7 @@ namespace ChessAPI
                 }
             }
 
-            State state = new State(materialValueWhite, materialValueBlack, distanceMsg);
+            Material state = new Material(materialValueWhite, materialValueBlack, distanceMsg);
 
             return state;
         }

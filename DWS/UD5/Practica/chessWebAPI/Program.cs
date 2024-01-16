@@ -4,24 +4,15 @@
     {
         static void Main(string[] args)
         {
-            State state = new State(0,0,"");
+            Console.WriteLine("Begin Chess Console Test...");
 
-            string[,] board = {
-            {"r","n","b","q","k","b","n","r"},
-            {"p","p","p","0","p","p","p","p"},
-            {"0","0","0","0","0","0","0","0"},
-            {"0","0","0","0","0","0","0","0"},
-            {"0","0","0","0","0","0","0","0"},
-            {"0","0","0","0","0","0","0","0"},
-            {"P","0","P","P","P","P","0","P"},
-            {"R","N","B","0","K","0","N","R"},
-            };
+            string board = "r3r1k1/pp3nPp/1b1p1B2/1q1P1N2/P4Q2/P4Q2/1P3Pk1/R6R";
 
-            state.getMaterial(board);
+            ChessGame chess = new ChessGame(board);
 
-            Console.WriteLine("White:" + state.MaterialValueWhite);
-            Console.WriteLine("Black:" + state.MaterialValueBlack);
-            Console.WriteLine(state.DistanceMsg);
+            chess.DrawBoard();
+
+            Console.WriteLine("End. Chess Console Test...");
         }
     }
 }
