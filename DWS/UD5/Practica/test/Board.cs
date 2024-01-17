@@ -212,5 +212,65 @@ namespace ChessAPI
 
             return result;
         }
+
+        public Material CalculateMaterial()
+        {
+            int materialValueWhite = 0;
+            int materialValueBlack = 0;
+            string[] whitePieces = {"|PAWH|", "|ROWH|", "|KNWH|", "|BIWH|","|QUWH|","|KIWH|"};
+
+            for (int row = 0; row < 8; row++)
+            {
+                for (int column = 0; column < 8; column++)
+                {
+                    Piece piece = board[row, column];
+
+                    string pieceCode = "";
+
+                    if(piece != null)
+                    {
+                        pieceCode = piece.GetCode();
+                    }
+
+                    if (piece != null && pieceCode != "|KIBL|" && pieceCode != "|KIWH|")
+                    {
+                        int pieceValue = piece.GetScore();
+
+                        if (whitePieces.Contains(pieceCode))
+                        {
+                            materialValueWhite += pieceValue;
+                        }
+                        else
+                        {
+                            materialValueBlack += pieceValue;
+                        }
+                    }
+                }
+            }
+
+            int distance = Math.Abs(materialValueWhite - materialValueBlack);
+            string message = GenerateMessage(materialValueWhite, materialValueBlack, distance);
+
+            return new Material(materialValueWhite, materialValueBlack, message);
+        }
+
+        private static string GenerateMessage(int whiteValue, int blackValue, int distance)
+        {
+            if (distance > 0)
+            {
+                string plural = distance > 1 ? "points" : "point";
+
+                if (whiteValue > blackValue)
+                {
+                    return $"White is winning by {distance} {plural}.";
+                }
+                else if (whiteValue < blackValue)
+                {
+                    return $"Black is winning by {distance} {plural}.";
+                }
+            }
+
+            return string.Empty;
+        }
     }
 }

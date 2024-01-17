@@ -4,13 +4,11 @@ namespace ChessAPI
     {
         private Board board;
         private string boardString;
-        /*private Material material;*/
 
         public ChessGame()
         {
             this.boardString = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
             board = new Board(this.boardString);
-           /* UpdateMaterial();*/
         }
 
         public void DrawBoard()
@@ -36,19 +34,11 @@ namespace ChessAPI
         {
             this.boardString = value;
             this.board = new Board(this.boardString);
-            /*UpdateMaterial();*/
-        }
-/*
-        private void UpdateMaterial()
-        {
-            material = material.CalculateMaterial(this.boardString);
         }
 
-        public void DisplayMaterialScore()
+        public Material CalculateMaterial()
         {
-            Console.WriteLine($"Material for White: {material.GetMaterialValueWhite}");
-            Console.WriteLine($"Material for Black: {material.GetMaterialValueBlack}");
-            Console.WriteLine($"Distance Message: {material.GetDistanceMsg}");
-        }*/
+            return this.board.CalculateMaterial();
+        }
     }
 }
