@@ -3,11 +3,14 @@ namespace ChessAPI
     internal class ChessGame
     {
         private Board board;
+        private string boardString;
+        /*private Material material;*/
 
-
-        public ChessGame(string boardString)
+        public ChessGame()
         {
-            board = new Board(boardString);
+            this.boardString = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
+            board = new Board(this.boardString);
+           /* UpdateMaterial();*/
         }
 
         public void DrawBoard()
@@ -26,8 +29,26 @@ namespace ChessAPI
 
         public string GetBoardAsStringToChessWeb()
         {
-            return board.GetBoardState();
+            return this.board.GetBoardState();
         }
 
+        public void SetBoardString(string value)
+        {
+            this.boardString = value;
+            this.board = new Board(this.boardString);
+            /*UpdateMaterial();*/
+        }
+/*
+        private void UpdateMaterial()
+        {
+            material = material.CalculateMaterial(this.boardString);
+        }
+
+        public void DisplayMaterialScore()
+        {
+            Console.WriteLine($"Material for White: {material.GetMaterialValueWhite}");
+            Console.WriteLine($"Material for Black: {material.GetMaterialValueBlack}");
+            Console.WriteLine($"Distance Message: {material.GetDistanceMsg}");
+        }*/
     }
 }

@@ -8,19 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "/home/horabaixa/.nuget/packages/": {}
+    "C:\\Users\\mihai\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/horabaixa/FP-DAW/DWS/UD5/Practica/chessWebAPI/chessWebAPI.csproj",
+      "projectUniqueName": "C:\\Users\\mihai\\Documents\\GitHub\\FP-DAW\\DWS\\UD5\\Practica\\chessWebAPI\\chessWebAPI.csproj",
       "projectName": "chessWebAPI",
-      "projectPath": "/home/horabaixa/FP-DAW/DWS/UD5/Practica/chessWebAPI/chessWebAPI.csproj",
-      "packagesPath": "/home/horabaixa/.nuget/packages/",
-      "outputPath": "/home/horabaixa/FP-DAW/DWS/UD5/Practica/chessWebAPI/obj/",
+      "projectPath": "C:\\Users\\mihai\\Documents\\GitHub\\FP-DAW\\DWS\\UD5\\Practica\\chessWebAPI\\chessWebAPI.csproj",
+      "packagesPath": "C:\\Users\\mihai\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mihai\\Documents\\GitHub\\FP-DAW\\DWS\\UD5\\Practica\\chessWebAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/horabaixa/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\mihai\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -49,7 +49,8 @@
           "net47",
           "net471",
           "net472",
-          "net48"
+          "net48",
+          "net481"
         ],
         "assetTargetFallback": true,
         "warn": true,
@@ -58,7 +59,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/6.0.126/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.415\\RuntimeIdentifierGraph.json"
       }
     }
   }

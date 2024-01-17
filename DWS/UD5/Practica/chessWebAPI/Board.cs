@@ -5,7 +5,6 @@ namespace ChessAPI
     internal class Board
     {
         public Piece[,] board;
-        private string boardString;
         
         public Board()
         {
@@ -171,49 +170,47 @@ namespace ChessAPI
 
             Dictionary<string, string> fenDictionary = new Dictionary<string, string>()
             {
-                {"|KNBL|", "n"},  {"|KIBL|", "k"}, {"|PABL|", "p"},
-                {"|BIBL|", "b"},  {"|QUBL|", "q"}, {"|ROBL|", "r"},
-                {"|KNWH|", "N"},  {"|KIWH|", "K"}, {"|PAWH|", "P"},
-                {"|BIWH|", "B"},  {"|QUWH|", "Q"}, {"|ROWH|", "R"}
+                {"|KNBL|", "n"}, {"|KIBL|", "k"}, {"|PABL|", "p"},
+                {"|BIBL|", "b"}, {"|QUBL|", "q"}, {"|ROBL|", "r"},
+                {"|KNWH|", "N"}, {"|KIWH|", "K"}, {"|PAWH|", "P"},
+                {"|BIWH|", "B"}, {"|QUWH|", "Q"}, {"|ROWH|", "R"}
             };
 
             int countEmpty = 0;
-            int countRows = 0;
 
-            for (var i = 0; i < board.GetLength(0); i++)
-            {               
-                for (var j = 0; j < board.GetLength(1); j++)
+            for (int i = 0; i < board.GetLength(0); i++)
+            {
+                for (int j = 0; j < board.GetLength(1); j++)
                 {
-                    if (board[i,j] != null)
+                    if (board[i, j] != null)
                     {
-                        result += $"{fenDictionary[board[i, j].GetCode()]}";
-                        countRows++;
-                    }                
+                        if (countEmpty > 0)
+                        {
+                            result += countEmpty.ToString();
+                            countEmpty = 0;
+                        }
+
+                        result += fenDictionary[board[i, j].GetCode()];
+                    }
                     else
                     {
                         countEmpty++;
-                    } 
-
-                    if (countRows == 8)
-                    {
-                        countRows = 0;
-                        result += "/";
-                    }   
-
-                    if (countEmpty == 8)
-                    {
-                        countEmpty = 0;
-                        result += "8/";
                     }
                 }
-            }   
+
+                if (countEmpty > 0)
+                {
+                    result += countEmpty.ToString();
+                    countEmpty = 0;
+                }
+
+                if (i < board.GetLength(0) - 1)
+                {
+                    result += '/';
+                }
+            }
+
             return result;
         }
-
-        public void SetBoardString(string value)
-        {
-            this.boardString = value;
-        }
-
     }
 }
