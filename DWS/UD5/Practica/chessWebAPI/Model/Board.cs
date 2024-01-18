@@ -1,6 +1,6 @@
-using ChessAPI.Model;
+using Pieces;
 
-namespace ChessAPI
+namespace Model
 {
     internal class Board
     {

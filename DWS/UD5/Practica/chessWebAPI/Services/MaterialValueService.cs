@@ -1,8 +1,8 @@
 using Model;
 
-public class MaterialValue : IMaterialValue
+internal class MaterialValue : IMaterialValue
 {
-    public MaterialValue CalculateMaterial()
+    public Material CalculateMaterial()
     {
         return Model.ChessGame.CalculateMaterial();
     }

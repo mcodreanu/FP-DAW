@@ -1,6 +1,6 @@
 using Model;
 
-public interface IMaterialValue
+internal interface IMaterialValue
 {
     Material CalculateMaterial();
 }

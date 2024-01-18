@@ -1,4 +1,4 @@
-namespace ChessAPI
+namespace Model
 {
     public class Movement
     {

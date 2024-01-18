@@ -1,4 +1,6 @@
-namespace ChessAPI.Model
+using Model;
+
+namespace Pieces
 {
     public class Queen : Piece
     {

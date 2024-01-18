@@ -1,4 +1,4 @@
-namespace ChessAPI
+namespace Model
 {
     internal class ChessGame
     {

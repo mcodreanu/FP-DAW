@@ -5,7 +5,7 @@ namespace TodoApi.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class MaterialController : ControllerBase
+internal class MaterialController : ControllerBase
 {
     private IMaterialValue _materialService;
 
@@ -19,7 +19,7 @@ public class MaterialController : ControllerBase
     {
         try
         {
-            OperationResult operationResult = new OperationResult();
+            MaterialValue operationResult = new MaterialValue();
             operationResult.Result = this._materialService.CalculateMaterial();
             return Ok(operationResult);
         }   

@@ -3,16 +3,26 @@ function basico() {
 
     let datos = document.getElementsByClassName("basico");
 
-    res.innerHTML = "Basico: " + datos[0].innerHTML;
-    console.log(datos.innerHTML);
+    res.innerHTML = "Basico: <br>";
+
+    for (let i = 0; i < datos.length; i++) {
+        res.innerHTML += datos[i].value + "<br>";
+    }
 }
 
-function info() {
+function academicos() {
     let res = document.getElementById("res");
 
     let datos = document.getElementsByClassName("info");
 
-    res.innerHTML = "Info: " + datos[0].innerHTML;
+    res.innerHTML = "Academicos: <br>";
+
+    for (let i = 0; i < datos.length; i++) {
+        if (document.getElementsByClassName("info").checked)
+        {
+            res.innerHTML += datos[i].value + "<br>";
+        }
+    }
 }
 
 function contacto() {
@@ -20,5 +30,9 @@ function contacto() {
 
     let datos = document.getElementsByClassName("contacto");
 
-    res.innerHTML = "Contacto: " + datos[0].innerHTML;
+    res.innerHTML = "Contacto: <br>";
+
+    for (let i = 0; i < datos.length; i++) {
+        res.innerHTML += datos[i].value + "<br>";
+    }
 }
