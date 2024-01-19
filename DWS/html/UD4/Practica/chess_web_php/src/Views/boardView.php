@@ -4,6 +4,8 @@
         {
             header("Location: ../index.php");
         }
+        ini_set('display_errors', 'On');
+ini_set('html_errors', 0);
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +20,7 @@
 
 <body>
 <?php
-    $board = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
+    $board = "rnbqkbnr/pp1ppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
 
     function insertMatches() 
     {
@@ -89,11 +91,15 @@
         DrawDeadBlack($numPieces);
         echo "</div>";
 
-        DrawInfo();
+        DrawInfo($board);
     }
 
-    function DrawInfo()
+    function DrawInfo($board)
     {
+        require("../Infrastructure/apiDAL.php");
+        $apiDAL = new apiDAL();
+        $apiData = $apiDAL->obtain($board);
+
         if (isset($_GET['id_match']))
         {
             require("../Business/matchesBL.php");    
@@ -125,8 +131,9 @@
 
             echo"<div class=\"info-container\">";
             echo "<h1 class=\"title\">".$title."</h1>";
-            echo "<h1>Black: ".$players[$player_black - 1]."</h1>";
-            echo "<h1>White: ".$players[$player_white - 1]."</h1>";
+            echo "<h1>Black: ".$players[$player_black - 1]." - ".$apiData["materialValueBlack"]."</h1>";
+            echo "<h1>White: ".$players[$player_white - 1]." - ".$apiData["materialValueWhite"]."</h1>";
+            echo "<h1>".$apiData["distanceMsg"]."</h1>";
             DrawHistoryButtons();
             echo "</div>";
         } 
@@ -147,8 +154,9 @@
 
             echo"<div class=\"info-container\">";
             echo "<h1 class=\"title\">".$title."</h1>";
-            echo "<h1>Black: ".$players[$id_player1 - 1]."</h1>";
-            echo "<h1>White: ".$players[$id_player2 - 1]."</h1>";
+            echo "<h1>Black: ".$players[$id_player1 - 1]." - ".$apiData["materialValueBlack"]."</h1>";
+            echo "<h1>White: ".$players[$id_player2 - 1]." - ".$apiData["materialValueWhite"]."</h1>";
+            echo "<h1>".$apiData["distanceMsg"]."</h1>";
             echo "<a href=\"welcomeView.php\"><button><i class=\"fa-solid fa-house\"></i></button></a>";
             echo "</div>";
         }

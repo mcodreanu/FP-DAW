@@ -38,15 +38,15 @@ class StatesBL
     {
         $statesDAL = new StatesDAL();
         $rs = $statesDAL->obtain($id_match);
-		$listaStates =  array();
+		$statesList =  array();
         foreach ($rs as $states)
         {
-            $oStatesReglasNegocio = new StatesBL();
-            $oStatesReglasNegocio->Init($states['ID'],$states['IDGame'], $states['board']);
-            array_push($listaStates,$oStatesReglasNegocio);
+            $oStatesBL = new StatesBL();
+            $oStatesBL->Init($states['ID'],$states['IDGame'], $states['board']);
+            array_push($statesList,$oStatesBL);
         }
         
-        return $listaStates;
+        return $statesList;
     }
 
     function insert()

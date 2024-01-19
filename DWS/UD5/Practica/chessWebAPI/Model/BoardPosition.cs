@@ -1,17 +1,9 @@
-namespace Model
+namespace ChessAPI.Model
 {
     public class BoardPosition
     {
         private int _row;
         private int _column;
-
-        public bool ValidateBoardPosition()
-        {
-            if (ValidateRangeNumber(_row) && ValidateRangeNumber(_column))
-                return true;
-
-            return false;
-        }
 
         public int Row
         {

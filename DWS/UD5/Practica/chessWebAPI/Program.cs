@@ -6,7 +6,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddScoped<IMaterialValue, MaterialValue>();
+
+builder.Services.AddScoped<IBoardService, BoardService>();
 
 var app = builder.Build();
 

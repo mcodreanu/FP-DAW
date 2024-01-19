@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "FijhM6o/OIKt+6brOnsYdr5FhwRMY4V7vIDbcJELnF4=",
-  "Source": "chessWebAPI",
-  "BasePath": "_content/chessWebAPI",
+  "Hash": "I3W7eyaw5a+ufZoJdofBbxn94E9MCd91ncc46FxvGOc=",
+  "Source": "ChessAPI",
+  "BasePath": "_content/ChessAPI",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],

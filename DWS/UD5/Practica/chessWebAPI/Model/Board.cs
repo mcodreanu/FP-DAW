@@ -1,219 +1,101 @@
-using Pieces;
-
-namespace Model
+namespace ChessAPI.Model
 {
-    internal class Board
+    public class Board
     {
-        public Piece[,] board;
-        
-        public Board()
+        private Piece[,] _boardPieces;
+        //+Borrame
+        private string dummy_board; //Cadena de prueba para verificar la longitud de la cadena recibida.
+        //-Borrame
+
+        public Board(string board)
         {
-            board = new Piece[8, 8];
-    
-            board[0,0] = new Rook(Piece.ColorEnum.BLACK);
-            board[0,1] = new Knight(Piece.ColorEnum.BLACK);
-            board[0,2] = new Bishop(Piece.ColorEnum.BLACK); 
-            board[0,3] = new King(Piece.ColorEnum.BLACK);
-            board[0,4] = new Queen(Piece.ColorEnum.BLACK);
-            board[0,5] = new Bishop(Piece.ColorEnum.BLACK);
-            board[0,6] = new Knight(Piece.ColorEnum.BLACK);
-            board[0,7] = new Rook(Piece.ColorEnum.BLACK);
-
-            for (int i = 0; i < 8; i++)
-            {
-                board[1,i] = new Pawn(Piece.ColorEnum.BLACK);
-                board[6,i] = new Pawn(Piece.ColorEnum.WHITE); 
-            }
-
-            board[7,0] = new Rook(Piece.ColorEnum.WHITE);
-            board[7,1] = new Knight(Piece.ColorEnum.WHITE);
-            board[7,2] = new Bishop(Piece.ColorEnum.WHITE);
-            board[7,3] = new King(Piece.ColorEnum.WHITE);
-            board[7,4] = new Queen(Piece.ColorEnum.WHITE);
-            board[7,5] = new Bishop(Piece.ColorEnum.WHITE);
-            board[7,6] = new Knight(Piece.ColorEnum.WHITE);
-            board[7,7] = new Rook(Piece.ColorEnum.WHITE);
-        }
-
-        public Board(string boardString)
-        {
-            board = new Piece[8, 8];
-            boardString = boardString.Replace("1", "0");
-            boardString = boardString.Replace("2", "00");
-            boardString = boardString.Replace("3", "000");
-            boardString = boardString.Replace("4", "0000");
-            boardString = boardString.Replace("5", "00000");
-            boardString = boardString.Replace("6", "000000");
-            boardString = boardString.Replace("7", "0000000");
-            boardString = boardString.Replace("8", "00000000");
-            boardString = boardString.Replace("/", "");
+            _boardPieces = new Piece[8, 8];
+            board = board.Replace("1", "0");
+            board = board.Replace("2", "00");
+            board = board.Replace("3", "000");
+            board = board.Replace("4", "0000");
+            board = board.Replace("5", "00000");
+            board = board.Replace("6", "000000");
+            board = board.Replace("7", "0000000");
+            board = board.Replace("8", "00000000");
+            board = board.Replace("/", "");
 
             int pos = 0;
 
-            for (int i = 0; i < board.GetLength(0); i++)
+            for (int i = 0; i < _boardPieces.GetLength(0); i++)
             {               
-                for (int j = 0; j < board.GetLength(1); j++)
+                for (int j = 0; j < _boardPieces.GetLength(1); j++)
                 {
-                    if (boardString[pos] == 'r')
+                    if (board[pos] == 'r')
                     {
-                        board[i,j] = new Rook(Piece.ColorEnum.BLACK);
+                        _boardPieces[i,j] = new Rook(Piece.ColorEnum.BLACK);
                         pos++;
                     }
-                    else if (boardString[pos] == 'n')
+                    else if (board[pos] == 'n')
                     {
-                        board[i,j] = new Knight(Piece.ColorEnum.BLACK);
+                        _boardPieces[i,j] = new Knight(Piece.ColorEnum.BLACK);
                         pos++;
                     }
-                    else if (boardString[pos] == 'b')
+                    else if (board[pos] == 'b')
                     {
-                        board[i,j] = new Bishop(Piece.ColorEnum.BLACK);
+                        _boardPieces[i,j] = new Bishop(Piece.ColorEnum.BLACK);
                         pos++;
                     }
-                    else if (boardString[pos] == 'q')
+                    else if (board[pos] == 'q')
                     {
-                        board[i,j] = new Queen(Piece.ColorEnum.BLACK);
+                        _boardPieces[i,j] = new Queen(Piece.ColorEnum.BLACK);
                         pos++;
                     }
-                    else if (boardString[pos] == 'k')
+                    else if (board[pos] == 'k')
                     {
-                        board[i,j] = new King(Piece.ColorEnum.BLACK);
+                        _boardPieces[i,j] = new King(Piece.ColorEnum.BLACK);
                         pos++;
                     }
-                    else if (boardString[pos] == 'p')
+                    else if (board[pos] == 'p')
                     {
-                        board[i,j] = new Pawn(Piece.ColorEnum.BLACK);
+                        _boardPieces[i,j] = new Pawn(Piece.ColorEnum.BLACK);
                         pos++;
                     }
-                    else if (boardString[pos] == 'R')
+                    else if (board[pos] == 'R')
                     {
-                        board[i,j] = new Rook(Piece.ColorEnum.WHITE);
+                        _boardPieces[i,j] = new Rook(Piece.ColorEnum.WHITE);
                         pos++;
                     }
-                    else if (boardString[pos] == 'N')
+                    else if (board[pos] == 'N')
                     {
-                        board[i,j] = new Knight(Piece.ColorEnum.WHITE);
+                        _boardPieces[i,j] = new Knight(Piece.ColorEnum.WHITE);
                         pos++;
                     }
-                    else if (boardString[pos] == 'B')
+                    else if (board[pos] == 'B')
                     {
-                        board[i,j] = new Bishop(Piece.ColorEnum.WHITE);
+                        _boardPieces[i,j] = new Bishop(Piece.ColorEnum.WHITE);
                         pos++;
                     }
-                    else if (boardString[pos] == 'Q')
+                    else if (board[pos] == 'Q')
                     {
-                        board[i,j] = new Queen(Piece.ColorEnum.WHITE);
+                        _boardPieces[i,j] = new Queen(Piece.ColorEnum.WHITE);
                         pos++;
                     }
-                    else if (boardString[pos] == 'K')
+                    else if (board[pos] == 'K')
                     {
-                        board[i,j] = new King(Piece.ColorEnum.WHITE);
+                        _boardPieces[i,j] = new King(Piece.ColorEnum.WHITE);
                         pos++;
                     }
-                    else if (boardString[pos] == 'P')
+                    else if (board[pos] == 'P')
                     {
-                        board[i,j] = new Pawn(Piece.ColorEnum.WHITE);
+                        _boardPieces[i,j] = new Pawn(Piece.ColorEnum.WHITE);
                         pos++;
                     }
-                    else if (boardString[pos] == '0')
+                    else if (board[pos] == '0')
                     {
                         pos++;
                     }
-                }
-            }   
-        }
-
-        public Piece GetPiece(int row, int column)
-        {
-            return board[row, column];
-        }
-        
-        public void Move(Movement movement)
-        {
-            if (movement.IsValid())
-            {
-                _Move(movement);
-            }
-        }
-        
-        private void _Move(Movement movement)
-        {
-            int GetToBoardPositionColumn = movement.GetToBoardPositionColumn();
-            int GetToBoardPositionRow = movement.GetToBoardPositionRow();
-            int GetFromBoardPositionColumn = movement.GetFromBoardPositionColumn();
-            int GetFromBoardPositionRow = movement.GetFromBoardPositionRow();
-
-            board[GetToBoardPositionColumn,GetToBoardPositionRow] = board[GetFromBoardPositionColumn,GetFromBoardPositionRow];
-
-            board[GetFromBoardPositionColumn,GetFromBoardPositionRow] = null;
-        }
-
-        public void Draw()
-        {
-            for (int i = 0; i < board.GetLength(0); i++)
-            {
-                for (int j = 0; j < board.GetLength(1); j++)
-                {
-                    if (board[i,j] != null)
-                        Console.Write(board[i,j].GetCode());   
-                    else if ((i+j) % 2 == 0)
-                        Console.Write("|0000|"); 
-                    else
-                        Console.Write("|####|");
-                }
-                Console.WriteLine();
-            }
-        }
-
-        public string GetBoardState()
-        {
-            string result = string.Empty;
-
-            Dictionary<string, string> fenDictionary = new Dictionary<string, string>()
-            {
-                {"|KNBL|", "n"}, {"|KIBL|", "k"}, {"|PABL|", "p"},
-                {"|BIBL|", "b"}, {"|QUBL|", "q"}, {"|ROBL|", "r"},
-                {"|KNWH|", "N"}, {"|KIWH|", "K"}, {"|PAWH|", "P"},
-                {"|BIWH|", "B"}, {"|QUWH|", "Q"}, {"|ROWH|", "R"}
-            };
-
-            int countEmpty = 0;
-
-            for (int i = 0; i < board.GetLength(0); i++)
-            {
-                for (int j = 0; j < board.GetLength(1); j++)
-                {
-                    if (board[i, j] != null)
-                    {
-                        if (countEmpty > 0)
-                        {
-                            result += countEmpty.ToString();
-                            countEmpty = 0;
-                        }
-
-                        result += fenDictionary[board[i, j].GetCode()];
-                    }
-                    else
-                    {
-                        countEmpty++;
-                    }
-                }
-
-                if (countEmpty > 0)
-                {
-                    result += countEmpty.ToString();
-                    countEmpty = 0;
-                }
-
-                if (i < board.GetLength(0) - 1)
-                {
-                    result += '/';
                 }
             }
+        } 
 
-            return result;
-        }
-
-        public Material CalculateMaterial()
+        //TODO Cambiar este método que devuelva el objeto requerido en la práctica 
+        public BoardScore GetScore()
         {
             int materialValueWhite = 0;
             int materialValueBlack = 0;
@@ -223,7 +105,7 @@ namespace Model
             {
                 for (int column = 0; column < 8; column++)
                 {
-                    Piece piece = board[row, column];
+                    Piece piece = _boardPieces[row, column];
 
                     string pieceCode = "";
 
@@ -251,7 +133,7 @@ namespace Model
             int distance = Math.Abs(materialValueWhite - materialValueBlack);
             string message = GenerateMessage(materialValueWhite, materialValueBlack, distance);
 
-            return new Material(materialValueWhite, materialValueBlack, message);
+            return new BoardScore(materialValueWhite, materialValueBlack, message);
         }
 
         private static string GenerateMessage(int whiteValue, int blackValue, int distance)

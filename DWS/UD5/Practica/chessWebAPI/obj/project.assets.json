@@ -426,9 +426,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/horabaixa/FP-DAW/DWS/UD5/Practica/chessWebAPI/chessWebAPI.csproj",
-      "projectName": "chessWebAPI",
-      "projectPath": "/home/horabaixa/FP-DAW/DWS/UD5/Practica/chessWebAPI/chessWebAPI.csproj",
+      "projectUniqueName": "/home/horabaixa/FP-DAW/DWS/UD5/Practica/chessWebAPI/ChessAPI.csproj",
+      "projectName": "ChessAPI",
+      "projectPath": "/home/horabaixa/FP-DAW/DWS/UD5/Practica/chessWebAPI/ChessAPI.csproj",
       "packagesPath": "/home/horabaixa/.nuget/packages/",
       "outputPath": "/home/horabaixa/FP-DAW/DWS/UD5/Practica/chessWebAPI/obj/",
       "projectStyle": "PackageReference",
