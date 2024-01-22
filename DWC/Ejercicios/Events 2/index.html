@@ -8,9 +8,9 @@
 <body>
     <p id="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis molestiae laudantium provident libero consectetur cupiditate veniam quam, excepturi animi magnam deserunt dolorem esse, aperiam voluptatibus nisi! Vitae accusamus odit error.</p>
     <button id="btn-aplicar">Aplicar</button>
-    <button id="btn-negrita"><b>Negrita</b></button>
-    <button id="btn-italic"><i>Italic</i></button>
-    <button id="btn-color" style="color: red">Color</button>
+    <button id="btn-negrita" style="background-color: white; color: black; border: 1px solid black;;"><b>Negrita</b></button>
+    <button id="btn-italic" style="background-color: white; color: black; border: 1px solid black;;"><i>Italic</i></button>
+    <button id="btn-color" style="background-color: white; color: black; border: 1px solid black;">Color</button>
     <button id="btn-reset" style="background-color: black; color: white;">Reset</button>
 
     <script>
@@ -27,24 +27,36 @@
         btnNegrita.addEventListener("click", function() {
             if (setNegrita === 0) {
                 setNegrita = 1;
+                btnNegrita.style.color = "white";
+                btnNegrita.style.backgroundColor = "black";
             } else {
                 setNegrita = 0;
+                btnNegrita.style.color = "black";
+                btnNegrita.style.backgroundColor = "white";
             }
         });
 
         btnItalic.addEventListener("click", function() {
             if (setItalic === 0) {
                 setItalic = 1;
+                btnItalic.style.color = "white";
+                btnItalic.style.backgroundColor = "black";
             } else {
                 setItalic = 0;
+                btnItalic.style.color = "black";
+                btnItalic.style.backgroundColor = "white";
             }
         });
 
         btnColor.addEventListener("click", function() {
             if (setColor === 0) {
                 setColor = 1;
+                btnColor.style.color = "white";
+                btnColor.style.backgroundColor = "black";
             } else {
                 setColor = 0;
+                btnColor.style.color = "black";
+                btnColor.style.backgroundColor = "white";
             }
         });
 
