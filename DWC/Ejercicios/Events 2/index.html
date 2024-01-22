@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+</head>
+<body>
+    <p id="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis molestiae laudantium provident libero consectetur cupiditate veniam quam, excepturi animi magnam deserunt dolorem esse, aperiam voluptatibus nisi! Vitae accusamus odit error.</p>
+    <button id="btn-aplicar">Aplicar</button>
+    <button id="btn-negrita"><b>Negrita</b></button>
+    <button id="btn-italic"><i>Italic</i></button>
+    <button id="btn-color" style="color: red">Color</button>
+    <button id="btn-reset" style="background-color: black; color: white;">Reset</button>
+
+    <script>
+        let text = document.getElementById("text");
+        const btnAplicar = document.getElementById("btn-aplicar");
+        const btnNegrita = document.getElementById("btn-negrita");
+        const btnItalic = document.getElementById("btn-italic");
+        const btnColor = document.getElementById("btn-color");
+        const btnReset = document.getElementById("btn-reset");
+        let setNegrita = 0;
+        let setItalic = 0;
+        let setColor = 0;
+
+        btnNegrita.addEventListener("click", function() {
+            if (setNegrita === 0) {
+                setNegrita = 1;
+            } else {
+                setNegrita = 0;
+            }
+        });
+
+        btnItalic.addEventListener("click", function() {
+            if (setItalic === 0) {
+                setItalic = 1;
+            } else {
+                setItalic = 0;
+            }
+        });
+
+        btnColor.addEventListener("click", function() {
+            if (setColor === 0) {
+                setColor = 1;
+            } else {
+                setColor = 0;
+            }
+        });
+
+        btnAplicar.addEventListener("click", function() {
+            if (setNegrita === 1) {
+                text.style.fontWeight = "bold";
+            } else {
+                text.style.fontWeight = "normal";
+            }
+            if (setItalic === 1) {
+                text.style.fontStyle = "italic";
+            } else {
+                text.style.fontStyle = "normal";
+            }
+            if (setColor === 1) {
+                text.style.color = "red";
+            } else {
+                text.style.color = "black";
+            }
+        });
+
+        btnReset.addEventListener("click", function() {
+            text.style.fontWeight = "normal";
+            text.style.fontStyle = "normal";
+            text.style.color = "black";
+            setNegrita = 0;
+            setItalic = 0;
+            setColor = 0;
+        });
+    </script>
+</body>
+</html>
