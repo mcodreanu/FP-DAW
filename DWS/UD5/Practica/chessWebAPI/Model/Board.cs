@@ -3,9 +3,6 @@ namespace ChessAPI.Model
     public class Board
     {
         private Piece[,] _boardPieces;
-        //+Borrame
-        private string dummy_board; //Cadena de prueba para verificar la longitud de la cadena recibida.
-        //-Borrame
 
         public Board(string board)
         {
@@ -94,7 +91,6 @@ namespace ChessAPI.Model
             }
         } 
 
-        //TODO Cambiar este método que devuelva el objeto requerido en la práctica 
         public BoardScore GetScore()
         {
             int materialValueWhite = 0;
