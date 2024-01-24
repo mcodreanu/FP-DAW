@@ -43,11 +43,19 @@ let currentCell;
 window.addEventListener("DOMContentLoaded", (event) => {
     const el = document.getElementsByClassName("piece");
     if (el) {
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				document.getElementById("txtHint").innerHTML = this.responseText;
+			}
+		};
+		xmlhttp.open("GET", "boardView.php", true);
+		xmlhttp.send();
 		for (var i = 0; i < el.length; i++) { 
 			el[i].onclick = function(){
 				getCell(this);
 			};
-		 }
+		}
     }
 });
 

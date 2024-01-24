@@ -151,7 +151,7 @@ namespace ChessAPI.Model
             return string.Empty;
         }
 
-        public bool Move(int fromRow, int fromColumn, int toRow, int toColumn)
+        public MoveData Move(int fromRow, int fromColumn, int toRow, int toColumn)
         {
             Movement move = new Movement(fromRow, fromColumn, toRow, toColumn);
             Piece piece = _boardPieces[move.fromColumn, move.fromRow];
@@ -163,11 +163,11 @@ namespace ChessAPI.Model
                     _boardPieces[toColumn, toRow] = _boardPieces[fromColumn, fromRow];
                     _boardPieces[fromColumn, fromRow] = null;
 
-                    return true;
+                    return new MoveData(true, GetBoardState());
                 }
             }
 
-            return false;
+            return new MoveData(false, GetBoardState());
         }
 
         public string GetBoardState()

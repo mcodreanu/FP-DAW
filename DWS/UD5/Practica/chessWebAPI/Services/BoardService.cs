@@ -10,7 +10,7 @@ public class BoardService : IBoardService
         return score;
     }
     
-    public bool Validate(string board, int fromRow, int fromColumn, int toRow, int toColumn)
+    public MoveData Validate(string board, int fromRow, int fromColumn, int toRow, int toColumn)
     {
         Board b  = new Board(board);
         var move = b.Move(fromRow, fromColumn, toRow, toColumn);

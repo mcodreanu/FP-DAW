@@ -1,11 +1,11 @@
 <?php
-        session_start();
-        if (!isset($_SESSION['name']))
-        {
-            header("Location: ../index.php");
-        }
-        ini_set('display_errors', 'On');
-ini_set('html_errors', 0);
+    session_start();
+    if (!isset($_SESSION['name']))
+    {
+        header("Location: ../index.php");
+    }
+    ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +20,9 @@ ini_set('html_errors', 0);
 
 <body>
 <?php
-    $board = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
+    $board = "rnbqkbnr/1ppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
+    require("../Business/apiBL.php");
+    $apiDAL = new ApiBL();
 
     function insertMatches() 
     {
@@ -72,8 +74,9 @@ ini_set('html_errors', 0);
 
     $board = changeStates($board);
     
-    function DrawChessGame($board)
+    function DrawChessGame($board, $apiDAL)
     {
+        $board = testMove($board, $apiDAL);
         $pieces = str_split($board);
         $numPieces = CountPieces($pieces);
         insertMatches();
@@ -91,15 +94,20 @@ ini_set('html_errors', 0);
         DrawDeadBlack($numPieces);
         echo "</div>";
 
-        DrawInfo($board);
+        DrawInfo($board, $apiDAL);
     }
 
-    function DrawInfo($board)
+    function testMove($board, $apiDAL) 
     {
-        require("../Business/apiBL.php");
-        $apiDAL = new ApiBL();
+        $move = $apiDAL->move($board, 0, 0, 2, 4);
+        $board = $move['board'];
+
+        return $board;
+    }
+
+    function DrawInfo($board, $apiDAL)
+    {
         $score = $apiDAL->obtainScore($board);
-        $move = $apiDAL->move($board, 0, 0, 0, 1);
 
         if (isset($_GET['id_match']))
         {
@@ -374,7 +382,7 @@ ini_set('html_errors', 0);
         }
     }
 
-    DrawChessGame($board);
+    DrawChessGame($board, $apiDAL);
     ?>
 </body>
 </html>
