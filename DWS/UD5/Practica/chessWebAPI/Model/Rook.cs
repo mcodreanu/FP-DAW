@@ -53,5 +53,10 @@ namespace ChessAPI.Model
                 return MovementType.InvalidNormalMovement;
 
         }
+
+        public override int GetScore()
+        {
+            return PieceValues.RookPieceValue;
+        }
     }
 }

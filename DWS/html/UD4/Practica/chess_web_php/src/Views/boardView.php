@@ -20,7 +20,7 @@ ini_set('html_errors', 0);
 
 <body>
 <?php
-    $board = "rnbqkbnr/pppp1ppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
+    $board = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
 
     function insertMatches() 
     {
@@ -96,9 +96,10 @@ ini_set('html_errors', 0);
 
     function DrawInfo($board)
     {
-        require("../Infrastructure/apiDAL.php");
-        $apiDAL = new apiDAL();
-        $apiData = $apiDAL->obtain($board);
+        require("../Business/apiBL.php");
+        $apiDAL = new ApiBL();
+        $score = $apiDAL->obtainScore($board);
+        $move = $apiDAL->move($board, 0, 0, 0, 1);
 
         if (isset($_GET['id_match']))
         {
@@ -131,9 +132,9 @@ ini_set('html_errors', 0);
 
             echo"<div class=\"info-container\">";
             echo "<h1 class=\"title\">".$title."</h1>";
-            echo "<div class=\"info\"><h1>Black: ".$players[$player_black - 1]." - ".$apiData["materialValueBlack"]."</h1>";
-            echo "<h1>White: ".$players[$player_white - 1]." - ".$apiData["materialValueWhite"]."</h1>";
-            echo "<h1>".$apiData["distanceMsg"]."</h1></div>";
+            echo "<div class=\"info\"><h1>Black: ".$players[$player_black - 1]." - ".$score["materialValueBlack"]."</h1>";
+            echo "<h1>White: ".$players[$player_white - 1]." - ".$score["materialValueWhite"]."</h1>";
+            echo "<h1>".$score["distanceMsg"]."</h1></div>";
             DrawHistoryButtons();
             echo "</div>";
         } 
@@ -154,9 +155,9 @@ ini_set('html_errors', 0);
 
             echo"<div class=\"info-container\">";
             echo "<h1 class=\"title\">".$title."</h1>";
-            echo "<div class=\"info\"><h1>Black: ".$players[$id_player1 - 1]." - ".$apiData["materialValueBlack"]."</h1>";
-            echo "<h1>White: ".$players[$id_player2 - 1]." - ".$apiData["materialValueWhite"]."</h1>";
-            echo "<h1>".$apiData["distanceMsg"]."</h1></div>";
+            echo "<div class=\"info\"><h1>Black: ".$players[$id_player1 - 1]." - ".$score["materialValueBlack"]."</h1>";
+            echo "<h1>White: ".$players[$id_player2 - 1]." - ".$score["materialValueWhite"]."</h1>";
+            echo "<h1>".$score["distanceMsg"]."</h1></div>";
             echo "<a href=\"welcomeView.php\"><button><i class=\"fa-solid fa-house\"></i></button></a>";
             echo "</div>";
         }

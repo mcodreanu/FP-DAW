@@ -150,5 +150,73 @@ namespace ChessAPI.Model
 
             return string.Empty;
         }
+
+        public bool Move(int fromRow, int fromColumn, int toRow, int toColumn)
+        {
+            Movement move = new Movement(fromRow, fromColumn, toRow, toColumn);
+            Piece piece = _boardPieces[move.fromColumn, move.fromRow];
+
+            if (move.IsValid())
+            {
+                if (piece.Validate(move, _boardPieces) != Piece.MovementType.InvalidNormalMovement)
+                {
+                    _boardPieces[toColumn, toRow] = _boardPieces[fromColumn, fromRow];
+                    _boardPieces[fromColumn, fromRow] = null;
+
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public string GetBoardState()
+        {
+            string result = string.Empty;
+
+            Dictionary<string, string> fenDictionary = new Dictionary<string, string>()
+            {
+                {"|KNBL|", "n"}, {"|KIBL|", "k"}, {"|PABL|", "p"},
+                {"|BIBL|", "b"}, {"|QUBL|", "q"}, {"|ROBL|", "r"},
+                {"|KNWH|", "N"}, {"|KIWH|", "K"}, {"|PAWH|", "P"},
+                {"|BIWH|", "B"}, {"|QUWH|", "Q"}, {"|ROWH|", "R"}
+            };
+
+            int countEmpty = 0;
+
+            for (int i = 0; i < _boardPieces.GetLength(0); i++)
+            {
+                for (int j = 0; j < _boardPieces.GetLength(1); j++)
+                {
+                    if (_boardPieces[i, j] != null)
+                    {
+                        if (countEmpty > 0)
+                        {
+                            result += countEmpty.ToString();
+                            countEmpty = 0;
+                        }
+
+                        result += fenDictionary[_boardPieces[i, j].GetCode()];
+                    }
+                    else
+                    {
+                        countEmpty++;
+                    }
+                }
+
+                if (countEmpty > 0)
+                {
+                    result += countEmpty.ToString();
+                    countEmpty = 0;
+                }
+
+                if (i < _boardPieces.GetLength(0) - 1)
+                {
+                    result += '/';
+                }
+            }
+
+            return result;
+        }
     }
 }

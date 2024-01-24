@@ -11,7 +11,7 @@ namespace ChessAPI.Model
         public abstract MovementType ValidateSpecificRulesForMovement(Movement movement, Piece[,] board);
 
         //Movimiento normal valido, movimiento no valido, enroque corto, enroque largo, al paso
-        public enum MovementType { ValidNormalMovement, InvalidNormalMovement, PawnPassant }
+        public enum MovementType { ValidNormalMovement, InvalidNormalMovement, PawnPassant };
 
         public virtual MovementType Validate(Movement movement, Piece[,] board)
         {
@@ -39,6 +39,15 @@ namespace ChessAPI.Model
 
             return false;
         }
+
+        public virtual String GetCode()
+        {
+            string code = this.GetType().Name.Substring(0,2).ToUpper();
+            string color = this._color.ToString().Substring(0,2).ToUpper();
+            return $"|{code}{color}|";
+        }
+
+        public abstract int GetScore();
 
         public Piece(ColorEnum color)
         {
