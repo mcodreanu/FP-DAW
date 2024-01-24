@@ -1,8 +1,8 @@
 using ChessAPI.Model;
 
-public class BoardService : IBoardService
+public class MovementService : IMovementService
 {
-    public BoardScore GetScore(string board)
+    public Movement GetScore(string board)
     {
         Board b  = new Board(board);
         var score = b.GetScore();
