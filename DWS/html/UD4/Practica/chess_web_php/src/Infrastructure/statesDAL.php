@@ -31,7 +31,7 @@ class StatesDAL
 		return $states;
 	}
 
-	function insert()
+	function insert($board)
 	{
 		$conection = mysqli_connect('localhost','root','12345');
 		if (mysqli_connect_errno())
@@ -39,7 +39,9 @@ class StatesDAL
 				echo "Error al conectar a MySQL: ". mysqli_connect_error();
 		}
  		mysqli_select_db($conection, 'chess_game');
-		$insert = mysqli_prepare($conection, "INSERT INTO T_Board_Status (IDGame, board) VALUES ((SELECT ID FROM T_Matches ORDER BY ID DESC LIMIT 1), \"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR\")");
+		$sanitized_board = mysqli_real_escape_string($conection, $board);
+		$insert = mysqli_prepare($conection, "INSERT INTO T_Board_Status (IDGame, board) VALUES ((SELECT ID FROM T_Matches ORDER BY ID DESC LIMIT 1), ?)");
+		$insert->bind_param("s", $sanitized_board);
         $insert->execute();
 	}
 }

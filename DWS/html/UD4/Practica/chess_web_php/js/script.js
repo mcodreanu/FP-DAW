@@ -43,14 +43,6 @@ let currentCell;
 window.addEventListener("DOMContentLoaded", (event) => {
     const el = document.getElementsByClassName("piece");
     if (el) {
-		var xmlhttp = new XMLHttpRequest();
-		xmlhttp.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
-				document.getElementById("txtHint").innerHTML = this.responseText;
-			}
-		};
-		xmlhttp.open("GET", "boardView.php", true);
-		xmlhttp.send();
 		for (var i = 0; i < el.length; i++) { 
 			el[i].onclick = function(){
 				getCell(this);
@@ -58,6 +50,18 @@ window.addEventListener("DOMContentLoaded", (event) => {
 		}
     }
 });
+
+function submitForm() {
+    var http = new XMLHttpRequest();
+    http.open("GET", "../Views/boardView.php", true);
+    http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    var params = "search=" + document.getElementById("fromRow").value
+    http.send(params);
+    http.onload = function() {
+        alert(http.responseText);
+    }
+}
+
 
 function getCell(that) {
     if(!state) { 

@@ -25,6 +25,9 @@
 			<ul>
                 <?php
         			session_start();
+                    if (isset($_SESSION["visits"]))
+                    $_SESSION["visits"] = 0;
+                
 					if (!isset($_SESSION['name']))
 					{
 						echo "<li><button id=\"user-menu\" class=\"glow-on-hover user-button\"><i class=\"fa-solid fa-user\"></i></button></li>

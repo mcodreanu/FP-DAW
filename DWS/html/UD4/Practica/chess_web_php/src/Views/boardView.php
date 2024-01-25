@@ -15,71 +15,95 @@ ini_set('display_startup_errors', 1);
     <title>Chess</title>
     <link rel="stylesheet" href="../../css/chess_game_styles.css">
     <script src="https://kit.fontawesome.com/5fe1b9d82e.js" crossorigin="anonymous"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script src="../../js/script.js"></script>
 </head>
 
 <body>
 <?php
-    $board = "rnbqkbnr/1ppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
+    require("../Business/statesBL.php");
+    $statesBL = new StatesBL();
     require("../Business/apiBL.php");
     $apiDAL = new ApiBL();
+    require("../Business/matchesBL.php");    
+    $matchesBL = new MatchesBL();
+    require("../Business/playersBL.php");    
+    $playersBL = new PlayersBL();
 
-    function insertMatches() 
+    function obtainBoard($statesBL) 
+    {
+        if (isset($_GET['state']))
+        {    
+            $id_match = $_GET["id_match"];
+            $statesData = $statesBL->obtain($id_match);
+            $board = array();
+
+            foreach ($statesData as $state)
+            {
+                array_push($board, $state->getBoard());
+            }
+        }
+        else
+        {
+            $board = "rnbqkbnr/1ppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
+        }    
+
+        return $board;
+    }
+
+    $board = obtainBoard($statesBL);
+
+    function insertMatches($board, $statesBL, $matchesBL) 
     {
         if (!(isset($_GET['state'])))
         {
-            require("../Business/matchesBL.php");    
-            $matchesBL = new MatchesBL();
-            $title = $_POST["title"];
-            $id_player1 = $_POST["player1"];
-            $id_player2 = $_POST["player2"];
-            $matchesBL->insert($title,$id_player1,$id_player2);
-
-            require("../Business/statesBL.php");    
-            $statesBL = new StatesBL();
-            $statesBL->insert();
+            if (!isset($_SESSION["visits"]))
+            $_SESSION["visits"] = 0;
+            $_SESSION["visits"] = $_SESSION["visits"] + 1;
+            var_dump($_SESSION["visits"]);
+    
+            if ($_SESSION["visits"] == 1)
+            {
+                $title = $_POST["title"];
+                $id_player1 = $_POST["player1"];
+                $id_player2 = $_POST["player2"];
+                $matchesBL->insert($title,$id_player1,$id_player2);
+  
+                $statesBL->insert($board);
+            }
+            else
+            {
+                return;
+            }
         }
         else
         {
             return;
         }
     }
-
-    function obtainBoard() 
-    {
-        require("../Business/statesBL.php");    
-        $statesBL = new StatesBL();
-        $id_match = $_GET["id_match"];
-        $statesData = $statesBL->obtain($id_match);
-        $board = array();
-
-        foreach ($statesData as $state)
-        {
-            array_push($board, $state->getBoard());
-        }
-
-        return $board;
-    }
     
-    function changeStates($board)
+    function changeStates($board, $statesBL)
     {
         if (isset($_GET['state']))
         {
-            $states = obtainBoard();
+            $states = obtainBoard($statesBL);
             $board = $states[$_GET['state']];
         }
         
         return $board;
     }
 
-    $board = changeStates($board);
+    $board = changeStates($board, $statesBL);
     
-    function DrawChessGame($board, $apiDAL)
+    function DrawChessGame($board, $apiDAL, $statesBL, $matchesBL, $playersBL)
     {
-        $board = testMove($board, $apiDAL);
+        if (isset($_GET['fromRow']))
+        {
+            $board = testMove($board, $apiDAL, $statesBL);
+        }
         $pieces = str_split($board);
         $numPieces = CountPieces($pieces);
-        insertMatches();
+        insertMatches($board, $statesBL, $matchesBL);
 
         echo "<div class=\"dead-container\">";
         DrawDeadWhite($numPieces);
@@ -94,25 +118,39 @@ ini_set('display_startup_errors', 1);
         DrawDeadBlack($numPieces);
         echo "</div>";
 
-        DrawInfo($board, $apiDAL);
+        echo "
+        <form action=\"\" method=\"get\" onsubmit=\"submitForm();return;\">
+            <input type=\"number\" name=\"fromRow\" id=\"fromRow\">
+            <input type=\"number\" name=\"fromColumn\" id=\"fromColumn\">
+            <input type=\"number\" name=\"toRow\" id=\"toRow\">
+            <input type=\"number\" name=\"toColumn\" id=\"toColumn\">
+            <input type=\"submit\">
+        </form>
+        <button>Move</button>";
+
+        DrawInfo($board, $apiDAL, $matchesBL, $playersBL, $statesBL);
     }
 
-    function testMove($board, $apiDAL) 
+    function testMove($board, $apiDAL, $statesBL) 
     {
-        $move = $apiDAL->move($board, 0, 0, 2, 4);
+        $fromRow = $_GET['fromRow'];
+        $fromColumn = $_GET['fromColumn'];
+        $toRow = $_GET['toRow'];
+        $toColumn = $_GET['toColumn'];
+        $move = $apiDAL->move($board, $fromRow, $fromColumn, $toRow, $toColumn);
         $board = $move['board'];
+
+        $statesBL->insert($board);
 
         return $board;
     }
 
-    function DrawInfo($board, $apiDAL)
+    function DrawInfo($board, $apiDAL, $matchesBL, $playersBL, $statesBL)
     {
         $score = $apiDAL->obtainScore($board);
 
         if (isset($_GET['id_match']))
         {
-            require("../Business/matchesBL.php");    
-            $matchesBL = new MatchesBL();
             $matchesData = $matchesBL->obtain();
             $player_white = 0;
             $player_black = 0;
@@ -128,8 +166,6 @@ ini_set('display_startup_errors', 1);
                 }
             }
 
-            require("../Business/playersBL.php");    
-            $playersBL = new PlayersBL();
             $playersData = $playersBL->obtain();
             $players = array();
         
@@ -143,13 +179,11 @@ ini_set('display_startup_errors', 1);
             echo "<div class=\"info\"><h1>Black: ".$players[$player_black - 1]." - ".$score["materialValueBlack"]."</h1>";
             echo "<h1>White: ".$players[$player_white - 1]." - ".$score["materialValueWhite"]."</h1>";
             echo "<h1>".$score["distanceMsg"]."</h1></div>";
-            DrawHistoryButtons();
+            DrawHistoryButtons($statesBL);
             echo "</div>";
         } 
         else
         {
-            require("../Business/playersBL.php");    
-            $playersBL = new PlayersBL();
             $playersData = $playersBL->obtain();
             $players = array();
             $id_player1 = $_POST["player1"];
@@ -171,13 +205,12 @@ ini_set('display_startup_errors', 1);
         }
     }
 
-    function DrawHistoryButtons()
+    function DrawHistoryButtons($statesBL)
     {
         $current = $_GET['state'];
         
         if (isset($_GET['state']))
         {
-            $statesBL = new StatesBL();
             $id_match = $_GET["id_match"];
             $statesData = $statesBL->obtain($id_match);
             $id_game = 0;
@@ -382,7 +415,7 @@ ini_set('display_startup_errors', 1);
         }
     }
 
-    DrawChessGame($board, $apiDAL);
+    DrawChessGame($board, $apiDAL, $statesBL, $matchesBL, $playersBL);
     ?>
 </body>
 </html>

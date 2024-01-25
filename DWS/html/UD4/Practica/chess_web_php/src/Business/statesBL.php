@@ -49,9 +49,9 @@ class StatesBL
         return $statesList;
     }
 
-    function insert()
+    function insert($board)
     {
         $statesDAL = new StatesDAL();
-        $statesDAL->insert();
+        $statesDAL->insert($board);
     }
 }
