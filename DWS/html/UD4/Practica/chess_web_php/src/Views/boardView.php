@@ -29,7 +29,7 @@ ini_set('display_startup_errors', 1);
     $matchesBL = new MatchesBL();
     require("../Business/playersBL.php");    
     $playersBL = new PlayersBL();
-
+    var_dump($_SESSION["visits"]);
     function obtainBoard($statesBL) 
     {
         if (isset($_GET['state']))
@@ -45,7 +45,19 @@ ini_set('display_startup_errors', 1);
         }
         else
         {
-            $board = "rnbqkbnr/1ppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
+            if ($_SESSION["visits"] == 0)
+            {
+                $board = "rnbqkbnr/1ppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
+            }
+            else
+            {
+                $statesData = $statesBL->obtainLastState();
+
+                foreach ($statesData as $state)
+                {
+                    $board = $state->getBoard();
+                }
+            }
         }    
 
         return $board;
@@ -60,9 +72,8 @@ ini_set('display_startup_errors', 1);
             if (!isset($_SESSION["visits"]))
             $_SESSION["visits"] = 0;
             $_SESSION["visits"] = $_SESSION["visits"] + 1;
-            var_dump($_SESSION["visits"]);
     
-            if ($_SESSION["visits"] == 1)
+            if ($_SESSION["visits"] == 0)
             {
                 $title = $_POST["title"];
                 $id_player1 = $_POST["player1"];
@@ -118,15 +129,17 @@ ini_set('display_startup_errors', 1);
         DrawDeadBlack($numPieces);
         echo "</div>";
 
-        echo "
-        <form action=\"\" method=\"get\" onsubmit=\"submitForm();return;\">
+        if (!isset($_GET['state']))
+        {
+            echo "
+            <form action=\"\" method=\"get\" onsubmit=\"submitForm();return;\">
             <input type=\"number\" name=\"fromRow\" id=\"fromRow\">
             <input type=\"number\" name=\"fromColumn\" id=\"fromColumn\">
             <input type=\"number\" name=\"toRow\" id=\"toRow\">
             <input type=\"number\" name=\"toColumn\" id=\"toColumn\">
             <input type=\"submit\">
-        </form>
-        <button>Move</button>";
+            </form>";
+        }
 
         DrawInfo($board, $apiDAL, $matchesBL, $playersBL, $statesBL);
     }

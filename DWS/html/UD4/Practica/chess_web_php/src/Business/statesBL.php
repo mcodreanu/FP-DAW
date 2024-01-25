@@ -49,6 +49,21 @@ class StatesBL
         return $statesList;
     }
 
+    function obtainLastState()
+    {
+        $statesDAL = new StatesDAL();
+        $rs = $statesDAL->obtainLastState();
+		$statesList =  array();
+        foreach ($rs as $states)
+        {
+            $oStatesBL = new StatesBL();
+            $oStatesBL->Init($states['ID'],$states['IDGame'], $states['board']);
+            array_push($statesList,$oStatesBL);
+        }
+        
+        return $statesList;
+    }
+
     function insert($board)
     {
         $statesDAL = new StatesDAL();

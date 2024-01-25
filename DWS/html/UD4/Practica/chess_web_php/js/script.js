@@ -51,18 +51,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
     }
 });
 
-function submitForm() {
-    var http = new XMLHttpRequest();
-    http.open("GET", "../Views/boardView.php", true);
-    http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-    var params = "search=" + document.getElementById("fromRow").value
-    http.send(params);
-    http.onload = function() {
-        alert(http.responseText);
-    }
-}
-
-
 function getCell(that) {
     if(!state) { 
         state = true; 

@@ -31,6 +31,28 @@ class StatesDAL
 		return $states;
 	}
 
+	function obtainLastState()
+	{
+		$conection = mysqli_connect('localhost','root','12345');
+		if (mysqli_connect_errno())
+		{
+				echo "Error al conectar a MySQL: ". mysqli_connect_error();
+		}
+ 		mysqli_select_db($conection, 'chess_game');
+		$consult = mysqli_prepare($conection, "SELECT ID, IDGame, board FROM T_Board_Status ORDER BY ID DESC LIMIT 1");
+        $consult->execute();
+        $result = $consult->get_result();
+
+		$states =  array();
+
+        while ($myrow = $result->fetch_assoc()) 
+        {
+			array_push($states,$myrow);
+        }
+		var_dump($states);
+		return $states;
+	}
+
 	function insert($board)
 	{
 		$conection = mysqli_connect('localhost','root','12345');
