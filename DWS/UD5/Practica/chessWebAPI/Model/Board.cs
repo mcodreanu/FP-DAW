@@ -151,14 +151,14 @@ namespace ChessAPI.Model
             return string.Empty;
         }
 
-        public MoveData Move(int fromRow, int fromColumn, int toRow, int toColumn)
+        public MoveData Move(int fromColumn, int fromRow, int toColumn, int toRow)
         {
-            Movement move = new Movement(fromRow, fromColumn, toRow, toColumn);
+            Movement move = new Movement(fromColumn, fromRow, toColumn, toRow);
             Piece piece = _boardPieces[move.fromColumn, move.fromRow];
 
             try
             {
-                if (move.IsValid() && piece.GetCode() == "|ROWH|" || piece.GetCode() == "|ROBL|")
+                if (move.IsValid())
                 {
                     if (piece.Validate(move, _boardPieces) != Piece.MovementType.InvalidNormalMovement)
                     {
@@ -169,7 +169,7 @@ namespace ChessAPI.Model
                     }
                 }
 
-                return new MoveData(false, GetBoardState(), "NOT_IMPLEMENTED");
+                return new MoveData(false, GetBoardState(), "Invalid Movement");
             }
             catch (System.Exception e)
             {

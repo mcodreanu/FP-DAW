@@ -21,9 +21,9 @@ class ApiDAL
 			return $x;
 	}
 
-	function move($board, $fromRow, $fromColumn, $toRow, $toColumn)
+	function move($board, $fromColumn, $fromRow, $toColumn, $toRow)
 		{
-			$url = "https://localhost:7246/Movement?board=".$board."&fromRow=".$fromRow."&fromColumn=".$fromColumn."&toRow=".$toRow."&toColumn=".$toColumn;
+			$url = "https://localhost:7246/Movement?board=".$board."&fromColumn=".$fromColumn."&fromRow=".$fromRow."&toColumn=".$toColumn."&toRow=".$toRow;
 			$ch = curl_init();
 			curl_setopt($ch, CURLOPT_URL,$url);
 			curl_setopt($ch,CURLOPT_RETURNTRANSFER, 1);
@@ -38,7 +38,6 @@ class ApiDAL
 
 			curl_close($ch);
 			$x = json_decode($json,true);
-			var_dump($x);
 			return $x;
 	}
 }

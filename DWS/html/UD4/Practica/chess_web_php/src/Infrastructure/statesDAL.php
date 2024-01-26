@@ -45,7 +45,6 @@ class StatesDAL
 
 		$state = $result->fetch_assoc();
 
-        var_dump($state);
         return $state ? [$state] : [];
 	}
 

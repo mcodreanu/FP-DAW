@@ -8,7 +8,7 @@ namespace ChessAPI.Model
 
         public override MovementType ValidateSpecificRulesForMovement(Movement movement, Piece[,] board)
         {
-            return MovementType.InvalidNormalMovement;
+            return MovementType.ValidNormalMovement;
         }
 
         public override int GetScore()

@@ -15,14 +15,14 @@ public class MovementController : ControllerBase
     }
 
     [HttpGet]
-    public IActionResult Get(string board, int fromRow, int fromColumn, int toRow, int toColumn)
+    public IActionResult Get(string board, int fromColumn, int fromRow, int toColumn, int toRow)
     {
         try
         {
             if (string.IsNullOrEmpty(board))
                 return BadRequest("Board can't be IsNullOrEmpty");
 
-            var response = _boardService.Validate(board, fromRow, fromColumn, toRow, toColumn);
+            var response = _boardService.Validate(board, fromColumn, fromRow, toColumn, toRow);
             return Ok(response);
         }   
         catch (Exception ex)

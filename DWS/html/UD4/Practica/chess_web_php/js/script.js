@@ -35,31 +35,48 @@ window.addEventListener("DOMContentLoaded", (event) => {
 	})
 });
 
-// Test Move
-let state = false
-let currentPiece;
-let currentCell;
+// Move
+$(document).ready(function() {
+    var selectedPiece = null;
 
-window.addEventListener("DOMContentLoaded", (event) => {
-    const el = document.getElementsByClassName("piece");
-    if (el) {
-		for (var i = 0; i < el.length; i++) { 
-			el[i].onclick = function(){
-				getCell(this);
-			};
-		}
-    }
+    $(".piece").click(function() {
+        var clickedPosition = $(this).data("piece-id");
+
+        if (selectedPiece === null) {
+            selectedPiece = clickedPosition;
+        } else {
+            var fromColumn = Math.floor(selectedPiece / 8);
+            var fromRow = selectedPiece % 8;
+            var toColumn = Math.floor(clickedPosition / 8);
+            var toRow = clickedPosition % 8;
+            
+
+            $.ajax({
+                type: "GET",
+                url: "validateMove.php",
+                data: {
+                    fromColumn: fromColumn,
+                    fromRow: fromRow,
+                    toColumn: toColumn,
+                    toRow: toRow
+                },
+                success: function(response) {
+                    if (response) {
+                        window.location = window.location.href;
+                    } else {
+                        alert("Invalid move! Please try again.");
+                    }
+                },
+                error: function(response) {
+                    alert("Error while validating the move. Please try again.");
+                },
+                complete: function() {
+                    selectedPiece = null;
+                }
+            });
+        }
+    });
 });
 
-function getCell(that) {
-    if(!state) { 
-        state = true; 
-        currentPiece = that.innerHTML;
-        currentCell = that;
-    }
-    else {
-        that.innerHTML = currentPiece;
-        currentCell.innerHTML = "";
-        state = false; 
-    }
-}
+
+

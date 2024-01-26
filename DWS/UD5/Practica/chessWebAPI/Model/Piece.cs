@@ -31,8 +31,8 @@ namespace ChessAPI.Model
         public virtual bool ValidateBasicRulesForMovement(Movement movement, Piece[,] board)
         {
             if ((movement.fromRow != movement.toRow) || (movement.fromColumn != movement.toColumn))
-                if ((board[movement.toRow, movement.toColumn] == null) ||
-                        (board[movement.fromRow, movement.fromColumn]._color != board[movement.toRow, movement.toColumn]._color))
+                if ((board[movement.toColumn, movement.toRow] == null) ||
+                        (board[movement.fromColumn, movement.fromRow]._color != board[movement.toColumn, movement.toRow]._color))
                 {
                     return true;
                 }

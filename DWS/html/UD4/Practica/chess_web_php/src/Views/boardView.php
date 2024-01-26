@@ -108,10 +108,10 @@ ini_set('display_startup_errors', 1);
     
     function DrawChessGame($board, $apiDAL, $statesBL, $matchesBL, $playersBL)
     {
-        if (isset($_GET['fromRow']))
+        /*if (isset($_GET['fromRow']))
         {
             $board = testMove($board, $apiDAL, $statesBL);
-        }
+        }*/
         $pieces = str_split($board);
         $numPieces = CountPieces($pieces);
 
@@ -129,23 +129,27 @@ ini_set('display_startup_errors', 1);
         echo "<div class=\"dead-container\">";
         DrawDeadBlack($numPieces);
         echo "</div>";
-
+/*
         if (!isset($_GET['state']))
         {
             echo "
-            <form action=\"\" method=\"get\" onsubmit=\"submitForm();return;\">
-            <input type=\"number\" name=\"fromRow\" id=\"fromRow\">
+            <form action=\"\" method=\"get\">
+            <label for=\"fromColumn\">From Column</label>
             <input type=\"number\" name=\"fromColumn\" id=\"fromColumn\">
-            <input type=\"number\" name=\"toRow\" id=\"toRow\">
+            <label for=\"fromRow\">From Row</label>
+            <input type=\"number\" name=\"fromRow\" id=\"fromRow\">
+            <label for=\"toColumn\">To Column</label>
             <input type=\"number\" name=\"toColumn\" id=\"toColumn\">
+            <label for=\"toRow\">To Row</label>
+            <input type=\"number\" name=\"toRow\" id=\"toRow\">
             <input type=\"submit\">
             </form>";
         }
-
+*/
         DrawInfo($board, $apiDAL, $matchesBL, $playersBL, $statesBL);
     }
 
-    function testMove($board, $apiDAL, $statesBL) 
+    /*function testMove($board, $apiDAL, $statesBL) 
     {
         $fromRow = $_GET['fromRow'];
         $fromColumn = $_GET['fromColumn'];
@@ -168,7 +172,7 @@ ini_set('display_startup_errors', 1);
         }   
 
         return $board;
-    }
+    }*/
 
     function DrawInfo($board, $apiDAL, $matchesBL, $playersBL, $statesBL)
     {
@@ -296,6 +300,7 @@ ini_set('display_startup_errors', 1);
 
     function DrawPieces($pieces)
     {
+        $pos = 0;
         echo "<div class=\"pieces-container\">";
         for ($i = 0; $i < count($pieces); $i++)
         {
@@ -303,19 +308,22 @@ ini_set('display_startup_errors', 1);
             {
                 for ($j = 0; $j < 8; $j++)
                 {
-                    echo "<div class=\"piece\"></div>";
+                    echo "<div class=\"piece\" data-piece-id=\"{$pos}\"></div>";
+                    $pos++;
                 }
             }
             else if ($pieces[$i] == 1 || $pieces[$i] == 2 || $pieces[$i] == 3 || $pieces[$i] == 4 || $pieces[$i] == 5 || $pieces[$i] == 6 || $pieces[$i] == 7 && $pieces[$i] != "/")
             {
                 for ($j = 0; $j < $pieces[$i]; $j++)
                 {
-                    echo "<div class=\"piece\"></div>";
+                    echo "<div class=\"piece\" data-piece-id=\"{$pos}\"></div>";
+                    $pos++;
                 }
             }
             else if ($pieces[$i] != "/")
             {
-                echo "<div class=\"piece\"><img src=\"../../img/{$pieces[$i]}.png\" alt=\"\"></div>";
+                echo "<div class=\"piece\" data-piece-id=\"{$pos}\"><img src=\"../../img/{$pieces[$i]}.png\" alt=\"\"></div>";
+                $pos++;
             }
         }
         echo "</div>";

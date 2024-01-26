@@ -3,5 +3,5 @@ using ChessAPI.Model;
 public interface IBoardService
 {
     BoardScore GetScore(string board); 
-    MoveData Validate(string board, int fromRow, int fromColumn, int toRow, int toColumn);
+    MoveData Validate(string board, int fromColumn, int fromRow, int toColumn, int toRow);
 }

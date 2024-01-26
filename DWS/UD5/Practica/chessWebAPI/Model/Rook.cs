@@ -26,7 +26,7 @@ namespace ChessAPI.Model
                 int iColumn = 1;
                 while ((valid) && (iColumn <= Math.Abs(DC) - 1))
                 {
-                    if (board[movement.fromRow, movement.fromColumn + iColumn*columnFactor] != null)
+                    if (board[movement.fromColumn + iColumn*columnFactor, movement.fromRow] != null)
                         valid = false;
                     iColumn++;
                 }
@@ -40,7 +40,7 @@ namespace ChessAPI.Model
                     int iRow = 1;
                     while ((valid) && (iRow <= Math.Abs(DF)-1))
                     {
-                        if (board[ movement.fromRow + iRow *rowFactor, movement.fromColumn] != null)
+                        if (board[movement.fromColumn, movement.fromRow + iRow *rowFactor] != null)
                             valid = false;
                         iRow++;
                     }
