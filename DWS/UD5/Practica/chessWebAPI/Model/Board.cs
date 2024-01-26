@@ -156,18 +156,25 @@ namespace ChessAPI.Model
             Movement move = new Movement(fromRow, fromColumn, toRow, toColumn);
             Piece piece = _boardPieces[move.fromColumn, move.fromRow];
 
-            if (move.IsValid())
+            try
             {
-                if (piece.Validate(move, _boardPieces) != Piece.MovementType.InvalidNormalMovement)
+                if (move.IsValid() && piece.GetCode() == "|ROWH|" || piece.GetCode() == "|ROBL|")
                 {
-                    _boardPieces[toColumn, toRow] = _boardPieces[fromColumn, fromRow];
-                    _boardPieces[fromColumn, fromRow] = null;
-
-                    return new MoveData(true, GetBoardState());
+                    if (piece.Validate(move, _boardPieces) != Piece.MovementType.InvalidNormalMovement)
+                    {
+                        _boardPieces[toColumn, toRow] = _boardPieces[fromColumn, fromRow];
+                        _boardPieces[fromColumn, fromRow] = null;
+                            
+                        return new MoveData(true, GetBoardState(), "OK");
+                    }
                 }
-            }
 
-            return new MoveData(false, GetBoardState());
+                return new MoveData(false, GetBoardState(), "NOT_IMPLEMENTED");
+            }
+            catch (System.Exception e)
+            {
+                return new MoveData(true, GetBoardState(), e.Message);
+            }
         }
 
         public string GetBoardState()
