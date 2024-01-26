@@ -29,7 +29,7 @@ ini_set('display_startup_errors', 1);
     $matchesBL = new MatchesBL();
     require("../Business/playersBL.php");    
     $playersBL = new PlayersBL();
-    var_dump($_SESSION["visits"]);
+    
     function obtainBoard($statesBL) 
     {
         if (isset($_GET['state']))
@@ -45,7 +45,7 @@ ini_set('display_startup_errors', 1);
         }
         else
         {
-            if ($_SESSION["visits"] == 0)
+            if (!isset($_SESSION["visits"]) || $_SESSION["visits"] == 0)
             {
                 $board = "rnbqkbnr/1ppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
             }
@@ -72,14 +72,14 @@ ini_set('display_startup_errors', 1);
             if (!isset($_SESSION["visits"]))
             $_SESSION["visits"] = 0;
             $_SESSION["visits"] = $_SESSION["visits"] + 1;
-    
-            if ($_SESSION["visits"] == 0)
+
+            if ($_SESSION["visits"] == 1)
             {
                 $title = $_POST["title"];
                 $id_player1 = $_POST["player1"];
                 $id_player2 = $_POST["player2"];
                 $matchesBL->insert($title,$id_player1,$id_player2);
-  
+
                 $statesBL->insert($board);
             }
             else
@@ -114,6 +114,7 @@ ini_set('display_startup_errors', 1);
         }
         $pieces = str_split($board);
         $numPieces = CountPieces($pieces);
+
         insertMatches($board, $statesBL, $matchesBL);
 
         echo "<div class=\"dead-container\">";
@@ -150,10 +151,21 @@ ini_set('display_startup_errors', 1);
         $fromColumn = $_GET['fromColumn'];
         $toRow = $_GET['toRow'];
         $toColumn = $_GET['toColumn'];
-        $move = $apiDAL->move($board, $fromRow, $fromColumn, $toRow, $toColumn);
-        $board = $move['board'];
 
-        $statesBL->insert($board);
+        $move = $apiDAL->move($board, $fromRow, $fromColumn, $toRow, $toColumn);
+
+        try {
+            if ($move['isValid'] == true)
+            {
+                $board = $move['board'];
+                $statesBL->insert($board);
+                var_dump($move['isValid']);
+
+                return $board;
+            }  
+        } catch (\Throwable $th) {
+            return $board;
+        }   
 
         return $board;
     }
@@ -197,11 +209,19 @@ ini_set('display_startup_errors', 1);
         } 
         else
         {
+            if (isset($_POST["player1"]) && isset($_POST["player2"]) && isset($_POST["title"]))
+            {
+                $id_player1 = $_POST["player1"];
+                $id_player2 = $_POST["player2"];
+                $title = $_POST["title"];
+
+                $_SESSION['player1_name'] = $id_player1;
+                $_SESSION['player2_name'] = $id_player2;
+                $_SESSION['title'] = $title;
+            }
+
             $playersData = $playersBL->obtain();
             $players = array();
-            $id_player1 = $_POST["player1"];
-            $id_player2 = $_POST["player2"];
-            $title = $_POST["title"];
         
             foreach ($playersData as $player)
             {
@@ -209,9 +229,9 @@ ini_set('display_startup_errors', 1);
             }
 
             echo"<div class=\"info-container\">";
-            echo "<h1 class=\"title\">".$title."</h1>";
-            echo "<div class=\"info\"><h1>Black: ".$players[$id_player1 - 1]." - ".$score["materialValueBlack"]."</h1>";
-            echo "<h1>White: ".$players[$id_player2 - 1]." - ".$score["materialValueWhite"]."</h1>";
+            echo "<h1 class=\"title\">".$_SESSION['title']."</h1>";
+            echo "<div class=\"info\"><h1>Black: ".$players[$_SESSION['player1_name'] - 1]." - ".$score["materialValueBlack"]."</h1>";
+            echo "<h1>White: ".$players[$_SESSION['player2_name'] - 1]." - ".$score["materialValueWhite"]."</h1>";
             echo "<h1>".$score["distanceMsg"]."</h1></div>";
             echo "<a href=\"welcomeView.php\"><button><i class=\"fa-solid fa-house\"></i></button></a>";
             echo "</div>";

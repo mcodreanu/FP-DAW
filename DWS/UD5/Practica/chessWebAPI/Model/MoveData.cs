@@ -1,15 +1,15 @@
 public class MoveData
 {
-    private bool _status;
+    private bool _isValid;
     private string _board;
  
-    public MoveData(bool status, string board)
+    public MoveData(bool isValid, string board)
     {
-        this._status = status;
+        this._isValid = isValid;
         this._board = board;
     }
 
-    public bool Status { get => _status; set => _status = value; }
+    public bool IsValid { get => _isValid; set => _isValid = value; }
 
     public string Board { get => _board; set => _board = value; }
 }
