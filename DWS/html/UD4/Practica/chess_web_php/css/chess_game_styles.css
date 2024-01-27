@@ -125,6 +125,24 @@ img {
     height: 90px;
 }
 
+.piece.valid-move {
+    position: relative;
+}
+
+.piece.valid-move .dot {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-color: green;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
 @media screen and (max-width: 1800px) {
     .info-container {
         position: static;

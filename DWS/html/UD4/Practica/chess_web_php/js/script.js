@@ -44,12 +44,12 @@ $(document).ready(function() {
 
         if (selectedPiece === null) {
             selectedPiece = clickedPosition;
+            highlightValidMoves(selectedPiece);
         } else {
             var fromColumn = Math.floor(selectedPiece / 8);
             var fromRow = selectedPiece % 8;
             var toColumn = Math.floor(clickedPosition / 8);
             var toRow = clickedPosition % 8;
-            
 
             $.ajax({
                 type: "GET",
@@ -61,7 +61,7 @@ $(document).ready(function() {
                     toRow: toRow
                 },
                 success: function(response) {
-                    if (response) {
+                    if (response.isValid) {
                         window.location = window.location.href;
                     } else {
                         alert("Invalid move! Please try again.");
@@ -72,11 +72,75 @@ $(document).ready(function() {
                 },
                 complete: function() {
                     selectedPiece = null;
+                    removeHighlight();
                 }
             });
         }
     });
+
+    function highlightValidMoves(pieceId) {
+        $(".piece").removeClass("valid-move invalid-move");
+    
+        var row = Math.floor(pieceId / 8);
+        var col = pieceId % 8;
+        var pieceColor = getPieceColor(pieceId); 
+    
+        for (var i = 0; i < 8; i++) {
+            if (i !== col) {
+                var position = row * 8 + i;
+                addDotIfValidMove(position, pieceColor);
+            }
+        }
+
+        for (var j = 0; j < 8; j++) {
+            if (j !== row) {
+                var position = j * 8 + col;
+                addDotIfValidMove(position, pieceColor);
+            }
+        }
+    }
+    
+    function addDotIfValidMove(position, selectedPieceColor) {
+        var $piece = $(`.piece[data-piece-id="${position}"]`);
+        
+        if ($piece.length) { 
+            var pieceColor = getPieceColor(position);
+    
+            if (pieceColor !== selectedPieceColor) {
+                $piece.addClass("valid-move");
+                $piece.append("<div class='dot'></div>");
+            } else {
+                $piece.addClass("invalid-move");
+            }
+        }
+    }
+
+    function getPieceColor(position) {
+        var $piece = $(`.piece[data-piece-id="${position}"]`);
+    
+        var pieceImage = $piece.find('img').attr('src');
+        
+        if (pieceImage && pieceImage.endsWith('.png')) {
+
+            var lastChar = pieceImage.charAt(pieceImage.length - 5);
+            
+            if (lastChar === lastChar.toUpperCase()) {
+                return 'white';
+            } else {
+                return 'black';
+            }
+        } else {
+
+            return undefined;
+        }
+    }
+
+    function removeHighlight() {
+        $(".piece").removeClass("valid-move invalid-move");
+    }
 });
+
+
 
 
 
