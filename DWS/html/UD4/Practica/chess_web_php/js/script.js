@@ -64,7 +64,8 @@ $(document).ready(function() {
                     if (response.isValid) {
                         window.location = window.location.href;
                     } else {
-                        alert("Invalid move! Please try again.");
+                        selectedPiece = null;
+                        removeHighlight();
                     }
                 },
                 error: function(response) {

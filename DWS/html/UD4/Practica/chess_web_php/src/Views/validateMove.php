@@ -28,6 +28,10 @@ if ($data['isValid'] == true) {
     $response['isValid'] = $data['isValid'];
     $response['validMovePositions'] = getValidMovePositionsForRook($board, $fromColumn, $fromRow);
 }
+else
+{
+    $response['isValid'] = false;
+}
 
 header('Content-Type: application/json');
 echo json_encode($response);

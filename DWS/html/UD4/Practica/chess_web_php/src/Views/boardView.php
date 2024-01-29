@@ -47,7 +47,7 @@ ini_set('display_startup_errors', 1);
         {
             if (!isset($_SESSION["visits"]) || $_SESSION["visits"] == 0)
             {
-                $board = "rnbqkbnr/1ppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
+                $board = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
             }
             else
             {
