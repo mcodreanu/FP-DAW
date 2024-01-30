@@ -26,7 +26,6 @@ if ($data['isValid'] == true) {
     $statesBL->insert($board);
 
     $response['isValid'] = $data['isValid'];
-    $response['validMovePositions'] = getValidMovePositionsForRook($board, $fromColumn, $fromRow);
 }
 else
 {
@@ -35,22 +34,3 @@ else
 
 header('Content-Type: application/json');
 echo json_encode($response);
-
-function getValidMovePositionsForRook($board, $fromColumn, $fromRow) {
-
-    $validMovePositions = array();
-
-    for ($col = 0; $col < 8; $col++) {
-        if ($col != $fromColumn) {
-            $validMovePositions[] = $fromRow * 8 + $col;
-        }
-    }
-
-    for ($row = 0; $row < 8; $row++) {
-        if ($row != $fromRow) {
-            $validMovePositions[] = $row * 8 + $fromColumn;
-        }
-    }
-
-    return $validMovePositions;
-}

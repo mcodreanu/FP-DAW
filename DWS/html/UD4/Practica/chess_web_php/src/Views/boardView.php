@@ -110,7 +110,7 @@ ini_set('display_startup_errors', 1);
     {
         /*if (isset($_GET['fromRow']))
         {
-            $board = testMove($board, $apiDAL, $statesBL);
+            $board = Move($board, $apiDAL, $statesBL);
         }*/
         $pieces = str_split($board);
         $numPieces = CountPieces($pieces);
@@ -149,7 +149,7 @@ ini_set('display_startup_errors', 1);
         DrawInfo($board, $apiDAL, $matchesBL, $playersBL, $statesBL);
     }
 
-    /*function testMove($board, $apiDAL, $statesBL) 
+    /*function Move($board, $apiDAL, $statesBL) 
     {
         $fromRow = $_GET['fromRow'];
         $fromColumn = $_GET['fromColumn'];

@@ -173,7 +173,7 @@ namespace ChessAPI.Model
             }
             catch (System.Exception e)
             {
-                return new MoveData(true, GetBoardState(), e.Message);
+                return new MoveData(false, GetBoardState(), e.Message);
             }
         }
 
