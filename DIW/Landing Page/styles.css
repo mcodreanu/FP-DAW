@@ -127,6 +127,10 @@ nav {
     text-align: center;
 }
 
+#sobre-nosotros h2 {
+    margin-bottom: 20px;
+}
+
 #servicios {
     text-align: center;
     padding: 50px;
@@ -144,6 +148,16 @@ nav {
 #galeria {
     padding: 50px;
     text-align: center;
+}
+
+#galeria h2 {
+    margin-bottom: 20px;
+}
+
+#galeria .galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
 }
 
 #contacto {
@@ -180,7 +194,6 @@ nav {
 }
 
 footer {
-    position: fixed;
     bottom: 0;
     width: 100%;
     background-color: aliceblue;
@@ -191,6 +204,7 @@ footer {
     .menu-button-container {
       display: flex;
     }
+    
     .nav-links {
       position: absolute;
       top: 0;
@@ -246,6 +260,10 @@ footer {
     }
 
     #servicios .servicios-grid {
+        display: block;
+    }
+
+    #galeria .galeria-grid {
         display: block;
     }
 }
