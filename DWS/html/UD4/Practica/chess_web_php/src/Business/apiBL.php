@@ -24,5 +24,13 @@ class ApiBL
         
         return $res;
     }
+
+    function obtainPossibleMovements($board, $fromColumn, $fromRow)
+    {
+        $apiDAL = new ApiDAL();
+        $res = $apiDAL->obtainPossibleMovements($board, $fromColumn, $fromRow);
+        
+        return $res;
+    }
 }
 

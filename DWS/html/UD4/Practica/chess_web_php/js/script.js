@@ -44,6 +44,29 @@ $(document).ready(function() {
 
         if (selectedPiece === null) {
             selectedPiece = clickedPosition;
+            var fromColumn = Math.floor(selectedPiece / 8);
+            var fromRow = selectedPiece % 8;
+
+            $.ajax({
+                type: "GET",
+                url: "possibleMovements.php",
+                data: {
+                    fromColumn: fromColumn,
+                    fromRow: fromRow,
+                },
+                success: function(response) {
+                    $.each(response.possibleMovements, function(key, value) {
+                        if (value == 1)
+                        {
+                            $(`.piece[data-piece-id="${key}"]`).addClass("valid-move");
+                            $(`.piece[data-piece-id="${key}"]`).append("<div class='dot'></div>");
+                        }
+                    })
+                },
+                error: function(response) {
+                    alert("Error while getting possible movements.");
+                }
+            });
         } else {
             var fromColumn = Math.floor(selectedPiece / 8);
             var fromRow = selectedPiece % 8;
@@ -64,7 +87,6 @@ $(document).ready(function() {
                         window.location = window.location.href;
                     } else {
                         selectedPiece = null;
-                        removeHighlight();
                     }
                 },
                 error: function(response) {
@@ -72,12 +94,12 @@ $(document).ready(function() {
                 },
                 complete: function() {
                     selectedPiece = null;
+                    $(".piece").removeClass("valid-move invalid-move");
                 }
             });
         }
     });
 });
-
 
 
 

@@ -225,5 +225,30 @@ namespace ChessAPI.Model
 
             return result;
         }
+
+        public List<string> CheckPossibleMovements(string board, int fromColumn, int fromRow)
+        {
+            Piece piece = _boardPieces[fromColumn, fromRow];
+            List<string> possibleMovementsList = new List<string>();
+
+            for (int i = 0; i < _boardPieces.GetLength(0); i++)
+            {
+                for (int j = 0; j < _boardPieces.GetLength(1); j++)
+                {
+                    Movement move = new Movement(fromColumn, fromRow, i, j);
+
+                    if (piece.Validate(move, _boardPieces) != Piece.MovementType.InvalidNormalMovement)
+                    {
+                        possibleMovementsList.Add("1");
+                    }
+                    else
+                    {
+                        possibleMovementsList.Add("0");
+                    }
+                }    
+            }
+
+            return possibleMovementsList;
+        }
     }
 }

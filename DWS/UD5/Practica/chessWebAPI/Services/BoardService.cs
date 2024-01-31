@@ -17,4 +17,12 @@ public class BoardService : IBoardService
 
         return move;
     }
+
+    public List<string> CheckPossibleMovements(string board, int fromColumn, int fromRow)
+    {
+        Board b  = new Board(board);
+        var valid = b.CheckPossibleMovements(board, fromColumn, fromRow);
+
+        return valid;
+    }
 }

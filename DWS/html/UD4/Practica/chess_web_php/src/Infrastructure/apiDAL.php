@@ -40,4 +40,24 @@ class ApiDAL
 			$x = json_decode($json,true);
 			return $x;
 	}
+
+	function obtainPossibleMovements($board, $fromColumn, $fromRow)
+		{
+			$url = "https://localhost:7246/PossibleMovements?board=".$board."&fromColumn=".$fromColumn."&fromRow=".$fromRow;
+			$ch = curl_init();
+			curl_setopt($ch, CURLOPT_URL,$url);
+			curl_setopt($ch,CURLOPT_RETURNTRANSFER, 1);
+			curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,4);
+			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+			$json = curl_exec($ch);
+
+			if (!$json)
+			{
+				echo curl_error($ch);
+			}
+
+			curl_close($ch);
+			$x = json_decode($json,true);
+			return $x;
+	}
 }
