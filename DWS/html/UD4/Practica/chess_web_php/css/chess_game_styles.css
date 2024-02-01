@@ -14,10 +14,15 @@ body {
 }
 
 .container {
+    display: flex;
+    flex-direction: column;
+}
+
+.board-container{
     width: 40rem;
     height: 40rem;
     border: 5px solid black;
-    margin: auto;
+    margin: 0 20rem;
 }
 
 .board {
@@ -66,7 +71,7 @@ img {
 }
 
 .dead-container {
-    margin: 0 auto;
+    margin: 0 20rem;
     width: 44rem;
     height: 5rem;
 }
@@ -80,7 +85,7 @@ img {
     position: absolute;
     background-color: black;
     color: white;
-    right: 1rem;
+    right: 10rem;
     top: 30vh;
     width: 40rem;
     height: 200px;
@@ -143,7 +148,15 @@ img {
     z-index: 1;
 }
 
-@media screen and (max-width: 1800px) {
+@media screen and (max-width: 1750px) {
+    .board-container{
+        margin: auto;
+    }
+
+    .dead-container{
+        margin: auto;
+    }
+
     .info-container {
         position: static;
         margin: 0 auto;

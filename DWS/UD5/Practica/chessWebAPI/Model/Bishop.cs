@@ -21,7 +21,7 @@ namespace ChessAPI.Model
             int i = 1;
             while ((valid==MovementType.ValidNormalMovement) && (i <= Math.Abs(DF) - 1))
             {
-                if (board[movement.fromRow + (i * FactorF), movement.fromColumn + i * FactorC] != null)
+                if (board[movement.fromColumn + i * FactorC, movement.fromRow + (i * FactorF)] != null)
                     valid = MovementType.InvalidNormalMovement;
                 i++;
             }

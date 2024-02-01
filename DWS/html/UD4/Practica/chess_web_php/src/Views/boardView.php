@@ -4,8 +4,6 @@
     {
         header("Location: ../index.php");
     }
-    ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
 ?>
 
 <!DOCTYPE html>
@@ -108,20 +106,18 @@ ini_set('display_startup_errors', 1);
     
     function DrawChessGame($board, $apiDAL, $statesBL, $matchesBL, $playersBL)
     {
-        /*if (isset($_GET['fromRow']))
-        {
-            $board = Move($board, $apiDAL, $statesBL);
-        }*/
         $pieces = str_split($board);
         $numPieces = CountPieces($pieces);
 
         insertMatches($board, $statesBL, $matchesBL);
 
+        echo "<div class=\"container\">";
+        echo "<div class=\"game-container\">";
         echo "<div class=\"dead-container\">";
         DrawDeadWhite($numPieces);
         echo "</div>";
         
-        echo"<div class=\"container\">";
+        echo"<div class=\"board-container\">";
         DrawBoard();
         DrawPieces($pieces);
         echo "</div>";
@@ -129,50 +125,10 @@ ini_set('display_startup_errors', 1);
         echo "<div class=\"dead-container\">";
         DrawDeadBlack($numPieces);
         echo "</div>";
-/*
-        if (!isset($_GET['state']))
-        {
-            echo "
-            <form action=\"\" method=\"get\">
-            <label for=\"fromColumn\">From Column</label>
-            <input type=\"number\" name=\"fromColumn\" id=\"fromColumn\">
-            <label for=\"fromRow\">From Row</label>
-            <input type=\"number\" name=\"fromRow\" id=\"fromRow\">
-            <label for=\"toColumn\">To Column</label>
-            <input type=\"number\" name=\"toColumn\" id=\"toColumn\">
-            <label for=\"toRow\">To Row</label>
-            <input type=\"number\" name=\"toRow\" id=\"toRow\">
-            <input type=\"submit\">
-            </form>";
-        }
-*/
+        echo "</div>";
         DrawInfo($board, $apiDAL, $matchesBL, $playersBL, $statesBL);
+        echo "</div>";
     }
-
-    /*function Move($board, $apiDAL, $statesBL) 
-    {
-        $fromRow = $_GET['fromRow'];
-        $fromColumn = $_GET['fromColumn'];
-        $toRow = $_GET['toRow'];
-        $toColumn = $_GET['toColumn'];
-
-        $move = $apiDAL->move($board, $fromRow, $fromColumn, $toRow, $toColumn);
-
-        try {
-            if ($move['isValid'] == true)
-            {
-                $board = $move['board'];
-                $statesBL->insert($board);
-                var_dump($move['isValid']);
-
-                return $board;
-            }  
-        } catch (\Throwable $th) {
-            return $board;
-        }   
-
-        return $board;
-    }*/
 
     function DrawInfo($board, $apiDAL, $matchesBL, $playersBL, $statesBL)
     {

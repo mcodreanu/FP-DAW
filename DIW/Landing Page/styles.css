@@ -20,6 +20,10 @@ nav {
     align-items: center;
 }
 
+hr {
+    color: aliceblue;
+}
+
 .nav-links {
     display: flex;
     flex-direction: row;
@@ -30,7 +34,6 @@ nav {
 
 .nav-links li {
     margin: 0 1rem;
-    overflow: hidden;
 }
 
 .menu-button-container {
@@ -90,15 +93,33 @@ nav {
 .nav-links a {
     text-decoration: none;
     color: black;
-    border: 1px solid black;
     border-radius: 5px;
     background-color: transparent;
     padding: 5px;
 }
 
-.nav-links a:hover {
-    color: black;
-    background-color: gray;
+
+.nav-links a:hover  {
+    position: relative;
+    color: #0087ca;
+}
+      
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #0087ca;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+      
+.nav-links a:hover::after {
+    transform: scaleX(1);
+    transform-origin: center;
 }
 
 .hero {
@@ -109,17 +130,17 @@ nav {
 }
 
 .hero a {
-    border: 1px solid black;
     border-radius: 5px;
     text-decoration: none;
     color: white;
-    background-color: gray;
+    background-color: #0087ca;
     padding: 10px;
 }
 
 .hero a:hover {
     background-color: transparent;
-    color: black;
+    color: #0087ca;
+    border: 1px solid #0087ca;
 }
 
 #sobre-nosotros {
@@ -143,6 +164,15 @@ nav {
 #servicios .servicios-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 50px;
+}
+
+#servicios .servicio {
+    margin-bottom: 20px;
+}
+
+.servicio h3 {
+    margin-bottom: 20px;
 }
 
 #galeria {
@@ -179,6 +209,7 @@ nav {
 
 #contacto input {
     height: 30px;
+    margin-bottom: 20px;
 }
 
 #contacto textarea {
@@ -230,6 +261,7 @@ footer {
     }
     .nav-links li {
       display: flex;
+      overflow: hidden;
       justify-content: center;
       cursor: pointer;
       margin: 0;
@@ -244,15 +276,16 @@ footer {
         border: none;
         width: 100%;
         color: black;
+        text-align: center;
     }
 
     .nav-links a:hover {
         background-color: transparent;
-        color: black;
+        color: #0087ca;
     }
 
-    .nav-links li:hover {
-        background-color: gray;
+    .nav-links a:hover::after {
+        transform: scaleX(0);
     }
 
     .nav-links li:not(:last-child) {
