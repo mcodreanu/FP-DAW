@@ -25,7 +25,7 @@ if ($data['isValid'] == true) {
     $board = $data['board'];
     $statesBL->insert($board);
 
-    $response['isValid'] = $data['isValid'];
+    $response["isValid"] = $data["isValid"];
 }
 else
 {

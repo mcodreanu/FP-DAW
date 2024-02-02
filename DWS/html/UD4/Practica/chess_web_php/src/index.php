@@ -35,9 +35,8 @@
 </head>
 <body>
     <header id="main-header">
-		<a id="logo-header" href="Views/welcomeView.php">
-			<span class="site-name">CHESS</span>
-			<span class="site-desc">GAME</span>
+        <a id="logo-header" href="welcomeView.php">
+			<img src="../../img/logo.svg" alt="LOGO" class="logo-img">
 		</a>
 
 		<nav>

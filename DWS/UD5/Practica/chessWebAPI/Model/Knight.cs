@@ -8,9 +8,7 @@ namespace ChessAPI.Model
 
         public override MovementType ValidateSpecificRulesForMovement(Movement movement, Piece[,] board)
         {
-
-            if ((Math.Abs(movement.toRow - movement.fromRow) == 2 && Math.Abs(movement.toColumn - movement.fromColumn) == 1)
-            || (Math.Abs(movement.toRow - movement.fromRow) == 1 && Math.Abs(movement.toColumn - movement.fromColumn) == 2))
+            if ((Math.Abs(movement.toRow - movement.fromRow) == 2 && Math.Abs(movement.toColumn - movement.fromColumn) == 1) || (Math.Abs(movement.toRow - movement.fromRow) == 1 && Math.Abs(movement.toColumn - movement.fromColumn) == 2))
             {
                 return MovementType.ValidNormalMovement;
             }

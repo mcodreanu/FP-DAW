@@ -38,6 +38,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 // Move
 $(document).ready(function() {
     var selectedPiece = null;
+    var imgName;
 
     $(".piece").click(function() {
         var clickedPosition = $(this).data("piece-id");
@@ -55,13 +56,42 @@ $(document).ready(function() {
                     fromRow: fromRow,
                 },
                 success: function(response) {
-                    $.each(response.possibleMovements, function(key, value) {
-                        if (value == 1)
+                    console.log(response.piece);
+                    console.log(response.turno);
+                    if (response.turno % 2 != 0)
+                    {
+                        if (response.piece.includes("WH"))
                         {
-                            $(`.piece[data-piece-id="${key}"]`).addClass("valid-move");
-                            $(`.piece[data-piece-id="${key}"]`).append("<div class='dot'></div>");
+                            $.each(response.possibleMovements, function(key, value) {
+                                if (value == 1)
+                                {
+                                    $(`.piece[data-piece-id="${key}"]`).addClass("valid-move");
+                                    $(`.piece[data-piece-id="${key}"]`).append("<div class='dot'></div>");
+                                }
+                            })
                         }
-                    })
+                        else
+                        {
+                            selectedPiece = null;
+                        }
+                    }
+                    else
+                    {
+                        if (response.piece.includes("BL"))
+                        {
+                            $.each(response.possibleMovements, function(key, value) {
+                                if (value == 1)
+                                {
+                                    $(`.piece[data-piece-id="${key}"]`).addClass("valid-move");
+                                    $(`.piece[data-piece-id="${key}"]`).append("<div class='dot'></div>");
+                                }
+                            })
+                        }
+                        else 
+                        {
+                            selectedPiece = null;
+                        }
+                    }
                 },
                 error: function(response) {
                     alert("Error while getting possible movements.");
@@ -94,7 +124,7 @@ $(document).ready(function() {
                 },
                 complete: function() {
                     selectedPiece = null;
-                    $(".piece").removeClass("valid-move invalid-move");
+                    $(".piece").removeClass("valid-move");
                 }
             });
         }

@@ -165,15 +165,15 @@ namespace ChessAPI.Model
                         _boardPieces[toColumn, toRow] = _boardPieces[fromColumn, fromRow];
                         _boardPieces[fromColumn, fromRow] = null;
                             
-                        return new MoveData(true, GetBoardState(), "OK");
+                        return new MoveData(true, GetBoardState(), "OK", piece.GetCode());
                     }
                 }
 
-                return new MoveData(false, GetBoardState(), "Invalid Movement");
+                return new MoveData(false, GetBoardState(), "Invalid Movement", piece.GetCode());
             }
             catch (System.Exception e)
             {
-                return new MoveData(false, GetBoardState(), e.Message);
+                return new MoveData(false, GetBoardState(), e.Message, piece.GetCode());
             }
         }
 

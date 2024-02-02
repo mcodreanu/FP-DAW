@@ -16,9 +16,8 @@
     ?>
 
     <header id="main-header">
-		<a id="logo-header" href="welcomeView.php">
-			<span class="site-name">CHESS</span>
-			<span class="site-desc">GAME</span>
+        <a id="logo-header" href="welcomeView.php">
+			<img src="../../img/logo.svg" alt="LOGO" class="logo-img">
 		</a>
 
 		<nav>
@@ -50,7 +49,7 @@
         <section class="create-game">
             <form action="boardView.php" method="post">
                 <h1>Create Match</h1>
-                <p>Player 1</p>
+                <p>Player 1 (BLACK)</p>
                 <select name="player1" id="player1">
                     <?php
                         require("../Business/playersBL.php");    
@@ -63,7 +62,7 @@
                         }
                     ?>
                 </select>
-                <p>Player 2</p>
+                <p>Player 2 (WHITE)</p>
                 <select name="player2" id="player2">
                     <?php
                         foreach ($playersData as $player)

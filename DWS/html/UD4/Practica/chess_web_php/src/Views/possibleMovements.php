@@ -17,9 +17,13 @@ foreach ($statesData as $state) {
 
 $board = $boardState;
 
+$data = $apiBL->move($board, $fromColumn, $fromRow, 0, 0);
+
 $possibleMovements = $apiBL->obtainPossibleMovements($board, $fromColumn, $fromRow);
 
 $response["possibleMovements"] = $possibleMovements;
+$response["turno"] = $_SESSION["visits"];
+$response["piece"] = $data["piece"];
 
 header('Content-Type: application/json');
 echo json_encode($response);
