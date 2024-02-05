@@ -2,11 +2,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
-img {
-    width: 100%;
+.logo img {
+    width: 200px;
 }
 
 nav {
@@ -15,7 +15,7 @@ nav {
     align-items: center;
     justify-content: space-between;
     padding: 1em;
-    background-color: aliceblue;
+    background: aliceblue;
     height: 50px;
     align-items: center;
 }
@@ -30,6 +30,7 @@ hr {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    user-select: none;
 }
 
 .nav-links li {
@@ -123,10 +124,20 @@ hr {
 }
 
 .hero {
-    background-color: aliceblue;
+    background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(240,248,255,1) 50%);
     text-align: center;
     padding: 100px;
-    line-height: 40px;
+    line-height: 50px;
+    user-select: none;
+}
+
+.hero h1 {
+    font-weight: bold;
+    font-size: 50px;
+}
+
+.hero p {
+    color: gray;
 }
 
 .hero a {
@@ -169,6 +180,10 @@ hr {
 
 #servicios .servicio {
     margin-bottom: 20px;
+    background-color: #0087ca;
+    color: white;
+    border-radius: 5px;
+    padding: 30px;
 }
 
 .servicio h3 {
@@ -178,6 +193,15 @@ hr {
 #galeria {
     padding: 50px;
     text-align: center;
+}
+
+#galeria img {
+    width: 100%;
+}
+
+#galeria img:hover {
+    opacity: 50%;
+    cursor: pointer;
 }
 
 #galeria h2 {
@@ -191,7 +215,7 @@ hr {
 }
 
 #contacto {
-    background-color: aliceblue;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(240,248,255,1) 50%);
     padding: 50px;
     text-align: center;
 }
@@ -208,13 +232,19 @@ hr {
 }
 
 #contacto input {
+    padding: 5px;
     height: 30px;
     margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid gray;
 }
 
 #contacto textarea {
+    padding: 5px;
     resize: none;
     height: 100px;
+    border-radius: 5px;
+    border: 1px solid gray;
 }
 
 #contacto .btn {
@@ -222,16 +252,28 @@ hr {
     height: 30px;
     margin: 0 auto;
     margin-top: 20px;
+    border-radius: 5px;
+    color: white;
+    background-color: #0087ca;
+    cursor: pointer;
+    border: none;
+}
+
+#contacto .btn:hover {
+    background-color: transparent;
+    color: #0087ca;
+    border: 1px solid #0087ca;
 }
 
 footer {
     bottom: 0;
     width: 100%;
+    height: 30px;
     background-color: aliceblue;
     text-align: center;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
     .menu-button-container {
       display: flex;
     }
@@ -246,6 +288,7 @@ footer {
       justify-content: center;
       align-items: center;
     }
+
     #menu-toggle ~ .nav-links li {
       height: 0;
       margin: 0;
@@ -253,12 +296,14 @@ footer {
       border: 0;
       transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
     }
+
     #menu-toggle:checked ~ .nav-links li {
       border: 1px solid #333;
       height: 2.5em;
       padding: 0.5em;
       transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
     }
+
     .nav-links li {
       display: flex;
       overflow: hidden;
@@ -269,6 +314,16 @@ footer {
       width: 100%;
       color: black;
       background-color: aliceblue;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .hero p {
+        line-height: 1;
+        margin-bottom: 20px;
+        margin-top: 20px;
     }
 
     .nav-links a {

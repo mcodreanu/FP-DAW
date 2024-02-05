@@ -11,6 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Chess</title>
+    <link rel="shortcut icon" href="../../img/favicon.svg" type="image/x-icon">
     <link rel="stylesheet" href="../../css/chess_game_styles.css">
     <script src="https://kit.fontawesome.com/5fe1b9d82e.js" crossorigin="anonymous"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>

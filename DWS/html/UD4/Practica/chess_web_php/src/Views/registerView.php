@@ -30,14 +30,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Chess</title>
+	<link rel="shortcut icon" href="../../img/favicon.svg" type="image/x-icon">
     <link rel="stylesheet" href="../../css/chess_menu_styles.css">
 	<script src="https://kit.fontawesome.com/5fe1b9d82e.js" crossorigin="anonymous"></script>
 	<script src="../../js/script.js"></script>
 </head>
 <body>
     <header id="main-header">
-		<a id="logo-header" href="welcomeView.php">
-			<img src="../../img/logo.svg" alt="LOGO" class="logo-img">
+		<a id="logo-header" href="index.php">
+			<span class="site-name">CHESS</span>
+			<span class="site-desc">GAME</span>
 		</a>
 
 		<nav>
@@ -97,7 +99,7 @@
 	</main>
 
     <footer id="main-footer">
-		<p>&copy; 2024 <a href="welcomeView.php">Chess Game</a></p>
+		<p>&copy; 2023-2024 <a href="welcomeView.php">Chess Game</a></p>
 	</footer>
 </body>
 </html>

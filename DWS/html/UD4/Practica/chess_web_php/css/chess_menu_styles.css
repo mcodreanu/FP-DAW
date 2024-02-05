@@ -29,6 +29,10 @@ h1 {
 	font-weight: 300;
 }
 
+input {
+	padding: 5px;
+}
+
 p {
 	text-align: center;
 }
@@ -70,11 +74,21 @@ nav ul li a {
 #logo-header {
 	user-select: none;
 	float: left;
+	padding: 15px 0 0 20px;
 	text-decoration: none;
 }
-
-.logo-img {
-	width: 20%;
+	
+#logo-header .site-name {
+	display: block;
+	font-weight: 700;
+	font-size: 1.2em;
+}
+	
+#logo-header .site-desc {
+	display: block;
+	font-weight: 300;
+	font-size: 0.8em;
+	color: #999;
 }
 
 /* Index */
