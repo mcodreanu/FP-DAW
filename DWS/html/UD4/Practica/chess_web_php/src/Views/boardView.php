@@ -10,12 +10,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chess</title>
     <link rel="shortcut icon" href="../../img/favicon.svg" type="image/x-icon">
     <link rel="stylesheet" href="../../css/chess_game_styles.css">
     <script src="https://kit.fontawesome.com/5fe1b9d82e.js" crossorigin="anonymous"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-    <script src="../../js/script.js"></script>
 </head>
 
 <body>
@@ -162,8 +162,8 @@
 
             echo"<div class=\"info-container\">";
             echo "<h1 class=\"title\">".$title."</h1>";
-            echo "<div class=\"info\"><h1>Black: ".$players[$player_black - 1]." - ".$score["materialValueBlack"]."</h1>";
-            echo "<h1>White: ".$players[$player_white - 1]." - ".$score["materialValueWhite"]."</h1>";
+            echo "<div class=\"info\"><h1>Black: ".$players[$player_black - 1]."    ".$score["materialValueBlack"]."</h1>";
+            echo "<h1>White: ".$players[$player_white - 1]."    ".$score["materialValueWhite"]."</h1>";
             echo "<h1>".$score["distanceMsg"]."</h1></div>";
             DrawHistoryButtons($statesBL);
             echo "</div>";
@@ -191,8 +191,16 @@
 
             echo"<div class=\"info-container\">";
             echo "<h1 class=\"title\">".$_SESSION['title']."</h1>";
-            echo "<div class=\"info\"><h1>Black: ".$players[$_SESSION['player1_name'] - 1]." - ".$score["materialValueBlack"]."</h1>";
-            echo "<h1>White: ".$players[$_SESSION['player2_name'] - 1]." - ".$score["materialValueWhite"]."</h1>";
+            if ($_SESSION["visits"] % 2 != 0)
+            {
+                echo "<h1 class=\"turno\">WHITE</h1>";
+            }
+            else
+            {
+                echo "<h1 class=\"turno\">BLACK</h1>";
+            }
+            echo "<div class=\"info\"><h1>Black: ".$players[$_SESSION['player1_name'] - 1]."    ".$score["materialValueBlack"]."</h1>";
+            echo "<h1>White: ".$players[$_SESSION['player2_name'] - 1]."    ".$score["materialValueWhite"]."</h1>";
             echo "<h1>".$score["distanceMsg"]."</h1></div>";
             echo "<a href=\"welcomeView.php\"><button><i class=\"fa-solid fa-house\"></i></button></a>";
             echo "</div>";
@@ -247,9 +255,9 @@
             for ($j = 0; $j < 8; $j++)
             {
                 if (($i + $j) % 2 == 0)
-                    echo "<div class=\"black-squares\"></div>";
-                else
                     echo "<div class=\"white-squares\"></div>";
+                else
+                    echo "<div class=\"black-squares\"></div>";   
             }
         }
         echo "</div>";
@@ -415,5 +423,8 @@
 
     DrawChessGame($board, $apiDAL, $statesBL, $matchesBL, $playersBL);
     ?>
+
+
+    <script src="../../js/script.js"></script>
 </body>
 </html>

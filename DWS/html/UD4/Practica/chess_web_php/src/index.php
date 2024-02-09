@@ -28,11 +28,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chess</title>
     <link rel="shortcut icon" href="../img/favicon.svg" type="image/x-icon">
     <link rel="stylesheet" href="../css/chess_menu_styles.css">
 	<script src="https://kit.fontawesome.com/5fe1b9d82e.js" crossorigin="anonymous"></script>
-    <script src="../js/script.js"></script>
 </head>
 <body>
     <header id="main-header">
@@ -81,5 +81,7 @@
     <footer id="main-footer">
 		<p>&copy; 2023-2024 <a href="Views/welcomeView.php">Chess Game</a></p>
 	</footer>
+
+    <script src="../js/script.js"></script>
 </body>
 </html>
