@@ -1,6 +1,60 @@
+function startNewGame() {
+    localStorage.setItem('isWhiteTurn', true);
+
+    updateTurnIndicator();
+}
+
+// Filter table based on select 
+const filterOptions = () => {
+	const option = document.querySelector("#filter").value;
+	const selection = option.replace('&', '')
+	const rows = document.querySelectorAll("tbody tr");
+	
+	rows.forEach(row => {
+		let td = row.querySelector("td:nth-child(5)");
+		let filter = td.innerText.replace('&', '');
+		if (filter === selection) {
+			row.className = 'show'
+		} else if (selection === "None") {
+			row.className = 'show';
+		} else {
+			row.className = 'hidden'
+		}
+		console.log(rows);
+	});
+};
+
+window.addEventListener("DOMContentLoaded", (event) => {
+    const el = document.getElementById("filter");
+    if (el) {
+      el.addEventListener("change", filterOptions);
+    }
+});
+
+// User submenu
+window.addEventListener("DOMContentLoaded", (event) => {
+    const el = document.getElementById("user-menu");
+    el.addEventListener("click", (e) => {
+		const subMenu = document.getElementById("sub-menu");
+    	subMenu.classList.toggle("open");
+		console.log("hola");
+	})
+});
+
 // Move
 $(document).ready(function() {
     var selectedPiece = null;
+    var isWhiteTurn = localStorage.getItem('isWhiteTurn') === 'true';
+
+    function updateTurnIndicator() {
+        if (isWhiteTurn) {
+            $(".turn-indicator").text("White's turn");
+        } else {
+            $(".turn-indicator").text("Black's turn");
+        }
+    }
+
+    updateTurnIndicator();
 
     $(".piece").click(function() {
         var clickedPosition = $(this).data("piece-id");
@@ -18,9 +72,7 @@ $(document).ready(function() {
                     fromRow: fromRow,
                 },
                 success: function(response) {
-                    console.log(response.piece);
-                    console.log(response.turno);
-                    if (response.turno % 2 != 0)
+                    if (isWhiteTurn)
                     {
                         if (response.piece.includes("WH"))
                         {
@@ -56,7 +108,7 @@ $(document).ready(function() {
                     }
                 },
                 error: function(response) {
-                    alert("Error while getting possible movements.");
+                    
                 }
             });
         } else {
@@ -76,13 +128,15 @@ $(document).ready(function() {
                 },
                 success: function(response) {
                     if (response.isValid) {
+                        isWhiteTurn = !isWhiteTurn;
+                        localStorage.setItem('isWhiteTurn', isWhiteTurn);
                         window.location = window.location.href;
                     } else {
                         selectedPiece = null;
                     }
                 },
                 error: function(response) {
-                    alert("Error while validating the move. Please try again.");
+                    
                 },
                 complete: function() {
                     selectedPiece = null;

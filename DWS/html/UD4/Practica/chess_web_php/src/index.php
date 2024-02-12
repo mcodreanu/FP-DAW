@@ -36,13 +36,13 @@
 </head>
 <body>
     <header id="main-header">
-        <a id="logo-header" href="index.php">
-			<span class="site-name">CHESS</span>
-			<span class="site-desc">GAME</span>
-		</a>
-
 		<nav>
-			<ul>
+			<div class="logo">
+				<a href="index.php">
+					<h4>CHESS GAME</h4>
+				</a>
+			</div>
+			<ul class="login-ul">
 				<?php
         			session_start();
 					if (!isset($_SESSION['name']))

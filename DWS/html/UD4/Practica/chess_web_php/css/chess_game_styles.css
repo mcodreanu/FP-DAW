@@ -29,7 +29,6 @@ body {
 .board-container{
     width: 40rem;
     height: 40rem;
-    border: 5px solid black;
     margin: 0 20rem;
 }
 

@@ -1,4 +1,4 @@
-@import url('https://fonts.cdnfonts.com/css/poppins');
+@import url('https://fonts.googleapis.com/css?family=Psoppins%26display=swap');
 
 * {
 	margin: 0;
@@ -10,10 +10,9 @@
 body {
 	background-image: url("../img/menubg.jpg");
 	background-repeat: no-repeat;
-	background-size: cover;
-	background-attachment: fixed;
-	margin: 0;
-	padding: 0;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100vh;
 	font-size: 1em;
 	line-height: 1.5em;
 }
@@ -40,28 +39,6 @@ p {
 }
 
 /* Navigation */
-nav {
-	float: right;
-}
-
-nav ul {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-	padding-right: 20px;
-}
-	
-nav ul li {
-	display: inline-block;
-	margin-top: 10px;
-	margin-right: 10px;
-}
-			
-nav ul li a {
-	display: block;
-	text-decoration: none;
-}
-
 #main-header {
     background: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgb(0, 0, 0) 100%);
     color: white;
@@ -72,25 +49,107 @@ nav ul li a {
     color: white;
 }
 
-/* Logo */
-#logo-header {
-	user-select: none;
-	float: left;
-	padding: 15px 0 0 20px;
+nav {
+    height: 75px;
+}
+
+.logo {
+    float:left;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+}
+
+.logo a {
 	text-decoration: none;
 }
-	
-#logo-header .site-name {
-	display: block;
-	font-weight: 700;
-	font-size: 1.2em;
+
+.nav-links {
+    float: right;
+    display: flex;
+    align-items: center;
+    height: 75px;
 }
-	
-#logo-header .site-desc {
-	display: block;
-	font-weight: 300;
-	font-size: 0.8em;
-	color: #999;
+
+.nav-links li {
+    display: inline;
+    list-style-type: none;
+    padding-right: 20px;
+}
+
+.nav-links a {
+    color: rgb(226, 226, 226);
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.burger {
+    display: none;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: rgb(226, 226, 226);
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+@media screen and (max-width: 800px) {
+    body {
+        overflow-x: hidden;
+    }
+    
+    .nav-links {
+        position: fixed;
+        right: 0px;
+        height: 30vh;
+        top: 8vh;
+		background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%); 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 70%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+        line-height: 65px;
+    }
+    
+    .nav-links li {
+        opacity: 0;
+    }
+    
+    .burger {
+        display: block;
+        cursor: pointer;
+        float: right;
+        padding-top: 1.3rem;
+        margin-right: 30px;
+        height: 75px;
+    }
+
+    #index-title {
+        font-size: 10px;
+    }
+}
+
+.nav-active {
+        transform: translateX(0%);
+}
+
+.toggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.toggle .line2 {
+    opacity: 0;
+}
+
+.toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
 }
 
 /* Index */
@@ -379,9 +438,19 @@ input[type=radio]:checked {
 }
 
 /* User */
+.login-ul {
+    list-style-type: none;
+    float: right;
+    padding-top: 1rem;
+    margin-right: 30px;
+    width: 13%;
+    height: 75px;
+}
+
 .user-button {
 	width: 50px;
     height: 45px;
+    float: right;
 }
 
 #sub-menu {
@@ -390,7 +459,8 @@ input[type=radio]:checked {
   
 #sub-menu.open {
 	display: inline;
-	width: 5rem;
+    float: left;
+    width: 100px;
 	height: 4rem;
 	margin-right: 15px;
 	animation: fadeIn 0.3s;
@@ -400,8 +470,7 @@ input[type=radio]:checked {
 .user-buttons {
 	width: 150px;
     height: 45px;
-	margin-top: 10px;
-	margin-left: 20px;
+	margin-bottom: 10px;
 }
 
 #user-content {
@@ -520,23 +589,38 @@ input[type=radio]:checked {
       transform: scale(0.9);
     }
 }
+
 @-webkit-keyframes wave-4 {
     50% {
       transform: scale(0.9);
     }
 }
+
 @-o-keyframes wave-4 {
     50% {
       transform: scale(0.9);
     }
 }
-  @keyframes wave-4 {
+
+@keyframes wave-4 {
     50% {
       transform: scale(0.9);
     }
 }
 
-/* Responsive */
-@media screen and (max-width: 700px)  {
-	
+@keyframes navLinkFade {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@media screen and (max-width: 800px) {
+    #index-title {
+        font-size: 60px;
+    }
 }

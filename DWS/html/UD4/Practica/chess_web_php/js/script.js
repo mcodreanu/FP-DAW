@@ -31,106 +31,27 @@ window.addEventListener("DOMContentLoaded", (event) => {
     el.addEventListener("click", (e) => {
 		const subMenu = document.getElementById("sub-menu");
     	subMenu.classList.toggle("open");
-		console.log("hola");
 	})
 });
 
-// Move
-$(document).ready(function() {
-    var selectedPiece = null;
-    var imgName;
-
-    $(".piece").click(function() {
-        var clickedPosition = $(this).data("piece-id");
-
-        if (selectedPiece === null) {
-            selectedPiece = clickedPosition;
-            var fromColumn = Math.floor(selectedPiece / 8);
-            var fromRow = selectedPiece % 8;
-
-            $.ajax({
-                type: "GET",
-                url: "possibleMovements.php",
-                data: {
-                    fromColumn: fromColumn,
-                    fromRow: fromRow,
-                },
-                success: function(response) {
-                    console.log(response.piece);
-                    console.log(response.turno);
-                    if (response.turno % 2 != 0)
-                    {
-                        if (response.piece.includes("WH"))
-                        {
-                            $.each(response.possibleMovements, function(key, value) {
-                                if (value == 1)
-                                {
-                                    $(`.piece[data-piece-id="${key}"]`).addClass("valid-move");
-                                    $(`.piece[data-piece-id="${key}"]`).append("<div class='dot'></div>");
-                                }
-                            })
-                        }
-                        else
-                        {
-                            selectedPiece = null;
-                        }
-                    }
-                    else
-                    {
-                        if (response.piece.includes("BL"))
-                        {
-                            $.each(response.possibleMovements, function(key, value) {
-                                if (value == 1)
-                                {
-                                    $(`.piece[data-piece-id="${key}"]`).addClass("valid-move");
-                                    $(`.piece[data-piece-id="${key}"]`).append("<div class='dot'></div>");
-                                }
-                            })
-                        }
-                        else 
-                        {
-                            selectedPiece = null;
-                        }
-                    }
-                },
-                error: function(response) {
-                    alert("Error while getting possible movements.");
-                }
-            });
-        } else {
-            var fromColumn = Math.floor(selectedPiece / 8);
-            var fromRow = selectedPiece % 8;
-            var toColumn = Math.floor(clickedPosition / 8);
-            var toRow = clickedPosition % 8;
-
-            $.ajax({
-                type: "GET",
-                url: "validateMove.php",
-                data: {
-                    fromColumn: fromColumn,
-                    fromRow: fromRow,
-                    toColumn: toColumn,
-                    toRow: toRow
-                },
-                success: function(response) {
-                    if (response.isValid) {
-                        window.location = window.location.href;
-                    } else {
-                        selectedPiece = null;
-                    }
-                },
-                error: function(response) {
-                    alert("Error while validating the move. Please try again.");
-                },
-                complete: function() {
-                    selectedPiece = null;
-                    $(".piece").removeClass("valid-move");
-                }
-            });
-        }
+function navSlide() {
+    const burger = document.querySelector(".burger");
+    const nav = document.querySelector(".nav-links");
+    const navLinks = document.querySelectorAll(".nav-links li");
+    
+    burger.addEventListener("click", () => {
+        nav.classList.toggle("nav-active");
+        
+        navLinks.forEach((link, index) => {
+            if (link.style.animation) {
+                link.style.animation = ""
+            } else {
+                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.5}s`;
+            }
+        });
+        burger.classList.toggle("toggle");
     });
-});
+    
+}
 
-
-
-
+navSlide();

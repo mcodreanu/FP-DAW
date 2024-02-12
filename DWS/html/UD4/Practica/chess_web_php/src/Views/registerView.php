@@ -36,14 +36,14 @@
 	<script src="https://kit.fontawesome.com/5fe1b9d82e.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header id="main-header">
-		<a id="logo-header" href="index.php">
-			<span class="site-name">CHESS</span>
-			<span class="site-desc">GAME</span>
-		</a>
-
+<header id="main-header">
 		<nav>
-			<ul>
+			<div class="logo">
+				<a href="welcomeView.php">
+					<h4>CHESS GAME</h4>
+				</a>
+			</div>
+			<ul class="login-ul">
 				<?php
         			session_start();
 					if (!isset($_SESSION['name']))

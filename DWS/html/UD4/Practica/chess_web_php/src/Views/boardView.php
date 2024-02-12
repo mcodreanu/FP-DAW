@@ -127,7 +127,9 @@
         DrawDeadBlack($numPieces);
         echo "</div>";
         echo "</div>";
+        echo "<div class=\"info-container\">";
         DrawInfo($board, $apiDAL, $matchesBL, $playersBL, $statesBL);
+        echo "</div>";
         echo "</div>";
     }
 
@@ -160,7 +162,7 @@
             array_push($players, $player->getName());
             }
 
-            echo"<div class=\"info-container\">";
+            echo"<div class=\"info-board\">";
             echo "<h1 class=\"title\">".$title."</h1>";
             echo "<div class=\"info\"><h1>Black: ".$players[$player_black - 1]."    ".$score["materialValueBlack"]."</h1>";
             echo "<h1>White: ".$players[$player_white - 1]."    ".$score["materialValueWhite"]."</h1>";
@@ -189,16 +191,9 @@
                 array_push($players, $player->getName());
             }
 
-            echo"<div class=\"info-container\">";
+            echo"<div class=\"info-board\">";
             echo "<h1 class=\"title\">".$_SESSION['title']."</h1>";
-            if ($_SESSION["visits"] % 2 != 0)
-            {
-                echo "<h1 class=\"turno\">WHITE</h1>";
-            }
-            else
-            {
-                echo "<h1 class=\"turno\">BLACK</h1>";
-            }
+            echo "<h1 class=\"turn-indicator\"></h1>";
             echo "<div class=\"info\"><h1>Black: ".$players[$_SESSION['player1_name'] - 1]."    ".$score["materialValueBlack"]."</h1>";
             echo "<h1>White: ".$players[$_SESSION['player2_name'] - 1]."    ".$score["materialValueWhite"]."</h1>";
             echo "<h1>".$score["distanceMsg"]."</h1></div>";
@@ -425,6 +420,6 @@
     ?>
 
 
-    <script src="../../js/script.js"></script>
+    <script src="../../js/game.js"></script>
 </body>
 </html>

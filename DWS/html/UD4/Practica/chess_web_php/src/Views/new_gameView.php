@@ -15,25 +15,23 @@
         {
             header("Location: ../index.php");
         }
+
+        if (isset($_SESSION["visits"]))
+        $_SESSION["visits"] = 0;
     ?>
 
     <header id="main-header">
-        <a id="logo-header" href="index.php">
-			<span class="site-name">CHESS</span>
-			<span class="site-desc">GAME</span>
-		</a>
-
 		<nav>
-			<ul>
-                <?php
-        			session_start();
-                    if (isset($_SESSION["visits"]))
-                    $_SESSION["visits"] = 0;
-                
+			<div class="logo">
+				<a href="welcomeView.php">
+					<h4>CHESS GAME</h4>
+				</a>
+			</div>
+			<ul class="nav-links">
+				<?php
 					if (!isset($_SESSION['name']))
 					{
-						echo "<li><button id=\"user-menu\" class=\"glow-on-hover user-button\"><i class=\"fa-solid fa-user\"></i></button></li>
-						<div id=\"sub-menu\"><a href=\"registerView.php\"><button class=\"glow-on-hover user-buttons\">Register</button></a><a href=\"../index.php\"><button class=\"glow-on-hover user-buttons\">Login</button></a></div>";
+						echo "<div id=\"sub-menu\"><a href=\"registerView.php\"><button class=\"glow-on-hover user-buttons\"><i class=\"fa-solid fa-plus\"></i> Register</button></a><a href=\"../index.php\"><button class=\"glow-on-hover user-buttons\"><i class=\"fa-solid fa-right-to-bracket\"></i> Login</button></a></div><li><button id=\"user-menu\" class=\"glow-on-hover user-button\"><i class=\"fa-solid fa-user\"></i></button></li>";
 					}
 					else if ($_SESSION['premium'] == "yes")
 					{
@@ -45,6 +43,11 @@
 					}
     			?>
 			</ul>
+			<div class="burger">
+				<div class="line1"></div>
+				<div class="line2"></div>
+				<div class="line3"></div>
+			</div>
 		</nav>
 	</header>
 

@@ -17,13 +17,13 @@
         }
     ?>
     <header id="main-header">
-		<a id="logo-header" href="index.php">
-			<span class="site-name">CHESS</span>
-			<span class="site-desc">GAME</span>
-		</a>
-
 		<nav>
-			<ul>
+			<div class="logo">
+				<a href="welcomeView.php">
+					<h4>CHESS GAME</h4>
+				</a>
+			</div>
+			<ul class="nav-links">
 				<?php
 					if (!isset($_SESSION['name']))
 					{
@@ -39,6 +39,11 @@
 					}
     			?>
 			</ul>
+			<div class="burger">
+				<div class="line1"></div>
+				<div class="line2"></div>
+				<div class="line3"></div>
+			</div>
 		</nav>
 	</header>
 
