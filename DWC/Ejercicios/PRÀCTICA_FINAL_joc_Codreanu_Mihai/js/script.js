@@ -1,5 +1,7 @@
 var canvas = document.getElementById('game');
 var context = canvas.getContext('2d');
+var formData = new FormData(document.getElementById("snakeForm"));
+var snakeColor = Object.fromEntries(formData)["snake-color"];
 
 var grid = 16;
 var count = 0;
@@ -64,7 +66,7 @@ function loop() {
   context.fillStyle = 'red';
   context.fillRect(apple.x, apple.y, grid-1, grid-1);
 
-  context.fillStyle = 'hotpink';
+  context.fillStyle = snakeColor;
   snake.cells.forEach(function(cell, index) {
 
     context.fillRect(cell.x, cell.y, grid-1, grid-1);
@@ -118,7 +120,11 @@ document.addEventListener('keydown', function(e) {
 });
 
 function play() {
-    loop();
-    var button = document.getElementById("play"); 
-    button.onclick = null;
+  loop();
+  var button = document.getElementById("play"); 
+  button.onclick = null;
+}
+
+function reload() {
+  location.reload();
 }

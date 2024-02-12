@@ -1,14 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Basic Snake HTML Game</title>
+  <title>Snake Game</title>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="css/style.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 <body>
-<h1 id="score"></h1>
-<canvas width="400" height="400" id="game"></canvas>
-<button id="play" onclick="play()">Play</button>
-<script src="js/script.js"></script>
+  <div class="container">
+    <div class="game-container">
+      <h1 id="score"></h1>
+      <canvas width="400" height="400" id="game"></canvas>
+    </div>
+  
+    <div class="form-container">
+      <form id="snakeForm" action="" method="post">
+        <label for="snake-color">Snake Color</label>
+        <br>
+        <br>
+        <input type="color" name="snake-color" id="snake-color" onchange="reload()">
+        <br>
+        <br>
+        <label for="difficulty">Difficulty</label>
+        <select name="difficulty" id="difficulty">
+          <option value="">Easy</option>
+          <option value="">Normal</option>
+          <option value="">Hard</option>
+        </select>
+      </form>
+      <button onclick="play()" id="play">Play</button>
+    </div>
+  </div>
+  <script src="js/script.js"></script>
 </body>
 </html>
