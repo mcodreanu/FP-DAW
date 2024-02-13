@@ -164,8 +164,8 @@
 
             echo"<div class=\"info-board\">";
             echo "<h1 class=\"title\">".$title."</h1>";
-            echo "<div class=\"info\"><h1>Black: ".$players[$player_black - 1]."    ".$score["materialValueBlack"]."</h1>";
-            echo "<h1>White: ".$players[$player_white - 1]."    ".$score["materialValueWhite"]."</h1>";
+            echo "<div class=\"info\"><h1>Black: ".$players[$player_black - 1]."&nbsp;&nbsp;&nbsp;&nbsp;".$score["materialValueBlack"]."</h1>";
+            echo "<h1>White: ".$players[$player_white - 1]."&nbsp;&nbsp;&nbsp;&nbsp;".$score["materialValueWhite"]."</h1>";
             echo "<h1>".$score["distanceMsg"]."</h1></div>";
             DrawHistoryButtons($statesBL);
             echo "</div>";
@@ -194,8 +194,8 @@
             echo"<div class=\"info-board\">";
             echo "<h1 class=\"title\">".$_SESSION['title']."</h1>";
             echo "<h1 class=\"turn-indicator\"></h1>";
-            echo "<div class=\"info\"><h1>Black: ".$players[$_SESSION['player1_name'] - 1]."    ".$score["materialValueBlack"]."</h1>";
-            echo "<h1>White: ".$players[$_SESSION['player2_name'] - 1]."    ".$score["materialValueWhite"]."</h1>";
+            echo "<div class=\"info\"><h1>Black: ".$players[$_SESSION['player1_name'] - 1]."&nbsp;&nbsp;&nbsp;&nbsp;".$score["materialValueBlack"]."</h1>";
+            echo "<h1>White: ".$players[$_SESSION['player2_name'] - 1]."&nbsp;&nbsp;&nbsp;&nbsp;".$score["materialValueWhite"]."</h1>";
             echo "<h1>".$score["distanceMsg"]."</h1></div>";
             echo "<a href=\"welcomeView.php\"><button><i class=\"fa-solid fa-house\"></i></button></a>";
             echo "</div>";

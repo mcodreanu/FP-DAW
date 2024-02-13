@@ -82,7 +82,7 @@
                 <br>
                 <input type="text" class="text" id="title" name="title" maxlength="50" required>
                 <br><br>
-                <button class="glow-on-hover"><input class="createInput" type="submit" value="Create"></button>
+                <button onclick="startNewGame()" class="glow-on-hover"><input class="createInput" type="submit" value="Create"></button>
             </form>
         </section>
     </main>
@@ -91,6 +91,7 @@
 		<p>&copy; 2023-2024 <a href="welcomeView.php">Chess Game</a></p>
 	</footer>
 
+    <script src="../../js/game.js"></script>
     <script src="../../js/script.js"></script>
 </body>
 </html>
