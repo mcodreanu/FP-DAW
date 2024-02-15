@@ -1,7 +1,9 @@
 var canvas = document.getElementById('game');
 var context = canvas.getContext('2d');
-var formData = new FormData(document.getElementById("snakeForm"));
-var snakeColor = Object.fromEntries(formData)["snake-color"];
+
+var difficulty = 4; 
+var snakeColor = '#000000'; 
+var gameStarted = false;
 
 var grid = 16;
 var count = 0;
@@ -33,7 +35,7 @@ function loop() {
 
   document.getElementById("score").innerHTML = "Score: " + score;
 
-  if (++count < 4) {
+  if (++count < difficulty) {
     return;
   }
 
@@ -79,17 +81,9 @@ function loop() {
     }
 
     for (var i = index + 1; i < snake.cells.length; i++) {
-
       if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
-        snake.x = 160;
-        snake.y = 160;
-        snake.cells = [];
-        snake.maxCells = 4;
-        snake.dx = grid;
-        snake.dy = 0;
-
-        apple.x = getRandomInt(0, 25) * grid;
-        apple.y = getRandomInt(0, 25) * grid;
+        alert("You died! Score: " + score);
+        reload();
       }
     }
   });
@@ -119,12 +113,36 @@ document.addEventListener('keydown', function(e) {
   }
 });
 
+// Update snake color and difficulty when form values change
+document.getElementById("snake-color").addEventListener("change", updateSnakeColor);
+document.getElementById("difficulty").addEventListener("change", updateDifficulty);
+
+function updateSnakeColor() {
+  var formData = new FormData(document.getElementById("snakeForm"));
+  snakeColor = formData.get("snake-color");
+}
+
+function updateDifficulty() {
+  var formData = new FormData(document.getElementById("snakeForm"));
+  difficulty = parseInt(formData.get("difficulty"));
+}
+
 function play() {
+  updateSnakeColor(); 
+  updateDifficulty();
+
   loop();
   var button = document.getElementById("play"); 
   button.onclick = null;
+  gameStarted = true;
+  disableForm(); // Disable form inputs
 }
 
 function reload() {
   location.reload();
+}
+
+function disableForm() {
+  document.getElementById("snake-color").disabled = true;
+  document.getElementById("difficulty").disabled = true;
 }

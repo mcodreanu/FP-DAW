@@ -9,26 +9,25 @@
 <body>
   <div class="container">
     <div class="game-container">
-      <h1 id="score"></h1>
+      <h1 id="score">Score: 0</h1>
       <canvas width="400" height="400" id="game"></canvas>
     </div>
   
     <div class="form-container">
       <form id="snakeForm" action="" method="post">
         <label for="snake-color">Snake Color</label>
-        <br>
-        <br>
-        <input type="color" name="snake-color" id="snake-color" onchange="reload()">
+        <input type="color" name="snake-color" id="snake-color">
         <br>
         <br>
         <label for="difficulty">Difficulty</label>
         <select name="difficulty" id="difficulty">
-          <option value="">Easy</option>
-          <option value="">Normal</option>
-          <option value="">Hard</option>
+          <option value="20">Easy</option>
+          <option value="13">Normal</option>
+          <option value="8">Hard</option>
         </select>
       </form>
       <button onclick="play()" id="play">Play</button>
+      <button onclick="reload()">Restart</button>
     </div>
   </div>
   <script src="js/script.js"></script>
