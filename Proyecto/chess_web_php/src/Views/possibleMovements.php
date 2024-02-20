@@ -17,9 +17,9 @@ foreach ($statesData as $state) {
 
 $board = $boardState;
 
-$data = $apiBL->move($board, $fromColumn, $fromRow, 0, 0);
+$data = $apiBL->move($board, $fromRow, $fromColumn, 0, 0);
 
-$possibleMovements = $apiBL->obtainPossibleMovements($board, $fromColumn, $fromRow);
+$possibleMovements = $apiBL->obtainPossibleMovements($board, $fromRow, $fromColumn);
 
 $response["possibleMovements"] = $possibleMovements;
 $response["turno"] = $_SESSION["visits"];

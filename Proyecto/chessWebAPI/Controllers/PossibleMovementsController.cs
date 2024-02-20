@@ -15,14 +15,14 @@ public class PossibleMovementsController : ControllerBase
     }
 
     [HttpGet]
-    public IActionResult Get(string board, int fromColumn, int fromRow)
+    public IActionResult Get(string board, int fromRow, int fromColumn)
     {
         try
         {
             if (string.IsNullOrEmpty(board))
                 return BadRequest("Board can't be IsNullOrEmpty");
 
-            var response = _boardService.CheckPossibleMovements(board, fromColumn, fromRow);
+            var response = _boardService.CheckPossibleMovements(board, fromRow, fromColumn);
             return Ok(response);
         }   
         catch (Exception ex)

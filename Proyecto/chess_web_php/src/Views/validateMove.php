@@ -19,7 +19,7 @@ foreach ($statesData as $state) {
 
 $board = $boardState;
 
-$data = $apiBL->move($board, $fromColumn, $fromRow, $toColumn, $toRow);
+$data = $apiBL->move($board, $fromRow, $fromColumn, $toRow, $toColumn);
 
 if ($data['isValid'] == true) {
     $board = $data['board'];

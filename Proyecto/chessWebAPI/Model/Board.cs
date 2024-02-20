@@ -227,16 +227,16 @@ namespace ChessAPI.Model
             return result;
         }
 
-        public List<string> CheckPossibleMovements(string board, int fromColumn, int fromRow)
+        public List<string> CheckPossibleMovements(string board, int fromRow, int fromColumn)
         {
-            Piece piece = _boardPieces[fromColumn, fromRow];
+            Piece piece = _boardPieces[fromRow, fromColumn];
             List<string> possibleMovementsList = new List<string>();
 
             for (int i = 0; i < _boardPieces.GetLength(0); i++)
             {
                 for (int j = 0; j < _boardPieces.GetLength(1); j++)
                 {
-                    Movement move = new Movement(fromColumn, fromRow, i, j);
+                    Movement move = new Movement(fromRow, fromColumn, i, j);
 
                     if (piece.Validate(move, _boardPieces, GameStateManager.Instance.PreviousMove) != Piece.MovementType.InvalidNormalMovement)
                     {

@@ -3,6 +3,6 @@ using ChessAPI.Model;
 public interface IBoardService
 {
     BoardScore GetScore(string board); 
-    MoveData Validate(string board, int fromColumn, int fromRow, int toColumn, int toRow);
-    List<string> CheckPossibleMovements(string board, int fromColumn, int fromRow);
+    MoveData Validate(string board, int fromRow, int fromColumn, int toRow, int toColumn);
+    List<string> CheckPossibleMovements(string board, int fromRow, int fromColumn);
 }

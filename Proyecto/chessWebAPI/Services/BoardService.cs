@@ -10,18 +10,18 @@ public class BoardService : IBoardService
         return score;
     }
     
-    public MoveData Validate(string board, int fromColumn, int fromRow, int toColumn, int toRow)
+    public MoveData Validate(string board, int fromRow, int fromColumn, int toRow, int toColumn)
     {
         Board b  = new Board(board);
-        var move = b.Move(fromColumn, fromRow, toColumn, toRow);
+        var move = b.Move(fromRow, fromColumn, toRow, toColumn);
 
         return move;
     }
 
-    public List<string> CheckPossibleMovements(string board, int fromColumn, int fromRow)
+    public List<string> CheckPossibleMovements(string board, int fromRow, int fromColumn)
     {
         Board b  = new Board(board);
-        var valid = b.CheckPossibleMovements(board, fromColumn, fromRow);
+        var valid = b.CheckPossibleMovements(board, fromRow, fromColumn);
 
         return valid;
     }

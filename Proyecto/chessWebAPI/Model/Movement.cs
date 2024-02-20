@@ -10,7 +10,7 @@ namespace ChessAPI.Model
 
         public Movement(){ }
 
-        public Movement(int fromColumn, int fromRow, int toColumn, int toRow)
+        public Movement(int fromRow, int fromColumn, int toRow, int toColumn)
         {
             this.fromColumn = fromColumn;
             this.fromRow = fromRow;
