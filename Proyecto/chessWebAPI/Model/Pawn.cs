@@ -1,6 +1,5 @@
 namespace ChessAPI.Model
 {
-    //TODO: Captura al paso. "KillPassant"
     public class Pawn : Piece
     {
 
@@ -86,24 +85,26 @@ namespace ChessAPI.Model
 
         public bool KillPassant(Movement movement, Piece[,] board, Movement previousMove)
         {
-            // Check if the previous move was a double pawn move
             if (previousMove != null && Math.Abs(previousMove.fromRow - previousMove.toRow) == 2)
             {
-                // Check if the pawn moved adjacent to the previous pawn move
-                if (Math.Abs(movement.toColumn - previousMove.toColumn) == 1)
+                if (previousMove.toColumn == movement.toColumn)
                 {
-                    int direction = this._color == ColorEnum.WHITE ? 1 : -1;
-                    int passantRow = this._color == ColorEnum.WHITE ? 4 : 3;
-
-                    // Check if the current pawn's movement matches the row and column of the potential passant capture
-                    if (movement.toRow == passantRow && board[movement.toRow, movement.toColumn] == null)
+                    int opponentPawnRow = this._color == ColorEnum.WHITE ? 3 : 4;
+                    if (movement.fromRow == opponentPawnRow)
                     {
-                        // Check if the moving pawn is in the same row as the previous pawn's final position
-                        if (movement.fromColumn == passantRow + direction)
+                        int direction = this._color == ColorEnum.WHITE ? -1 : 1;
+
+                        if (movement.toRow == previousMove.toRow + direction &&
+                            Math.Abs(movement.fromColumn - previousMove.toColumn) == 1)
+                        {
+                            int capturedPawnRow = this._color == ColorEnum.WHITE ? movement.toRow + 1 : movement.toRow - 1;
+                            board[capturedPawnRow, previousMove.toColumn] = null;
                             return true;
+                        }
                     }
                 }
             }
+
             return false;
         }
 
