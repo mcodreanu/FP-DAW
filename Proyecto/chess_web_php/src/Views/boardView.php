@@ -280,9 +280,14 @@
                     $pos++;
                 }
             }
-            else if ($pieces[$i] != "/")
+            else if ($pieces[$i] != "/" && strtoupper($pieces[$i]) == $pieces[$i])
             {
-                echo "<div class=\"piece\" data-piece-id=\"{$pos}\"><img src=\"../../img/{$pieces[$i]}.svg\" alt=\"\"></div>";
+                echo "<div class=\"piece\" data-piece-id=\"{$pos}\"><img src=\"../../img/White/{$pieces[$i]}.svg\" alt=\"\"></div>";
+                $pos++;
+            }
+            else if ($pieces[$i] != "/" && strtolower($pieces[$i]) == $pieces[$i])
+            {
+                echo "<div class=\"piece\" data-piece-id=\"{$pos}\"><img src=\"../../img/Black/{$pieces[$i]}.svg\" alt=\"\"></div>";
                 $pos++;
             }
         }
@@ -356,27 +361,27 @@
 
         for ($i = 0; $i < ($dead_pieces_white["P"] - $numPieces[0]); $i++)
         {
-            echo "<div class=\"dead-piece\"><img src=\"../../img/P.svg\" alt=\"\"></div>";
+            echo "<div class=\"dead-piece\"><img src=\"../../img/White/P.svg\" alt=\"\"></div>";
         }
 
         for ($i = 0; $i < ($dead_pieces_white["R"] - $numPieces[1]); $i++)
         {
-            echo "<div class=\"dead-piece\"><img src=\"../../img/R.svg\" alt=\"\"></div>";
+            echo "<div class=\"dead-piece\"><img src=\"../../img/White/R.svg\" alt=\"\"></div>";
         }
 
         for ($i = 0; $i < ($dead_pieces_white["N"] - $numPieces[2]); $i++)
         {
-            echo "<div class=\"dead-piece\"><img src=\"../../img/N.svg\" alt=\"\"></div>";
+            echo "<div class=\"dead-piece\"><img src=\"../../img/White/N.svg\" alt=\"\"></div>";
         }
 
         for ($i = 0; $i < ($dead_pieces_white["B"] - $numPieces[3]); $i++)
         {
-            echo "<div class=\"dead-piece\"><img src=\"../../img/B.svg\" alt=\"\"></div>";
+            echo "<div class=\"dead-piece\"><img src=\"../../img/White/B.svg\" alt=\"\"></div>";
         }
 
         for ($i = 0; $i < ($dead_pieces_white["Q"] - $numPieces[4]); $i++)
         {
-            echo "<div class=\"dead-piece\"><img src=\"../../img/Q.svg\" alt=\"\"></div>";
+            echo "<div class=\"dead-piece\"><img src=\"../../img/White/Q.svg\" alt=\"\"></div>";
         }
     }
 
@@ -392,27 +397,27 @@
 
         for ($i = 0; $i < ($dead_pieces_black["p"] - $numPieces[5]); $i++)
         {
-            echo "<div class=\"dead-piece\"><img src=\"../../img/p.svg\" alt=\"\"></div>";
+            echo "<div class=\"dead-piece\"><img src=\"../../img/Black/p.svg\" alt=\"\"></div>";
         }
 
         for ($i = 0; $i < ($dead_pieces_black["r"] - $numPieces[6]); $i++)
         {
-            echo "<div class=\"dead-piece\"><img src=\"../../img/r.svg\" alt=\"\"></div>";
+            echo "<div class=\"dead-piece\"><img src=\"../../img/Black/r.svg\" alt=\"\"></div>";
         }
 
         for ($i = 0; $i < ($dead_pieces_black["n"] - $numPieces[7]); $i++)
         {
-            echo "<div class=\"dead-piece\"><img src=\"../../img/n.svg\" alt=\"\"></div>";
+            echo "<div class=\"dead-piece\"><img src=\"../../img/Black/n.svg\" alt=\"\"></div>";
         }
 
         for ($i = 0; $i < ($dead_pieces_black["b"] - $numPieces[8]); $i++)
         {
-            echo "<div class=\"dead-piece\"><img src=\"../../img/b.svg\" alt=\"\"></div>";
+            echo "<div class=\"dead-piece\"><img src=\"../../img/Black/b.svg\" alt=\"\"></div>";
         }
 
         for ($i = 0; $i < ($dead_pieces_black["q"] - $numPieces[9]); $i++)
         {
-            echo "<div class=\"dead-piece\"><img src=\"../../img/q.svg\" alt=\"\"></div>";
+            echo "<div class=\"dead-piece\"><img src=\"../../img/Black/q.svg\" alt=\"\"></div>";
         }
     }
 

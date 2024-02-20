@@ -10,7 +10,7 @@ namespace ChessAPI.Model
         {
         }
 
-        public override MovementType ValidateSpecificRulesForMovement(Movement movement, Piece[,] board)
+        public override MovementType ValidateSpecificRulesForMovement(Movement movement, Piece[,] board, Movement previousMove)
         {
 
             if ((movement.fromRow!=movement.toRow) && (movement.fromColumn!=movement.toColumn))
@@ -26,7 +26,7 @@ namespace ChessAPI.Model
                 int iColumn = 1;
                 while ((valid) && (iColumn <= Math.Abs(DC) - 1))
                 {
-                    if (board[movement.fromColumn + iColumn*columnFactor, movement.fromRow] != null)
+                    if (board[movement.fromRow, movement.fromColumn + iColumn*columnFactor] != null)
                         valid = false;
                     iColumn++;
                 }
@@ -40,7 +40,7 @@ namespace ChessAPI.Model
                     int iRow = 1;
                     while ((valid) && (iRow <= Math.Abs(DF)-1))
                     {
-                        if (board[movement.fromColumn, movement.fromRow + iRow *rowFactor] != null)
+                        if (board[ movement.fromRow + iRow *rowFactor, movement.fromColumn] != null)
                             valid = false;
                         iRow++;
                     }
@@ -51,7 +51,6 @@ namespace ChessAPI.Model
                 return MovementType.ValidNormalMovement;
             else
                 return MovementType.InvalidNormalMovement;
-
         }
 
         public override int GetScore()

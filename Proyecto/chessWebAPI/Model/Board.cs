@@ -151,31 +151,32 @@ namespace ChessAPI.Model
             return string.Empty;
         }
 
-        public MoveData Move(int fromColumn, int fromRow, int toColumn, int toRow)
+        public MoveData Move(int fromRow, int fromColumn, int toRow, int toColumn)
+    {
+        Movement move = new Movement(fromRow, fromColumn, toRow, toColumn);
+        Piece piece = _boardPieces[move.fromRow, move.fromColumn];
+
+        try
         {
-            Movement move = new Movement(fromColumn, fromRow, toColumn, toRow);
-            Piece piece = _boardPieces[move.fromColumn, move.fromRow];
-
-            try
+            if (move.IsValid())
             {
-                if (move.IsValid())
+                if (piece.Validate(move, _boardPieces, GameStateManager.Instance.PreviousMove) != Piece.MovementType.InvalidNormalMovement)
                 {
-                    if (piece.Validate(move, _boardPieces) != Piece.MovementType.InvalidNormalMovement)
-                    {
-                        _boardPieces[toColumn, toRow] = _boardPieces[fromColumn, fromRow];
-                        _boardPieces[fromColumn, fromRow] = null;
-                            
-                        return new MoveData(true, GetBoardState(), "OK", piece.GetCode());
-                    }
+                    GameStateManager.Instance.UpdatePreviousMove(move);
+                    _boardPieces[toRow, toColumn] = _boardPieces[fromRow, fromColumn];
+                    _boardPieces[fromRow, fromColumn] = null;
+                        
+                    return new MoveData(true, GetBoardState(), "OK", piece.GetCode());
                 }
+            }
 
-                return new MoveData(false, GetBoardState(), "Invalid Movement", piece.GetCode());
-            }
-            catch (System.Exception e)
-            {
-                return new MoveData(false, GetBoardState(), e.Message, piece.GetCode());
-            }
+            return new MoveData(false, GetBoardState(), "Invalid Movement", piece.GetCode());
         }
+        catch (System.Exception e)
+        {
+            return new MoveData(false, GetBoardState(), e.Message, piece.GetCode());
+        }
+    }
 
         public string GetBoardState()
         {
@@ -237,7 +238,7 @@ namespace ChessAPI.Model
                 {
                     Movement move = new Movement(fromColumn, fromRow, i, j);
 
-                    if (piece.Validate(move, _boardPieces) != Piece.MovementType.InvalidNormalMovement)
+                    if (piece.Validate(move, _boardPieces, GameStateManager.Instance.PreviousMove) != Piece.MovementType.InvalidNormalMovement)
                     {
                         possibleMovementsList.Add("1");
                     }

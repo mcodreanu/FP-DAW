@@ -6,7 +6,7 @@ namespace ChessAPI.Model
         {
         }
 
-        public override MovementType ValidateSpecificRulesForMovement(Movement movement, Piece[,] board)
+        public override MovementType ValidateSpecificRulesForMovement(Movement movement, Piece[,] board, Movement previousMove)
         {
             return MovementType.ValidNormalMovement;
         }

@@ -6,7 +6,7 @@ namespace ChessAPI.Model
         {
         }
 
-        public override MovementType ValidateSpecificRulesForMovement(Movement movement, Piece[,] board)
+        public override MovementType ValidateSpecificRulesForMovement(Movement movement, Piece[,] board, Movement previousMove)
         {
             var valid = MovementType.ValidNormalMovement;
             int DF = movement.toRow - movement.fromRow;
@@ -21,7 +21,7 @@ namespace ChessAPI.Model
             int i = 1;
             while ((valid==MovementType.ValidNormalMovement) && (i <= Math.Abs(DF) - 1))
             {
-                if (board[movement.fromColumn + i * FactorC, movement.fromRow + (i * FactorF)] != null)
+                if (board[movement.fromRow + (i * FactorF), movement.fromColumn + i * FactorC] != null)
                     valid = MovementType.InvalidNormalMovement;
                 i++;
             }
