@@ -93,18 +93,18 @@
         }
     }
     
-    function changeStates($board, $statesBL)
+    function changeStates($board, $statesBL, $apiBL)
     {
         if (isset($_GET['state']))
         {
-            $states = obtainBoard($statesBL);
+            $states = obtainBoard($statesBL, $apiBL);
             $board = $states[$_GET['state']];
         }
         
         return $board;
     }
 
-    $board = changeStates($board, $statesBL);
+    $board = changeStates($board, $statesBL, $apiBL);
     
     function DrawChessGame($board, $apiBL, $statesBL, $matchesBL, $playersBL)
     {
@@ -167,9 +167,9 @@
             echo "<h1 class=\"title\">".$title."</h1>";
             echo "<div class=\"info\"><h1>Black: ".$players[$player_black - 1]."&nbsp;&nbsp;&nbsp;&nbsp;".$score["materialValueBlack"]."</h1>";
             echo "<h1>White: ".$players[$player_white - 1]."&nbsp;&nbsp;&nbsp;&nbsp;".$score["materialValueWhite"]."</h1>";
-            echo "<h1>".$score["distanceMsg"]."</h1></div>";
+            echo "<h1>".$score["distanceMsg"]."</h1></div><div class=\"info-button\">";
             DrawHistoryButtons($statesBL);
-            echo "</div>";
+            echo "</div></div>";
         } 
         else
         {
@@ -202,11 +202,10 @@
                 </select>";
             echo"</div>";
             echo "<h1 class=\"title\">".$_SESSION['title']."</h1>";
-            echo "<h1 class=\"turn-indicator\"></h1>";
-            echo "<div class=\"info\"><h1>Black: ".$players[$_SESSION['player1_name'] - 1]."&nbsp;&nbsp;&nbsp;&nbsp;".$score["materialValueBlack"]."</h1>";
+            echo "<div class=\"info\"><h1 class=\"turn-indicator\"></h1><h1>Black: ".$players[$_SESSION['player1_name'] - 1]."&nbsp;&nbsp;&nbsp;&nbsp;".$score["materialValueBlack"]."</h1>";
             echo "<h1>White: ".$players[$_SESSION['player2_name'] - 1]."&nbsp;&nbsp;&nbsp;&nbsp;".$score["materialValueWhite"]."</h1>";
             echo "<h1>".$score["distanceMsg"]."</h1></div>";
-            echo "<a href=\"welcomeView.php\"><button><i class=\"fa-solid fa-house\"></i></button></a>";
+            echo "<div class=\"info-button\"><a href=\"welcomeView.php\"><button><i class=\"fa-solid fa-house\"></i></button></a></div>";
             echo "</div>";
         }
     }

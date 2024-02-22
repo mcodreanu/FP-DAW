@@ -11,9 +11,9 @@ $(document).ready(function() {
 
     function updateTurnIndicator() {
         if (isWhiteTurn) {
-            $(".turn-indicator").text("White's turn");
+            $(".turn-indicator").text("Turn: White");
         } else {
-            $(".turn-indicator").text("Black's turn");
+            $(".turn-indicator").text("Turn: Black");
         }
     }
 
