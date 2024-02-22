@@ -17,10 +17,10 @@ class ApiBL
         return $res; 
     }
 
-    function move($board, $fromColumn, $fromRow, $toColumn, $toRow)
+    function move($board, $fromColumn, $fromRow, $toColumn, $toRow, $choice)
     {
         $apiDAL = new ApiDAL();
-        $res = $apiDAL->move($board, $fromColumn, $fromRow, $toColumn, $toRow);
+        $res = $apiDAL->move($board, $fromColumn, $fromRow, $toColumn, $toRow, $choice);
         
         return $res;
     }

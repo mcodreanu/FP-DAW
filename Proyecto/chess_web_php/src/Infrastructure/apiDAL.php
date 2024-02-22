@@ -21,9 +21,9 @@ class ApiDAL
 		return $x;
 	}
 
-	function move($board, $fromColumn, $fromRow, $toColumn, $toRow)
+	function move($board, $fromColumn, $fromRow, $toColumn, $toRow, $choice)
 	{
-		$url = "https://localhost:7246/Movement?board=".$board."&fromColumn=".$fromColumn."&fromRow=".$fromRow."&toColumn=".$toColumn."&toRow=".$toRow;
+		$url = "https://localhost:7246/Movement?board=".$board."&fromColumn=".$fromColumn."&fromRow=".$fromRow."&toColumn=".$toColumn."&toRow=".$toRow."&choice=".$choice;
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL,$url);
 		curl_setopt($ch,CURLOPT_RETURNTRANSFER, 1);

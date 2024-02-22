@@ -151,7 +151,7 @@ namespace ChessAPI.Model
             return string.Empty;
         }
 
-        public MoveData Move(int fromRow, int fromColumn, int toRow, int toColumn)
+        public MoveData Move(int fromRow, int fromColumn, int toRow, int toColumn, int choice)
         {
             Movement move = new Movement(fromRow, fromColumn, toRow, toColumn);
             Piece piece = _boardPieces[move.fromRow, move.fromColumn];
@@ -164,17 +164,15 @@ namespace ChessAPI.Model
                     {
                         if (piece.ValidateCastling(move, _boardPieces) == Piece.MovementType.ValidNormalMovement)
                         {
-                            // Handle castling move
-                            if (move.toColumn == 6 || move.toColumn == 2) // Kingside or Queenside castling
+                            // Castling
+                            if (move.toColumn == 6 || move.toColumn == 2)
                             {
-                                // Move the king
                                 _boardPieces[toRow, toColumn] = _boardPieces[fromRow, fromColumn];
                                 _boardPieces[fromRow, fromColumn] = null;
-                                // Move the rook
+
                                 _boardPieces[toRow, move.toColumn == 6 ? 5 : 3] = _boardPieces[toRow, move.toColumn == 6 ? 7 : 0];
                                 _boardPieces[toRow, move.toColumn == 6 ? 7 : 0] = null;
 
-                                // Set HasMoved flag for king and rook
                                 if (piece.GetCode() == "|ROBL|")
                                 {
                                     GameStateManager.Instance.UpdateHasMovedBlack(true);
@@ -195,19 +193,67 @@ namespace ChessAPI.Model
                                     GameStateManager.Instance.UpdateHasMovedWhite(true);
                                 }
                             }
-                            // Update board state accordingly
 
-                            // Return MoveData indicating successful castling
                             return new MoveData(true, GetBoardState(), "Castling successful", piece.GetCode());
                         }
+                        // Promotion
+                        else if (piece.GetCode() == "|PAWH|" && move.toRow == 0)
+                        {
+                            Piece PromotedTo = null;
+
+                            switch (choice)
+                            {
+                                case 1:
+                                    PromotedTo = new Queen(Piece.ColorEnum.WHITE);
+                                    break;
+                                case 2:
+                                    PromotedTo = new Rook(Piece.ColorEnum.WHITE);
+                                    break;
+                                case 3:
+                                    PromotedTo = new Knight(Piece.ColorEnum.WHITE);
+                                    break;
+                                case 4:
+                                    PromotedTo = new Bishop(Piece.ColorEnum.WHITE);
+                                    break;
+                            }
+
+                            _boardPieces[move.toRow, move.toColumn] = PromotedTo;
+                            _boardPieces[move.fromRow, move.fromColumn] = null;
+
+                            return new MoveData(true, GetBoardState(), "OK", piece.GetCode());
+                        }
+                        else if (piece.GetCode() == "|PABL|" && move.toRow == 7)
+                        {
+                            Piece PromotedTo = null;
+
+                            switch (choice)
+                            {
+                                case 1:
+                                    PromotedTo = new Queen(Piece.ColorEnum.BLACK);
+                                    break;
+                                case 2:
+                                    PromotedTo = new Rook(Piece.ColorEnum.BLACK);
+                                    break;
+                                case 3:
+                                    PromotedTo = new Knight(Piece.ColorEnum.BLACK);
+                                    break;
+                                case 4:
+                                    PromotedTo = new Bishop(Piece.ColorEnum.BLACK);
+                                    break;
+                            }
+
+                            _boardPieces[move.toRow, move.toColumn] = PromotedTo;
+                            _boardPieces[move.fromRow, move.fromColumn] = null;
+
+                            return new MoveData(true, GetBoardState(), "OK", piece.GetCode());
+                        }
+                        // Normal move
                         else
                         {
-                            // Handle normal move
                             GameStateManager.Instance.UpdatePreviousMove(move);
                             _boardPieces[toRow, toColumn] = _boardPieces[fromRow, fromColumn];
                             _boardPieces[fromRow, fromColumn] = null;
 
-                            // Set HasMoved flag for rook or king if moved
                             if (piece.GetCode() == "|ROBL|")
                             {
                                 GameStateManager.Instance.UpdateHasMovedBlack(true);

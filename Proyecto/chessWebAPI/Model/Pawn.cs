@@ -1,8 +1,9 @@
+using System;
+
 namespace ChessAPI.Model
 {
     public class Pawn : Piece
     {
-
         public Pawn(ColorEnum color) : base(color)
         {
         }
@@ -16,7 +17,6 @@ namespace ChessAPI.Model
             bool kill = Kill(movement, board);
             if (kill)
                 return MovementType.ValidNormalMovement;
-
 
             bool initialMovement = InitialMovement(movement, board);
             if (initialMovement)
@@ -32,10 +32,10 @@ namespace ChessAPI.Model
         {
             bool result = false;
 
-            if ((movement.RowDistance()==1) && 
-                (movement.IsSameColumn()) && board[movement.toRow,movement.toColumn]==null)
+            if ((movement.RowDistance() == 1) &&
+                (movement.IsSameColumn()) && board[movement.toRow, movement.toColumn] == null)
             {
-                if (this._color==ColorEnum.WHITE)
+                if (this._color == ColorEnum.WHITE)
                     result = movement.toRow < movement.fromRow;
                 else
                     result = movement.toRow > movement.fromRow;
@@ -44,11 +44,12 @@ namespace ChessAPI.Model
             return result;
 
         }
+
         public bool Kill(Movement movement, Piece[,] board)
         {
             bool result = false;
             int columnFactor = movement.fromColumn - movement.toColumn;
-            
+
             if (board[movement.toRow, movement.toColumn] != null)
             {
                 if ((movement.RowDistance() == 1) && (Math.Abs(columnFactor) == 1))
@@ -67,17 +68,15 @@ namespace ChessAPI.Model
         {
             bool result = false;
 
-            if ((board[movement.toRow,movement.toColumn]==null) &&
-                (movement.RowDistance() == 2) && 
-                (movement.IsSameColumn()) &&
-                ((movement.fromRow==1) || (movement.fromRow==6))
+            if ((board[movement.toRow, movement.toColumn] == null) &&
+                (movement.RowDistance() == 2) && movement.IsSameColumn()
                 )
             {
-                if (this._color == ColorEnum.WHITE)
+                if (this._color == ColorEnum.WHITE && movement.fromRow == 6)
                     result = board[5, movement.toColumn] == null;
-                else
+                else if (this._color == ColorEnum.BLACK && movement.fromRow == 1)
                     result = board[2, movement.toColumn] == null;
-  
+
             }
 
             return result;

@@ -21,6 +21,9 @@ $(document).ready(function() {
 
     $(".piece").click(function() {
         var clickedPosition = $(this).data("piece-id");
+        var choice = document.getElementById("choices");
+        var imageName = $(this).find("img").attr("src");;
+        console.log(imageName);
 
         if (selectedPiece === null) {
             selectedPiece = clickedPosition;
@@ -35,10 +38,8 @@ $(document).ready(function() {
                     fromRow: fromRow,
                 },
                 success: function(response) {
-                    if (isWhiteTurn)
-                    {
-                        if (response.piece.includes("WH"))
-                        {
+                    if (isWhiteTurn) {
+                        if (response.piece.includes("WH")) {
                             $.each(response.possibleMovements, function(key, value) {
                                 if (value == 1)
                                 {
@@ -46,26 +47,32 @@ $(document).ready(function() {
                                     $(`.piece[data-piece-id="${key}"]`).append("<div class='dot'></div>");
                                 }
                             })
-                        }
-                        else
-                        {
+
+                            if (fromColumn == 1) {
+                                if (response.piece.includes("PA")) {
+                                    document.getElementById("choice-container").style.display = "block";
+                                    document.getElementById("choice-container").style.visibility = "1";
+                                }
+                            }
+                        } else {
                             selectedPiece = null;
                         }
-                    }
-                    else
-                    {
-                        if (response.piece.includes("BL"))
-                        {
+                    } else {
+                        if (response.piece.includes("BL")) {
                             $.each(response.possibleMovements, function(key, value) {
-                                if (value == 1)
-                                {
+                                if (value == 1) {
                                     $(`.piece[data-piece-id="${key}"]`).addClass("valid-move");
                                     $(`.piece[data-piece-id="${key}"]`).append("<div class='dot'></div>");
                                 }
                             })
-                        }
-                        else 
-                        {
+
+                            if (fromColumn == 6) {
+                                if (response.piece.includes("PA")) {
+                                    document.getElementById("choice-container").style.display = "block";
+                                    document.getElementById("choice-container").style.visibility = "1";
+                                }
+                            }
+                        } else {
                             selectedPiece = null;
                         }
                     }
@@ -87,7 +94,8 @@ $(document).ready(function() {
                     fromColumn: fromColumn,
                     fromRow: fromRow,
                     toColumn: toColumn,
-                    toRow: toRow
+                    toRow: toRow,
+                    choice: choice.value
                 },
                 success: function(response) {
                     if (response.isValid) {
@@ -104,6 +112,8 @@ $(document).ready(function() {
                 complete: function() {
                     selectedPiece = null;
                     $(".piece").removeClass("valid-move");
+                    document.getElementById("choice-container").style.display = "none";
+                    document.getElementById("choice-container").style.visibility = "0";
                 }
             });
         }

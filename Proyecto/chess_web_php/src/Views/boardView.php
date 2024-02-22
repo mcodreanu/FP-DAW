@@ -193,6 +193,14 @@
             }
 
             echo"<div class=\"info-board\">";
+            echo"<div id=\"choice-container\">";
+            echo"<select name=\"choices\" id=\"choices\">
+                    <option value=\"1\">Queen</option>
+                    <option value=\"2\">Rook</option>
+                    <option value=\"3\">Knight</option>
+                    <option value=\"4\">Bishop</option>
+                </select>";
+            echo"</div>";
             echo "<h1 class=\"title\">".$_SESSION['title']."</h1>";
             echo "<h1 class=\"turn-indicator\"></h1>";
             echo "<div class=\"info\"><h1>Black: ".$players[$_SESSION['player1_name'] - 1]."&nbsp;&nbsp;&nbsp;&nbsp;".$score["materialValueBlack"]."</h1>";
@@ -202,7 +210,6 @@
             echo "</div>";
         }
     }
-
     function DrawHistoryButtons($statesBL)
     {
         $current = $_GET['state'];

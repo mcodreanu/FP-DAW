@@ -10,6 +10,7 @@ $fromColumn = $_GET['fromColumn'];
 $fromRow = $_GET['fromRow'];
 $toColumn = $_GET['toColumn'];
 $toRow = $_GET['toRow'];
+$choice = $_GET['choice'];
 
 $statesData = $statesBL->obtainLastState();
 
@@ -19,7 +20,7 @@ foreach ($statesData as $state) {
 
 $board = $boardState;
 
-$data = $apiBL->move($board, $fromRow, $fromColumn, $toRow, $toColumn);
+$data = $apiBL->move($board, $fromRow, $fromColumn, $toRow, $toColumn, $choice);
 
 if ($data['isValid'] == true) {
     $board = $data['board'];

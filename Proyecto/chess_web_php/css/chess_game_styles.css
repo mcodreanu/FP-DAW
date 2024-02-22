@@ -34,6 +34,11 @@ body {
     position: absolute;
 }
 
+#choice-container {
+    visibility: 0;
+    display: none;
+}
+
 .black-squares {
     background-image: url("../img/bwood_texture.jpg");
     float: left;
