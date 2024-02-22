@@ -5,9 +5,7 @@ namespace ChessAPI.Model
     public abstract class Piece
     {
         public enum ColorEnum { WHITE, BLACK }
-
         public readonly ColorEnum _color;
-
         public abstract MovementType ValidateSpecificRulesForMovement(Movement movement, Piece[,] board, Movement previousMove);
 
         //Movimiento normal valido, movimiento no valido, enroque corto, enroque largo, al paso
@@ -45,6 +43,12 @@ namespace ChessAPI.Model
             string code = this.GetType().Name.Substring(0,2).ToUpper();
             string color = this._color.ToString().Substring(0,2).ToUpper();
             return $"|{code}{color}|";
+        }
+
+        public virtual MovementType ValidateCastling(Movement movement, Piece[,] board)
+        {
+            // Default implementation for pieces other than the king
+            return MovementType.InvalidNormalMovement;
         }
 
         public abstract int GetScore();

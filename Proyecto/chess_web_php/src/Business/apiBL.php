@@ -32,5 +32,11 @@ class ApiBL
         
         return $res;
     }
+
+    function resetGameState()
+    {
+        $apiDAL = new ApiDAL();
+        $apiDAL->resetGameState();
+    }
 }
 

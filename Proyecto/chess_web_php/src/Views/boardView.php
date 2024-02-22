@@ -23,13 +23,13 @@
     require("../Business/statesBL.php");
     $statesBL = new StatesBL();
     require("../Business/apiBL.php");
-    $apiDAL = new ApiBL();
+    $apiBL = new ApiBL();
     require("../Business/matchesBL.php");    
     $matchesBL = new MatchesBL();
     require("../Business/playersBL.php");    
     $playersBL = new PlayersBL();
     
-    function obtainBoard($statesBL) 
+    function obtainBoard($statesBL, $apiBL) 
     {
         if (isset($_GET['state']))
         {    
@@ -47,6 +47,7 @@
             if (!isset($_SESSION["visits"]) || $_SESSION["visits"] == 0)
             {
                 $board = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
+                $apiBL->resetGameState();
             }
             else
             {
@@ -62,7 +63,7 @@
         return $board;
     }
 
-    $board = obtainBoard($statesBL);
+    $board = obtainBoard($statesBL, $apiBL);
 
     function insertMatches($board, $statesBL, $matchesBL) 
     {
@@ -105,7 +106,7 @@
 
     $board = changeStates($board, $statesBL);
     
-    function DrawChessGame($board, $apiDAL, $statesBL, $matchesBL, $playersBL)
+    function DrawChessGame($board, $apiBL, $statesBL, $matchesBL, $playersBL)
     {
         $pieces = str_split($board);
         $numPieces = CountPieces($pieces);
@@ -128,14 +129,14 @@
         echo "</div>";
         echo "</div>";
         echo "<div class=\"info-container\">";
-        DrawInfo($board, $apiDAL, $matchesBL, $playersBL, $statesBL);
+        DrawInfo($board, $apiBL, $matchesBL, $playersBL, $statesBL);
         echo "</div>";
         echo "</div>";
     }
 
-    function DrawInfo($board, $apiDAL, $matchesBL, $playersBL, $statesBL)
+    function DrawInfo($board, $apiBL, $matchesBL, $playersBL, $statesBL)
     {
-        $score = $apiDAL->obtainScore($board);
+        $score = $apiBL->obtainScore($board);
 
         if (isset($_GET['id_match']))
         {
@@ -421,7 +422,7 @@
         }
     }
 
-    DrawChessGame($board, $apiDAL, $statesBL, $matchesBL, $playersBL);
+    DrawChessGame($board, $apiBL, $statesBL, $matchesBL, $playersBL);
     ?>
 
 

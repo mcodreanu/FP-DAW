@@ -152,31 +152,94 @@ namespace ChessAPI.Model
         }
 
         public MoveData Move(int fromRow, int fromColumn, int toRow, int toColumn)
-    {
-        Movement move = new Movement(fromRow, fromColumn, toRow, toColumn);
-        Piece piece = _boardPieces[move.fromRow, move.fromColumn];
-
-        try
         {
-            if (move.IsValid())
+            Movement move = new Movement(fromRow, fromColumn, toRow, toColumn);
+            Piece piece = _boardPieces[move.fromRow, move.fromColumn];
+
+            try
             {
-                if (piece.Validate(move, _boardPieces, GameStateManager.Instance.PreviousMove) != Piece.MovementType.InvalidNormalMovement)
+                if (move.IsValid())
                 {
-                    GameStateManager.Instance.UpdatePreviousMove(move);
-                    _boardPieces[toRow, toColumn] = _boardPieces[fromRow, fromColumn];
-                    _boardPieces[fromRow, fromColumn] = null;
-                        
-                    return new MoveData(true, GetBoardState(), "OK", piece.GetCode());
-                }
-            }
+                    if (piece.Validate(move, _boardPieces, GameStateManager.Instance.PreviousMove) != Piece.MovementType.InvalidNormalMovement)
+                    {
+                        if (piece.ValidateCastling(move, _boardPieces) == Piece.MovementType.ValidNormalMovement)
+                        {
+                            // Handle castling move
+                            if (move.toColumn == 6 || move.toColumn == 2) // Kingside or Queenside castling
+                            {
+                                // Move the king
+                                _boardPieces[toRow, toColumn] = _boardPieces[fromRow, fromColumn];
+                                _boardPieces[fromRow, fromColumn] = null;
+                                // Move the rook
+                                _boardPieces[toRow, move.toColumn == 6 ? 5 : 3] = _boardPieces[toRow, move.toColumn == 6 ? 7 : 0];
+                                _boardPieces[toRow, move.toColumn == 6 ? 7 : 0] = null;
 
-            return new MoveData(false, GetBoardState(), "Invalid Movement", piece.GetCode());
+                                // Set HasMoved flag for king and rook
+                                if (piece.GetCode() == "|ROBL|")
+                                {
+                                    GameStateManager.Instance.UpdateHasMovedBlack(true);
+                                }
+                                
+                                if (piece.GetCode() == "|ROWH|")
+                                {
+                                    GameStateManager.Instance.UpdateHasMovedWhite(true);
+                                }
+
+                                if (piece.GetCode() == "|KIBL|")
+                                {
+                                    GameStateManager.Instance.UpdateHasMovedBlack(true);
+                                }
+                                
+                                if (piece.GetCode() == "|KIWH|") 
+                                {
+                                    GameStateManager.Instance.UpdateHasMovedWhite(true);
+                                }
+                            }
+                            // Update board state accordingly
+
+                            // Return MoveData indicating successful castling
+                            return new MoveData(true, GetBoardState(), "Castling successful", piece.GetCode());
+                        }
+                        else
+                        {
+                            // Handle normal move
+                            GameStateManager.Instance.UpdatePreviousMove(move);
+                            _boardPieces[toRow, toColumn] = _boardPieces[fromRow, fromColumn];
+                            _boardPieces[fromRow, fromColumn] = null;
+
+                            // Set HasMoved flag for rook or king if moved
+                            if (piece.GetCode() == "|ROBL|")
+                            {
+                                GameStateManager.Instance.UpdateHasMovedBlack(true);
+                            }
+                            
+                            if (piece.GetCode() == "|ROWH|")
+                            {
+                                GameStateManager.Instance.UpdateHasMovedWhite(true);
+                            }
+
+                            if (piece.GetCode() == "|KIBL|")
+                            {
+                                GameStateManager.Instance.UpdateHasMovedBlack(true);
+                            }
+                            
+                            if (piece.GetCode() == "|KIWH|") 
+                            {
+                                GameStateManager.Instance.UpdateHasMovedWhite(true);
+                            }
+                        }
+
+                        return new MoveData(true, GetBoardState(), "OK", piece.GetCode());
+                    }
+                }
+
+                return new MoveData(false, GetBoardState(), "Invalid Movement", piece.GetCode());
+            }
+            catch (System.Exception e)
+            {
+                return new MoveData(false, GetBoardState(), e.Message, piece.GetCode());
+            }
         }
-        catch (System.Exception e)
-        {
-            return new MoveData(false, GetBoardState(), e.Message, piece.GetCode());
-        }
-    }
 
         public string GetBoardState()
         {

@@ -25,4 +25,9 @@ public class BoardService : IBoardService
 
         return valid;
     }
+
+    public void ResetGameState()
+    {
+        GameStateManager.Instance.ResetState();
+    }
 }
